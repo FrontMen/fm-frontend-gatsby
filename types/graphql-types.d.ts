@@ -4278,6 +4278,20 @@ export type BlogPagesQueryQuery = { allContentfulBlogPost: { edges: Array<{ node
         & { body: Maybe<Pick<ContentfulBlogPostBodyRichTextNode, 'json'>> }
       ) }> } };
 
+export type HomePageQueryVariables = {};
+
+
+export type HomePageQuery = { contentfulLayout: Maybe<(
+    Pick<ContentfulLayout, 'title' | 'slug'>
+    & { contentModules: Maybe<Array<Maybe<(
+      Pick<ContentfulLayoutHeroImage, 'id' | 'headline'>
+      & { backgroundImage: Maybe<(
+        Pick<ContentfulAsset, 'title'>
+        & { fluid: Maybe<Pick<ContentfulFluid, 'src'>> }
+      )> }
+    )>>> }
+  )> };
+
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 export type GatsbyContentfulFixed_TracedSvgFragment = Pick<ContentfulFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;

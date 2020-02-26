@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
 import { Hero } from '../components/hero';
+import { HomePageQuery } from '../../types/graphql-types';
 
 const styles = {
   imageContainer: css`
@@ -16,24 +17,55 @@ const styles = {
   `,
 };
 
-const IndexPage: React.FC = () => (
-  <Layout>
-    <SEO title="Home" />
-    <Hero />
-    <section>
-      <div css={styles.imageContainer}>
-        <Image />
-      </div>
-      <ul>
-        <li>
-          <Link to="/page-2/">Go to page 2</Link>
-        </li>
-        <li>
-          <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
-        </li>
-      </ul>
-    </section>
-  </Layout>
-);
+type Props = {
+  data: HomePageQuery;
+};
+
+const IndexPage: React.FC<Props> = ({ data }: Props) => {
+  const layout = data.contentfulLayout;
+  if (!layout) {
+    return null;
+  }
+  return (
+    <Layout>
+      <SEO title={layout.title} />
+      {layout.contentModules.map(cm => (
+        <Hero headline={cm.headline} key={cm.id} />
+      ))}
+      <section>
+        <div css={styles.imageContainer}>
+          <Image />
+        </div>
+        <ul>
+          <li>
+            <Link to="/page-2/">Go to page 2</Link>
+          </li>
+          <li>
+            <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
+          </li>
+        </ul>
+      </section>
+    </Layout>
+  );
+};
+
+export const query = graphql`
+  query HomePage {
+    contentfulLayout(slug: { eq: "home" }) {
+      title
+      slug
+      contentModules {
+        id
+        headline
+        backgroundImage {
+          fluid {
+            src
+          }
+          title
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage;

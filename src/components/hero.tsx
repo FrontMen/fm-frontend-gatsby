@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { css } from '@emotion/core';
+import { ContentfulLayoutHeroImage } from '../../types/graphql-types';
 
-export const Hero: React.FC = () => {
+type Props = {
+  headline: ContentfulLayoutHeroImage['headline'];
+};
+
+export const Hero: React.FC<Props> = ({ headline }: Props) => {
   return (
     <div
       css={css`
@@ -12,7 +17,7 @@ export const Hero: React.FC = () => {
       className="hero"
     >
       <h1>Frontmen</h1>
-      <p>Welcome to your new Gatsby site.</p>
+      <p>{headline}</p>
       <p>Now go build something great.</p>
     </div>
   );
