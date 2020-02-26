@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
+import { Navigation } from './navigation';
 
 type Props = {
   siteTitle: string;
@@ -13,13 +14,12 @@ const Header: React.FC<Props> = ({ siteTitle }: Props) => (
     `}
   >
     <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
+      css={css`
+        margin: 0 auto;
+        max-width: 1200px;
+      `}
     >
-      <h1 style={{ margin: 0 }}>
+      <h1>
         <Link
           to="/"
           style={{
@@ -30,6 +30,7 @@ const Header: React.FC<Props> = ({ siteTitle }: Props) => (
           {siteTitle}
         </Link>
       </h1>
+      <Navigation />
     </div>
   </header>
 );
