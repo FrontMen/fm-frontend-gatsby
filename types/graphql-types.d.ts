@@ -3173,12 +3173,12 @@ export type Query = {
   allSitePage: SitePageConnection,
   imageSharp?: Maybe<ImageSharp>,
   allImageSharp: ImageSharpConnection,
+  contentfulAsset?: Maybe<ContentfulAsset>,
+  allContentfulAsset: ContentfulAssetConnection,
   contentfulLayoutHeroImage?: Maybe<ContentfulLayoutHeroImage>,
   allContentfulLayoutHeroImage: ContentfulLayoutHeroImageConnection,
   contentfulLayout?: Maybe<ContentfulLayout>,
   allContentfulLayout: ContentfulLayoutConnection,
-  contentfulAsset?: Maybe<ContentfulAsset>,
-  allContentfulAsset: ContentfulAssetConnection,
   contentfulBlogPostBodyRichTextNode?: Maybe<ContentfulBlogPostBodyRichTextNode>,
   allContentfulBlogPostBodyRichTextNode: ContentfulBlogPostBodyRichTextNodeConnection,
   contentfulBlogPost?: Maybe<ContentfulBlogPost>,
@@ -3339,6 +3339,32 @@ export type QueryAllImageSharpArgs = {
 };
 
 
+export type QueryContentfulAssetArgs = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+  file?: Maybe<ContentfulAssetFileFilterInput>,
+  title?: Maybe<StringQueryOperatorInput>,
+  description?: Maybe<StringQueryOperatorInput>,
+  node_locale?: Maybe<StringQueryOperatorInput>,
+  fixed?: Maybe<ContentfulFixedFilterInput>,
+  resolutions?: Maybe<ContentfulResolutionsFilterInput>,
+  fluid?: Maybe<ContentfulFluidFilterInput>,
+  sizes?: Maybe<ContentfulSizesFilterInput>,
+  resize?: Maybe<ContentfulResizeFilterInput>
+};
+
+
+export type QueryAllContentfulAssetArgs = {
+  filter?: Maybe<ContentfulAssetFilterInput>,
+  sort?: Maybe<ContentfulAssetSortInput>,
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>
+};
+
+
 export type QueryContentfulLayoutHeroImageArgs = {
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
@@ -3383,32 +3409,6 @@ export type QueryContentfulLayoutArgs = {
 export type QueryAllContentfulLayoutArgs = {
   filter?: Maybe<ContentfulLayoutFilterInput>,
   sort?: Maybe<ContentfulLayoutSortInput>,
-  skip?: Maybe<Scalars['Int']>,
-  limit?: Maybe<Scalars['Int']>
-};
-
-
-export type QueryContentfulAssetArgs = {
-  id?: Maybe<StringQueryOperatorInput>,
-  parent?: Maybe<NodeFilterInput>,
-  children?: Maybe<NodeFilterListInput>,
-  internal?: Maybe<InternalFilterInput>,
-  contentful_id?: Maybe<StringQueryOperatorInput>,
-  file?: Maybe<ContentfulAssetFileFilterInput>,
-  title?: Maybe<StringQueryOperatorInput>,
-  description?: Maybe<StringQueryOperatorInput>,
-  node_locale?: Maybe<StringQueryOperatorInput>,
-  fixed?: Maybe<ContentfulFixedFilterInput>,
-  resolutions?: Maybe<ContentfulResolutionsFilterInput>,
-  fluid?: Maybe<ContentfulFluidFilterInput>,
-  sizes?: Maybe<ContentfulSizesFilterInput>,
-  resize?: Maybe<ContentfulResizeFilterInput>
-};
-
-
-export type QueryAllContentfulAssetArgs = {
-  filter?: Maybe<ContentfulAssetFilterInput>,
-  sort?: Maybe<ContentfulAssetSortInput>,
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>
 };
@@ -3878,6 +3878,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___accessToken' |
   'pluginCreator___pluginOptions___host' |
   'pluginCreator___pluginOptions___fileName' |
+  'pluginCreator___pluginOptions___documentPaths' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___browserAPIs' |
@@ -4076,6 +4077,7 @@ export type SitePluginFieldsEnum =
   'pluginOptions___accessToken' |
   'pluginOptions___host' |
   'pluginOptions___fileName' |
+  'pluginOptions___documentPaths' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
   'browserAPIs' |
@@ -4201,6 +4203,7 @@ export type SitePluginPluginOptions = {
   accessToken?: Maybe<Scalars['String']>,
   host?: Maybe<Scalars['String']>,
   fileName?: Maybe<Scalars['String']>,
+  documentPaths?: Maybe<Array<Maybe<Scalars['String']>>>,
   pathCheck?: Maybe<Scalars['Boolean']>,
 };
 
@@ -4217,6 +4220,7 @@ export type SitePluginPluginOptionsFilterInput = {
   accessToken?: Maybe<StringQueryOperatorInput>,
   host?: Maybe<StringQueryOperatorInput>,
   fileName?: Maybe<StringQueryOperatorInput>,
+  documentPaths?: Maybe<StringQueryOperatorInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
 };
 

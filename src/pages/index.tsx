@@ -5,7 +5,7 @@ import { css } from '@emotion/core';
 import Layout from '../components/layout';
 import Image from '../components/image';
 import SEO from '../components/seo';
-import { Hero } from '../components/hero';
+import { HeroImage } from '../components/heroImage';
 import { HomePageQuery } from '../../types/graphql-types';
 
 const styles = {
@@ -23,14 +23,15 @@ type Props = {
 
 const IndexPage: React.FC<Props> = ({ data }: Props) => {
   const layout = data.contentfulLayout;
+
   if (!layout) {
     return null;
   }
   return (
     <Layout>
-      <SEO title={layout.title} />
+      {layout.title && <SEO title={layout.title} />}
       {layout.contentModules.map(cm => (
-        <Hero headline={cm.headline} key={cm.id} />
+        <HeroImage data={cm} key={cm.id} />
       ))}
       <section>
         <div css={styles.imageContainer}>
@@ -58,7 +59,7 @@ export const query = graphql`
         id
         headline
         backgroundImage {
-          fluid {
+          fluid(maxWidth: 1200) {
             src
           }
           title
