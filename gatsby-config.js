@@ -5,6 +5,7 @@ module.exports = {
     title: `Frontmen`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
+    siteUrl: 'https://www.frontmen.nl',
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -44,6 +45,7 @@ module.exports = {
       resolve: `gatsby-plugin-graphql-codegen`,
       options: {
         fileName: `types/graphql-types.d.ts`,
+        plugins: ['typescript'],
       },
     },
     /* eslint-enable @typescript-eslint/camelcase */

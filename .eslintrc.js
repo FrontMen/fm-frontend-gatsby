@@ -25,5 +25,15 @@ module.exports = {
     'react/jsx-one-expression-per-line': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.jsx'] }],
     'import/prefer-default-export': 0,
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
   },
 };

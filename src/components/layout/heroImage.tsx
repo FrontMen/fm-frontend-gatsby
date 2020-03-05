@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { css } from '@emotion/core';
+// eslint-disable-next-line import/no-unresolved
 import { ContentfulLayoutHeroImage } from '../../types/graphql-types';
 
 type Props = {

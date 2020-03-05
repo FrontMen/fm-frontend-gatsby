@@ -1,24 +1,27 @@
 import * as React from 'react';
 import { Link, graphql } from 'gatsby';
-import { css } from '@emotion/core';
 
 import Layout from '../components/layout';
-import Image from '../components/image';
 import SEO from '../components/seo';
-import { HeroImage } from '../components/heroImage';
-import { HomePageQuery } from '../../types/graphql-types';
 
-const styles = {
-  imageContainer: css`
-    max-width: 300px;
-    margin-bottom: 1.45rem;
-    margin-left: auto;
-    margin-right: auto;
-  `,
-};
+// eslint-disable-next-line import/no-unresolved
+import { HomePageQuery } from '../../types/graphql-types';
+import { CasePreview } from '../components/casePreview/casePreview';
+import { SectionContainer } from '../components/sectionContainer';
+import { CTABox } from '../components/layout/cta-container';
+import { HeroImage } from '../components/layout/heroImage';
 
 type Props = {
   data: HomePageQuery;
+};
+
+const renderContentModules = (contentModules: any = []) => {
+  contentModules.map((cm: any) => {
+    if (!cm || !cm.backgroundImage) {
+      return null;
+    }
+    return <HeroImage data={cm} key={cm.id} />;
+  });
 };
 
 const IndexPage: React.FC<Props> = ({ data }: Props) => {
@@ -30,13 +33,12 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
   return (
     <Layout>
       {layout.title && <SEO title={layout.title} />}
-      {layout.contentModules.map(cm => (
-        <HeroImage data={cm} key={cm.id} />
-      ))}
-      <section>
-        <div css={styles.imageContainer}>
-          <Image />
-        </div>
+
+      {layout.contentModules && renderContentModules(layout.contentModules)}
+      <SectionContainer>
+        <CasePreview />
+      </SectionContainer>
+      <SectionContainer>
         <ul>
           <li>
             <Link to="/page-2/">Go to page 2</Link>
@@ -45,7 +47,17 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
             <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
           </li>
         </ul>
-      </section>
+      </SectionContainer>
+      <SectionContainer>
+        <CTABox
+          title="Let's build together"
+          payoff="Join a long list of satisfied clients, partners,
+and successful businesses that we have had
+the pleasure of working with."
+          ctaLabel="Get in touch"
+          ctaLink="/contact"
+        />
+      </SectionContainer>
     </Layout>
   );
 };
@@ -53,16 +65,22 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
 export const query = graphql`
   query HomePage {
     contentfulLayout(slug: { eq: "home" }) {
-      title
       slug
+      title
       contentModules {
-        id
-        headline
-        backgroundImage {
-          fluid(maxWidth: 1200) {
-            src
+        ... on ContentfulLayoutHeroImage {
+          id
+          backgroundImage {
+            fluid(maxWidth: 1200) {
+              src
+            }
           }
+        }
+        ... on ContentfulLayoutCallToAction {
+          id
           title
+          url
+          label
         }
       }
     }

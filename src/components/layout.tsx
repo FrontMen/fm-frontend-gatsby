@@ -6,34 +6,65 @@
  */
 
 import * as React from 'react';
+import { useEffect } from 'react';
+
 import PropTypes from 'prop-types';
-import { useStaticQuery, graphql } from 'gatsby';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
 import Header from './header';
+import { useSiteMetadata } from '../hooks/useSiteMetaData';
+
+import Footer from './footer';
+import { rhythm } from '../utils/typography';
 
 type Props = {
   children: React.ReactNode;
 };
 
+const Skip = styled.a`
+  padding: 0 1rem;
+  line-height: 60px;
+  background: #2867cf;
+  color: white;
+  z-index: 101;
+  position: fixed;
+  top: -100%;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:focus,
+  &:active,
+  &:hover {
+    top: 0;
+  }
+`;
+
 const Layout: React.FC<Props> = ({ children }: Props) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
+  const data = useSiteMetadata();
+  function handleFirstTab(e: KeyboardEvent): void {
+    if (e.keyCode === 9) {
+      // eslint-disable-next-line no-undef
+      document.body.classList.add('user-is-tabbing');
     }
-  `);
+  }
+  // eslint-disable-next-line no-undef
+  useEffect(() => window.addEventListener('keydown', handleFirstTab), []);
+  const headerFooterHight = rhythm(6);
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
-      <footer>
-        ©{new Date().getFullYear()}, Built with
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <Skip href="#main">Skip to main content</Skip>
+      <Header siteTitle={data.title || 'Frontmen'} />
+      <main
+        id="main"
+        css={css`
+          min-height: calc(100vh - ${headerFooterHight});
+        `}
+      >
+        {children}
+      </main>
+      <Footer />
     </>
   );
 };
