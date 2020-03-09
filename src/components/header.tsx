@@ -2,11 +2,17 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 import { Navigation } from './navigation';
+import styled from '@emotion/styled';
+import { mqMin, MediaQuerySize } from '../utils/breakpoints';
 
 type Props = {
   siteTitle: string;
   menuLinks: { link: string; name: string }[];
 };
+
+const Title = styled.h1`
+  margin-bottom: 0;
+`;
 
 const Header: React.FC<Props> = ({ siteTitle, menuLinks }: Props) => (
   <header
@@ -17,14 +23,14 @@ const Header: React.FC<Props> = ({ siteTitle, menuLinks }: Props) => (
     <div
       css={css`
         display: flex;
-        justify-content: space-between;
-        @media only screen and (min-width: 64em) {
+        flex-direction: column;
+        ${mqMin[MediaQuerySize.XL]} {
           margin: 0 auto;
           max-width: 1200px;
         }
       `}
     >
-      <h1>
+      <Title>
         <Link
           to="/"
           style={{
@@ -33,7 +39,7 @@ const Header: React.FC<Props> = ({ siteTitle, menuLinks }: Props) => (
         >
           {siteTitle}
         </Link>
-      </h1>
+      </Title>
       <Navigation menuLinks={menuLinks} />
     </div>
   </header>

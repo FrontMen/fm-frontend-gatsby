@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { css } from '@emotion/core';
 import { rhythm } from '../../utils/typography';
+import { mqMin, MediaQuerySize } from '../../utils/breakpoints';
 
 const items = [
   { id: 1, title: 'how we did this and that', client: 'klm' },
@@ -14,25 +15,40 @@ type Case = {
   title: string;
   client: string;
 };
-
+const spacing = rhythm(0.5);
 const styles = {
   casePreviewContainer: css`
-    -webkit-box-pack: justify;
-    justify-content: center;
     display: flex;
     width: 100%;
+    justify-content: center;
     margin-bottom: ${rhythm(1)};
     flex-flow: wrap;
+    ${mqMin[MediaQuerySize.L]} {
+      justify-content: space-between;
+    }
   `,
   casePreviewItem: css`
     box-sizing: border-box;
     width: 100%;
-    max-width: 600px;
     background-position: center;
     background-size: cover;
-    min-height: ${rhythm(15)};
-    :not(:first-of-type) {
-      margin-top: ${rhythm(1)};
+    min-height: ${rhythm(12)};
+    margin-bottom: ${spacing};
+    box-shadow: rgba(2, 29, 41, 0.2) 0px 1px 3px 1px;
+    cursor: pointer;
+    ${mqMin[MediaQuerySize.M]} {
+      max-width: 80vw;
+    }
+    ${mqMin[MediaQuerySize.L]} {
+      max-width: 49%;
+    }
+    ${mqMin[MediaQuerySize.XL]} {
+      &:nth-of-type(1) {
+        max-width: 780px;
+      }
+      &:nth-of-type(2) {
+        max-width: 380px;
+      }
     }
   `,
 };

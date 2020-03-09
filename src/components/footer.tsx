@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { rhythm } from '../utils/typography';
+import { MediaQuerySize, mqMin } from '../utils/breakpoints';
 
 const Wrapper = styled.footer`
   display: flex;
@@ -35,7 +36,7 @@ const Item = styled.li`
   display: inline-block;
   padding: 0.25em 0;
   width: 100%;
-  @media screen and (min-width: 320px) {
+  ${mqMin[MediaQuerySize.S]} {
     width: auto;
   }
   a {
