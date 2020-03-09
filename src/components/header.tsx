@@ -16,9 +16,11 @@ const Header: React.FC<Props> = ({ siteTitle }: Props) => (
   >
     <div
       css={css`
-        margin: 0 auto;
-        max-width: 1200px;
         padding: ${rhythm(1)};
+        @media only screen and (min-width: 64em) {
+          margin: 0 auto;
+          max-width: 1200px;
+        }
       `}
     >
       <h1>

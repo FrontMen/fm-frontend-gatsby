@@ -40,6 +40,12 @@ const Skip = styled.a`
   }
 `;
 
+const headerFooterHight = rhythm(6);
+
+const Main = styled.main`
+  min-height: calc(100vh - ${headerFooterHight});
+`;
+
 const Layout: React.FC<Props> = ({ children }: Props) => {
   const data = useSiteMetadata();
   function handleFirstTab(e: KeyboardEvent): void {
@@ -50,20 +56,12 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
   }
   // eslint-disable-next-line no-undef
   useEffect(() => window.addEventListener('keydown', handleFirstTab), []);
-  const headerFooterHight = rhythm(6);
 
   return (
     <>
       <Skip href="#main">Skip to main content</Skip>
       <Header siteTitle={data.title || 'Frontmen'} />
-      <main
-        id="main"
-        css={css`
-          min-height: calc(100vh - ${headerFooterHight});
-        `}
-      >
-        {children}
-      </main>
+      <Main id="main">{children}</Main>
       <Footer />
     </>
   );

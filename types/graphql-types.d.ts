@@ -410,15 +410,55 @@ export type ContentfulBlogPostBodyRichTextNodeContent = {
 export type ContentfulBlogPostBodyRichTextNodeContentContent = {
   nodeType?: Maybe<Scalars['String']>,
   value?: Maybe<Scalars['String']>,
+  marks?: Maybe<Array<Maybe<ContentfulBlogPostBodyRichTextNodeContentContentMarks>>>,
+  data?: Maybe<ContentfulBlogPostBodyRichTextNodeContentContentData>,
+  content?: Maybe<Array<Maybe<ContentfulBlogPostBodyRichTextNodeContentContentContent>>>,
+};
+
+export type ContentfulBlogPostBodyRichTextNodeContentContentContent = {
+  nodeType?: Maybe<Scalars['String']>,
+  value?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulBlogPostBodyRichTextNodeContentContentContentFilterInput = {
+  nodeType?: Maybe<StringQueryOperatorInput>,
+  value?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulBlogPostBodyRichTextNodeContentContentContentFilterListInput = {
+  elemMatch?: Maybe<ContentfulBlogPostBodyRichTextNodeContentContentContentFilterInput>,
+};
+
+export type ContentfulBlogPostBodyRichTextNodeContentContentData = {
+  uri?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulBlogPostBodyRichTextNodeContentContentDataFilterInput = {
+  uri?: Maybe<StringQueryOperatorInput>,
 };
 
 export type ContentfulBlogPostBodyRichTextNodeContentContentFilterInput = {
   nodeType?: Maybe<StringQueryOperatorInput>,
   value?: Maybe<StringQueryOperatorInput>,
+  marks?: Maybe<ContentfulBlogPostBodyRichTextNodeContentContentMarksFilterListInput>,
+  data?: Maybe<ContentfulBlogPostBodyRichTextNodeContentContentDataFilterInput>,
+  content?: Maybe<ContentfulBlogPostBodyRichTextNodeContentContentContentFilterListInput>,
 };
 
 export type ContentfulBlogPostBodyRichTextNodeContentContentFilterListInput = {
   elemMatch?: Maybe<ContentfulBlogPostBodyRichTextNodeContentContentFilterInput>,
+};
+
+export type ContentfulBlogPostBodyRichTextNodeContentContentMarks = {
+  type?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulBlogPostBodyRichTextNodeContentContentMarksFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulBlogPostBodyRichTextNodeContentContentMarksFilterListInput = {
+  elemMatch?: Maybe<ContentfulBlogPostBodyRichTextNodeContentContentMarksFilterInput>,
 };
 
 export type ContentfulBlogPostBodyRichTextNodeContentData = {
@@ -438,84 +478,16 @@ export type ContentfulBlogPostBodyRichTextNodeContentDataTargetFilterInput = {
 };
 
 export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSys = {
-  space?: Maybe<ContentfulBlogPostBodyRichTextNodeContentDataTargetSysSpace>,
-  type?: Maybe<Scalars['String']>,
-  id?: Maybe<Scalars['String']>,
-  revision?: Maybe<Scalars['Int']>,
-  createdAt?: Maybe<Scalars['Date']>,
-  updatedAt?: Maybe<Scalars['Date']>,
-  environment?: Maybe<ContentfulBlogPostBodyRichTextNodeContentDataTargetSysEnvironment>,
-  contentful_id?: Maybe<Scalars['String']>,
-};
-
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysCreatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>,
-  fromNow?: Maybe<Scalars['Boolean']>,
-  difference?: Maybe<Scalars['String']>,
-  locale?: Maybe<Scalars['String']>
-};
-
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysUpdatedAtArgs = {
-  formatString?: Maybe<Scalars['String']>,
-  fromNow?: Maybe<Scalars['Boolean']>,
-  difference?: Maybe<Scalars['String']>,
-  locale?: Maybe<Scalars['String']>
-};
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysEnvironment = {
-  sys?: Maybe<ContentfulBlogPostBodyRichTextNodeContentDataTargetSysEnvironmentSys>,
-};
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysEnvironmentFilterInput = {
-  sys?: Maybe<ContentfulBlogPostBodyRichTextNodeContentDataTargetSysEnvironmentSysFilterInput>,
-};
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysEnvironmentSys = {
   id?: Maybe<Scalars['String']>,
   type?: Maybe<Scalars['String']>,
   linkType?: Maybe<Scalars['String']>,
   contentful_id?: Maybe<Scalars['String']>,
-};
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysEnvironmentSysFilterInput = {
-  id?: Maybe<StringQueryOperatorInput>,
-  type?: Maybe<StringQueryOperatorInput>,
-  linkType?: Maybe<StringQueryOperatorInput>,
-  contentful_id?: Maybe<StringQueryOperatorInput>,
 };
 
 export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysFilterInput = {
-  space?: Maybe<ContentfulBlogPostBodyRichTextNodeContentDataTargetSysSpaceFilterInput>,
-  type?: Maybe<StringQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
-  revision?: Maybe<IntQueryOperatorInput>,
-  createdAt?: Maybe<DateQueryOperatorInput>,
-  updatedAt?: Maybe<DateQueryOperatorInput>,
-  environment?: Maybe<ContentfulBlogPostBodyRichTextNodeContentDataTargetSysEnvironmentFilterInput>,
-  contentful_id?: Maybe<StringQueryOperatorInput>,
-};
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysSpace = {
-  sys?: Maybe<ContentfulBlogPostBodyRichTextNodeContentDataTargetSysSpaceSys>,
-};
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysSpaceFilterInput = {
-  sys?: Maybe<ContentfulBlogPostBodyRichTextNodeContentDataTargetSysSpaceSysFilterInput>,
-};
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysSpaceSys = {
-  type?: Maybe<Scalars['String']>,
-  linkType?: Maybe<Scalars['String']>,
-  id?: Maybe<Scalars['String']>,
-  contentful_id?: Maybe<Scalars['String']>,
-};
-
-export type ContentfulBlogPostBodyRichTextNodeContentDataTargetSysSpaceSysFilterInput = {
   type?: Maybe<StringQueryOperatorInput>,
   linkType?: Maybe<StringQueryOperatorInput>,
-  id?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
 };
 
@@ -628,6 +600,12 @@ export type ContentfulBlogPostBodyRichTextNodeFieldsEnum =
   'content___content' |
   'content___content___nodeType' |
   'content___content___value' |
+  'content___content___marks' |
+  'content___content___marks___type' |
+  'content___content___data___uri' |
+  'content___content___content' |
+  'content___content___content___nodeType' |
+  'content___content___content___value' |
   'body' |
   'json';
 
@@ -815,6 +793,8 @@ export type ContentfulBlogPostFieldsEnum =
   'body___content___content' |
   'body___content___content___nodeType' |
   'body___content___content___value' |
+  'body___content___content___marks' |
+  'body___content___content___content' |
   'body___body' |
   'body___json' |
   'spaceId' |
@@ -871,6 +851,8 @@ export type ContentfulBlogPostFieldsEnum =
   'childContentfulBlogPostBodyRichTextNode___content___content' |
   'childContentfulBlogPostBodyRichTextNode___content___content___nodeType' |
   'childContentfulBlogPostBodyRichTextNode___content___content___value' |
+  'childContentfulBlogPostBodyRichTextNode___content___content___marks' |
+  'childContentfulBlogPostBodyRichTextNode___content___content___content' |
   'childContentfulBlogPostBodyRichTextNode___body' |
   'childContentfulBlogPostBodyRichTextNode___json';
 
@@ -2071,6 +2053,228 @@ export type ContentfulSizesFilterInput = {
   srcWebp?: Maybe<StringQueryOperatorInput>,
   srcSetWebp?: Maybe<StringQueryOperatorInput>,
   sizes?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulTechnology = Node & {
+  id: Scalars['ID'],
+  parent?: Maybe<Node>,
+  children: Array<Node>,
+  internal: Internal,
+  technology?: Maybe<Scalars['String']>,
+  slug?: Maybe<Scalars['String']>,
+  url?: Maybe<Scalars['String']>,
+  spaceId?: Maybe<Scalars['String']>,
+  contentful_id?: Maybe<Scalars['String']>,
+  createdAt?: Maybe<Scalars['Date']>,
+  updatedAt?: Maybe<Scalars['Date']>,
+  sys?: Maybe<ContentfulTechnologySys>,
+  node_locale?: Maybe<Scalars['String']>,
+};
+
+
+export type ContentfulTechnologyCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>,
+  fromNow?: Maybe<Scalars['Boolean']>,
+  difference?: Maybe<Scalars['String']>,
+  locale?: Maybe<Scalars['String']>
+};
+
+
+export type ContentfulTechnologyUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>,
+  fromNow?: Maybe<Scalars['Boolean']>,
+  difference?: Maybe<Scalars['String']>,
+  locale?: Maybe<Scalars['String']>
+};
+
+export type ContentfulTechnologyConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<ContentfulTechnologyEdge>,
+  nodes: Array<ContentfulTechnology>,
+  pageInfo: PageInfo,
+  distinct: Array<Scalars['String']>,
+  group: Array<ContentfulTechnologyGroupConnection>,
+};
+
+
+export type ContentfulTechnologyConnectionDistinctArgs = {
+  field: ContentfulTechnologyFieldsEnum
+};
+
+
+export type ContentfulTechnologyConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>,
+  field: ContentfulTechnologyFieldsEnum
+};
+
+export type ContentfulTechnologyEdge = {
+  next?: Maybe<ContentfulTechnology>,
+  node: ContentfulTechnology,
+  previous?: Maybe<ContentfulTechnology>,
+};
+
+export type ContentfulTechnologyFieldsEnum = 
+  'id' |
+  'parent___id' |
+  'parent___parent___id' |
+  'parent___parent___parent___id' |
+  'parent___parent___parent___children' |
+  'parent___parent___children' |
+  'parent___parent___children___id' |
+  'parent___parent___children___children' |
+  'parent___parent___internal___content' |
+  'parent___parent___internal___contentDigest' |
+  'parent___parent___internal___description' |
+  'parent___parent___internal___fieldOwners' |
+  'parent___parent___internal___ignoreType' |
+  'parent___parent___internal___mediaType' |
+  'parent___parent___internal___owner' |
+  'parent___parent___internal___type' |
+  'parent___children' |
+  'parent___children___id' |
+  'parent___children___parent___id' |
+  'parent___children___parent___children' |
+  'parent___children___children' |
+  'parent___children___children___id' |
+  'parent___children___children___children' |
+  'parent___children___internal___content' |
+  'parent___children___internal___contentDigest' |
+  'parent___children___internal___description' |
+  'parent___children___internal___fieldOwners' |
+  'parent___children___internal___ignoreType' |
+  'parent___children___internal___mediaType' |
+  'parent___children___internal___owner' |
+  'parent___children___internal___type' |
+  'parent___internal___content' |
+  'parent___internal___contentDigest' |
+  'parent___internal___description' |
+  'parent___internal___fieldOwners' |
+  'parent___internal___ignoreType' |
+  'parent___internal___mediaType' |
+  'parent___internal___owner' |
+  'parent___internal___type' |
+  'children' |
+  'children___id' |
+  'children___parent___id' |
+  'children___parent___parent___id' |
+  'children___parent___parent___children' |
+  'children___parent___children' |
+  'children___parent___children___id' |
+  'children___parent___children___children' |
+  'children___parent___internal___content' |
+  'children___parent___internal___contentDigest' |
+  'children___parent___internal___description' |
+  'children___parent___internal___fieldOwners' |
+  'children___parent___internal___ignoreType' |
+  'children___parent___internal___mediaType' |
+  'children___parent___internal___owner' |
+  'children___parent___internal___type' |
+  'children___children' |
+  'children___children___id' |
+  'children___children___parent___id' |
+  'children___children___parent___children' |
+  'children___children___children' |
+  'children___children___children___id' |
+  'children___children___children___children' |
+  'children___children___internal___content' |
+  'children___children___internal___contentDigest' |
+  'children___children___internal___description' |
+  'children___children___internal___fieldOwners' |
+  'children___children___internal___ignoreType' |
+  'children___children___internal___mediaType' |
+  'children___children___internal___owner' |
+  'children___children___internal___type' |
+  'children___internal___content' |
+  'children___internal___contentDigest' |
+  'children___internal___description' |
+  'children___internal___fieldOwners' |
+  'children___internal___ignoreType' |
+  'children___internal___mediaType' |
+  'children___internal___owner' |
+  'children___internal___type' |
+  'internal___content' |
+  'internal___contentDigest' |
+  'internal___description' |
+  'internal___fieldOwners' |
+  'internal___ignoreType' |
+  'internal___mediaType' |
+  'internal___owner' |
+  'internal___type' |
+  'technology' |
+  'slug' |
+  'url' |
+  'spaceId' |
+  'contentful_id' |
+  'createdAt' |
+  'updatedAt' |
+  'sys___revision' |
+  'sys___contentType___sys___type' |
+  'sys___contentType___sys___linkType' |
+  'sys___contentType___sys___id' |
+  'sys___contentType___sys___contentful_id' |
+  'node_locale';
+
+export type ContentfulTechnologyFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  technology?: Maybe<StringQueryOperatorInput>,
+  slug?: Maybe<StringQueryOperatorInput>,
+  url?: Maybe<StringQueryOperatorInput>,
+  spaceId?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+  createdAt?: Maybe<DateQueryOperatorInput>,
+  updatedAt?: Maybe<DateQueryOperatorInput>,
+  sys?: Maybe<ContentfulTechnologySysFilterInput>,
+  node_locale?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulTechnologyGroupConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<ContentfulTechnologyEdge>,
+  nodes: Array<ContentfulTechnology>,
+  pageInfo: PageInfo,
+  field: Scalars['String'],
+  fieldValue?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulTechnologySortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulTechnologyFieldsEnum>>>,
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>,
+};
+
+export type ContentfulTechnologySys = {
+  revision?: Maybe<Scalars['Int']>,
+  contentType?: Maybe<ContentfulTechnologySysContentType>,
+};
+
+export type ContentfulTechnologySysContentType = {
+  sys?: Maybe<ContentfulTechnologySysContentTypeSys>,
+};
+
+export type ContentfulTechnologySysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulTechnologySysContentTypeSysFilterInput>,
+};
+
+export type ContentfulTechnologySysContentTypeSys = {
+  type?: Maybe<Scalars['String']>,
+  linkType?: Maybe<Scalars['String']>,
+  id?: Maybe<Scalars['String']>,
+  contentful_id?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulTechnologySysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>,
+  linkType?: Maybe<StringQueryOperatorInput>,
+  id?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulTechnologySysFilterInput = {
+  revision?: Maybe<IntQueryOperatorInput>,
+  contentType?: Maybe<ContentfulTechnologySysContentTypeFilterInput>,
 };
 
 
@@ -3406,6 +3610,8 @@ export type Query = {
   allImageSharp: ImageSharpConnection,
   contentfulAsset?: Maybe<ContentfulAsset>,
   allContentfulAsset: ContentfulAssetConnection,
+  contentfulTechnology?: Maybe<ContentfulTechnology>,
+  allContentfulTechnology: ContentfulTechnologyConnection,
   contentfulLayoutCallToAction?: Maybe<ContentfulLayoutCallToAction>,
   allContentfulLayoutCallToAction: ContentfulLayoutCallToActionConnection,
   contentfulLayoutHeroImage?: Maybe<ContentfulLayoutHeroImage>,
@@ -3593,6 +3799,31 @@ export type QueryContentfulAssetArgs = {
 export type QueryAllContentfulAssetArgs = {
   filter?: Maybe<ContentfulAssetFilterInput>,
   sort?: Maybe<ContentfulAssetSortInput>,
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>
+};
+
+
+export type QueryContentfulTechnologyArgs = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  technology?: Maybe<StringQueryOperatorInput>,
+  slug?: Maybe<StringQueryOperatorInput>,
+  url?: Maybe<StringQueryOperatorInput>,
+  spaceId?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+  createdAt?: Maybe<DateQueryOperatorInput>,
+  updatedAt?: Maybe<DateQueryOperatorInput>,
+  sys?: Maybe<ContentfulTechnologySysFilterInput>,
+  node_locale?: Maybe<StringQueryOperatorInput>
+};
+
+
+export type QueryAllContentfulTechnologyArgs = {
+  filter?: Maybe<ContentfulTechnologyFilterInput>,
+  sort?: Maybe<ContentfulTechnologySortInput>,
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>
 };
@@ -4135,7 +4366,6 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___plugins___name' |
   'pluginCreator___pluginOptions___plugins___version' |
   'pluginCreator___pluginOptions___plugins___pluginFilepath' |
-  'pluginCreator___pluginOptions___isTSX' |
   'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___short_name' |
@@ -4340,7 +4570,6 @@ export type SitePluginFieldsEnum =
   'pluginOptions___plugins___name' |
   'pluginOptions___plugins___version' |
   'pluginOptions___plugins___pluginFilepath' |
-  'pluginOptions___isTSX' |
   'pluginOptions___name' |
   'pluginOptions___path' |
   'pluginOptions___short_name' |
@@ -4467,7 +4696,6 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>,
-  isTSX?: Maybe<Scalars['Boolean']>,
   name?: Maybe<Scalars['String']>,
   path?: Maybe<Scalars['String']>,
   short_name?: Maybe<Scalars['String']>,
@@ -4485,7 +4713,6 @@ export type SitePluginPluginOptions = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>,
-  isTSX?: Maybe<BooleanQueryOperatorInput>,
   name?: Maybe<StringQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
   short_name?: Maybe<StringQueryOperatorInput>,
