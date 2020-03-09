@@ -2,21 +2,22 @@ import * as React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 import { Navigation } from './navigation';
-import { rhythm } from '../utils/typography';
 
 type Props = {
   siteTitle: string;
+  menuLinks: { link: string; name: string }[];
 };
 
-const Header: React.FC<Props> = ({ siteTitle }: Props) => (
+const Header: React.FC<Props> = ({ siteTitle, menuLinks }: Props) => (
   <header
     css={css`
-      background-color: #ff6600;
+      background-color: #fff;
     `}
   >
     <div
       css={css`
-        padding: ${rhythm(1)};
+        display: flex;
+        justify-content: space-between;
         @media only screen and (min-width: 64em) {
           margin: 0 auto;
           max-width: 1200px;
@@ -27,20 +28,20 @@ const Header: React.FC<Props> = ({ siteTitle }: Props) => (
         <Link
           to="/"
           style={{
-            color: `white`,
             textDecoration: `none`,
           }}
         >
           {siteTitle}
         </Link>
       </h1>
-      <Navigation />
+      <Navigation menuLinks={menuLinks} />
     </div>
   </header>
 );
 
 Header.defaultProps = {
   siteTitle: ``,
+  menuLinks: [],
 };
 
 export default Header;

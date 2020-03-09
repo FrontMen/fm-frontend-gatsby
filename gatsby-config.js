@@ -1,11 +1,13 @@
 require('dotenv').config();
+const staticPages = require('./src/utils/staticPagesConfig');
 
 module.exports = {
   siteMetadata: {
     title: `Frontmen`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    author: `Frontmen`,
     siteUrl: 'https://www.frontmen.nl',
+    menuLinks: staticPages.menuLinks,
   },
   plugins: [
     `gatsby-plugin-typescript`,

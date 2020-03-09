@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
+// eslint-disable-next-line import/no-unresolved
 import { SiteSiteMetadata } from '../../types/graphql-types';
 
 export const useSiteMetadata = (): SiteSiteMetadata => {
@@ -10,6 +11,10 @@ export const useSiteMetadata = (): SiteSiteMetadata => {
             title
             description
             siteUrl
+            menuLinks {
+              name
+              link
+            }
           }
         }
       }

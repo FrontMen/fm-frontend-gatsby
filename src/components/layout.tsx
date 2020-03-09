@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { css } from '@emotion/core';
 
 import Header from './header';
 import { useSiteMetadata } from '../hooks/useSiteMetaData';
@@ -56,11 +55,14 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
   }
   // eslint-disable-next-line no-undef
   useEffect(() => window.addEventListener('keydown', handleFirstTab), []);
-
+  console.log(data.menuLinks);
   return (
     <>
       <Skip href="#main">Skip to main content</Skip>
-      <Header siteTitle={data.title || 'Frontmen'} />
+      <Header
+        siteTitle={data.title || 'Frontmen'}
+        menuLinks={data.menuLinks || []}
+      />
       <Main id="main">{children}</Main>
       <Footer />
     </>
