@@ -34,7 +34,7 @@ const styles = {
     background-size: cover;
     min-height: ${rhythm(12)};
     margin-bottom: ${spacing};
-    box-shadow: rgba(2, 29, 41, 0.2) 0px 1px 3px 1px;
+    box-shadow: rgba(0, 188, 212, 0.24) 0px 1px 3px 1px;
     cursor: pointer;
     ${mqMin[MediaQuerySize.M]} {
       max-width: 80vw;
@@ -59,17 +59,20 @@ const CasePreviewItem: React.FC<{ caseStudy: Case }> = ({ caseStudy }) => {
     <div
       css={css`${styles.casePreviewItem}; background-image: url(${background})}`}
     >
-      {caseStudy.title}
+      <h3>{caseStudy.title}</h3>
     </div>
   );
 };
 
 export const CasePreview: React.FC = () => {
   return (
-    <div css={styles.casePreviewContainer}>
-      {items.map((ca: Case) => (
-        <CasePreviewItem key={ca.id} caseStudy={ca} />
-      ))}
-    </div>
+    <>
+      <h2>Enkele Cases</h2>
+      <div css={styles.casePreviewContainer}>
+        {items.map((ca: Case) => (
+          <CasePreviewItem key={ca.id} caseStudy={ca} />
+        ))}
+      </div>
+    </>
   );
 };

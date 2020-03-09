@@ -16,11 +16,11 @@ type Props = {
 };
 
 const renderContentModules = (contentModules: any = []) => {
-  contentModules.map((cm: any) => {
+  return contentModules.map((cm: any) => {
     if (!cm || !cm.backgroundImage) {
       return null;
     }
-    return <HeroImage data={cm} key={cm.id} />;
+    return <HeroImage cm={cm} key={cm.id} />;
   });
 };
 
@@ -35,6 +35,7 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
       {layout.title && <SEO title={layout.title} />}
 
       {layout.contentModules && renderContentModules(layout.contentModules)}
+
       <SectionContainer>
         <CasePreview />
       </SectionContainer>
@@ -70,6 +71,7 @@ export const query = graphql`
       contentModules {
         ... on ContentfulLayoutHeroImage {
           id
+          headline
           backgroundImage {
             fluid(maxWidth: 1200) {
               src

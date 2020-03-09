@@ -10,9 +10,8 @@ export const SectionContainer: React.FC<Props> = ({ children }: Props) => {
   return (
     <section
       css={css`
-        box-sizing: border-box;
-        flex-wrap: wrap;
-        display: flex;
+        /* flex-wrap: wrap;
+        display: flex; */
         width: 100%;
         opacity: 1;
         max-width: 1200px;
