@@ -1,7 +1,8 @@
-import React from 'react';
 import styled from '@emotion/styled';
-import { rhythm } from '../utils/typography';
+import React from 'react';
+
 import { MediaQuerySize, mqMin } from '../utils/breakpoints';
+import { rhythm } from '../utils/typography';
 
 const Wrapper = styled.footer`
   display: flex;

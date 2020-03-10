@@ -1,22 +1,21 @@
+import { graphql, Link } from 'gatsby';
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
-
-import Layout from '../components/layout';
-import SEO from '../components/seo';
 
 // eslint-disable-next-line import/no-unresolved
 import { HomePageQuery } from '../../types/graphql-types';
-import { CasePreview } from '../components/casePreview/casePreview';
-import { SectionContainer } from '../components/sectionContainer';
+import CasePreview from '../components/casePreview/casePreview';
+import Layout from '../components/layout';
 import { CTABox } from '../components/layout/cta-container';
 import { HeroImage } from '../components/layout/heroImage';
+import { SectionContainer } from '../components/sectionContainer';
+import SEO from '../components/seo';
 
 type Props = {
   data: HomePageQuery;
 };
 
-const renderContentModules = (contentModules: any = []) => {
-  return contentModules.map((cm: any) => {
+const renderContentModules = (contentModules: any = []): React.FC => {
+  return contentModules.map(cm => {
     if (!cm || !cm.backgroundImage) {
       return null;
     }
@@ -25,7 +24,7 @@ const renderContentModules = (contentModules: any = []) => {
 };
 
 const IndexPage: React.FC<Props> = ({ data }: Props) => {
-  const layout = data.contentfulLayout;
+  const layout = data?.contentfulLayout;
 
   if (!layout) {
     return null;

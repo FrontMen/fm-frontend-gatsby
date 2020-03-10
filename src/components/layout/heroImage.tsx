@@ -1,9 +1,8 @@
-import * as React from 'react';
 import { css } from '@emotion/core';
-// eslint-disable-next-line import/no-unresolved
+import * as React from 'react';
 
-import { rhythm } from '../../utils/typography';
 import { ContentfulLayoutHeroImage } from '../../../types/graphql-types';
+import { rhythm } from '../../utils/typography';
 
 type Props = {
   cm: ContentfulLayoutHeroImage;
@@ -24,7 +23,7 @@ const styles = {
 };
 
 export const HeroImage: React.FC<Props> = ({ cm }: Props) => {
-  const backGroundImageUrl = `https:${cm.backgroundImage.fluid.src}`;
+  const backGroundImageUrl = `https:${cm?.backgroundImage?.fluid?.src}`;
   return (
     <div
       css={css`

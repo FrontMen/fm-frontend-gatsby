@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { Link } from 'gatsby';
 import { css } from '@emotion/core';
+import { Link } from 'gatsby';
+import * as React from 'react';
+
 import { rhythm, scale } from '../../utils/typography';
 
 type Props = {

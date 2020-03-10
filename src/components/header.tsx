@@ -1,9 +1,10 @@
-import * as React from 'react';
-import { Link } from 'gatsby';
 import { css } from '@emotion/core';
-import { Navigation } from './navigation';
 import styled from '@emotion/styled';
-import { mqMin, MediaQuerySize } from '../utils/breakpoints';
+import { Link } from 'gatsby';
+import * as React from 'react';
+
+import { MediaQuerySize, mqMin } from '../utils/breakpoints';
+import { Navigation } from './navigation';
 
 type Props = {
   siteTitle: string;

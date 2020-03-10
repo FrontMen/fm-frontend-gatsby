@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { Link } from 'gatsby';
 import { css } from '@emotion/core';
+import { Link } from 'gatsby';
+import * as React from 'react';
+
+import { MediaQuerySize, mqMin } from '../utils/breakpoints';
 import { rhythm } from '../utils/typography';
-import { mqMin, MediaQuerySize } from '../utils/breakpoints';
 
 interface Props {
   menuLinks: { name: string; link: string }[];

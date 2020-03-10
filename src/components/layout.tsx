@@ -5,17 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
+import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useEffect } from 'react';
 
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-
-import Header from './header';
 import { useSiteMetadata } from '../hooks/useSiteMetaData';
-
-import Footer from './footer';
 import { rhythm } from '../utils/typography';
+import Footer from './footer';
+import Header from './header';
 
 type Props = {
   children: React.ReactNode;
@@ -55,7 +53,6 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
   }
   // eslint-disable-next-line no-undef
   useEffect(() => window.addEventListener('keydown', handleFirstTab), []);
-  console.log(data.menuLinks);
   return (
     <>
       <Skip href="#main">Skip to main content</Skip>

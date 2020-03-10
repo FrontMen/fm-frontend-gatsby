@@ -1,12 +1,12 @@
-import * as React from 'react';
-import {
-  BLOCKS,
-  //, MARKS, Document, Block
-} from '@contentful/rich-text-types';
 import {
   documentToReactComponents,
   Options,
 } from '@contentful/rich-text-react-renderer';
+import {
+  BLOCKS,
+  // , MARKS, Document, Block
+} from '@contentful/rich-text-types';
+import * as React from 'react';
 
 type Props = {
   document: {
@@ -18,18 +18,14 @@ type Props = {
 
 function getObjectKeyArray(obj: any): string[] {
   if (typeof obj !== 'object') return [];
-  const arr: string[] = [];
-  for (const key in obj) {
-    arr.push(key);
-  }
-  return arr;
+  return obj.keys();
 }
 
 const ContentfulRichText: React.FC<Props> = ({ document }: Props) => {
   const options: Options = {
     renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: node => {
-        if (!node.data.target.fields) return;
+        if (!node.data.target.fields) return null;
         const { file, description } = node.data.target.fields;
         const locales = getObjectKeyArray(file);
         return locales.map(locale => (

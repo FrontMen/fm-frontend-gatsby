@@ -1,7 +1,8 @@
-import * as React from 'react';
 import { css } from '@emotion/core';
+import * as React from 'react';
+
+import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
 import { rhythm } from '../../utils/typography';
-import { mqMin, MediaQuerySize } from '../../utils/breakpoints';
 
 const items = [
   { id: 1, title: 'how we did this and that', client: 'klm' },
@@ -53,8 +54,17 @@ const styles = {
   `,
 };
 
-const CasePreviewItem: React.FC<{ caseStudy: Case }> = ({ caseStudy }) => {
-  const background = `https://picsum.photos/id/${'101' + caseStudy.id}/640/360`;
+interface CasePreviewItemProps {
+  caseStudy: Case;
+}
+interface CasePreviewProps {
+  caseStudies: Case[];
+}
+
+const CasePreviewItem: React.FC<CasePreviewItemProps> = ({
+  caseStudy,
+}: CasePreviewItemProps) => {
+  const background = `https://picsum.photos/id/${`101${caseStudy.id}`}/640/360`;
   return (
     <div
       css={css`${styles.casePreviewItem}; background-image: url(${background})}`}
@@ -64,15 +74,20 @@ const CasePreviewItem: React.FC<{ caseStudy: Case }> = ({ caseStudy }) => {
   );
 };
 
-export const CasePreview: React.FC = () => {
+const CasePreview: React.FC<CasePreviewProps> = ({
+  caseStudies,
+}: CasePreviewProps) => {
   return (
     <>
       <h2>Enkele Cases</h2>
       <div css={styles.casePreviewContainer}>
-        {items.map((ca: Case) => (
+        {caseStudies.map((ca: Case) => (
           <CasePreviewItem key={ca.id} caseStudy={ca} />
         ))}
       </div>
     </>
   );
 };
+
+CasePreview.defaultProps = { caseStudies: items };
+export default CasePreview;

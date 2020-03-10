@@ -1,9 +1,10 @@
+import { graphql, Link } from 'gatsby';
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
+
+import { BlogPagesQueryQuery } from '../../types/graphql-types'; // eslint-disable-line import/no-unresolved
+import ContentfulRichText from '../components/contentfulRichText';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import ContentfulRichText from '../components/contentfulRichText';
-import { BlogPagesQueryQuery } from '../../types/graphql-types'; // eslint-disable-line import/no-unresolved
 
 type Props = {
   data: BlogPagesQueryQuery;

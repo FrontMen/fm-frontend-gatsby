@@ -1,4 +1,5 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+
 // eslint-disable-next-line import/no-unresolved
 import { SiteSiteMetadata } from '../../types/graphql-types';
 
