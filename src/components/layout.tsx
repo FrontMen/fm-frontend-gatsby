@@ -5,12 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import styled from '@emotion/styled';
+import { ThemeProvider } from 'emotion-theming';
 import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useEffect } from 'react';
 
 import { useSiteMetadata } from '../hooks/useSiteMetaData';
+import styled, { theme } from '../utils/styled';
 import { rhythm } from '../utils/typography';
 import Footer from './footer';
 import Header from './header';
@@ -54,12 +55,12 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
   // eslint-disable-next-line no-undef
   useEffect(() => window.addEventListener('keydown', handleFirstTab), []);
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Skip href="#main">Skip to main content</Skip>
       <Header siteTitle={data.title || 'Frontmen'} menuLinks={data.menuLinks} />
       <Main id="main">{children}</Main>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 };
 
