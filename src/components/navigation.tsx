@@ -87,11 +87,11 @@ const MenuLine = styled.span`
   }
 `;
 
-const UnstyledCheckbox: ComponentType = props => (
+const UnstyledCheckbox: React.FC = props => (
   <input type="checkbox" {...props} />
 );
 
-const HiddenMenuCheckbox = styled(UnstyledCheckbox)`
+const HiddenMenuCheckbox = styled<React.FC<{ id: string }>>(UnstyledCheckbox)`
   border: 0;
   clip: rect(0 0 0 0);
   clippath: inset(50%);
