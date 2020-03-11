@@ -49,6 +49,7 @@ const Nav = styled.nav`
 const NavigationLink = styled(Link)`
   text-transform: uppercase;
   margin-left: ${rhythm(1)};
+  text-decoration: none;
 `;
 
 const MenuLabel = styled.label`
@@ -63,30 +64,30 @@ const MenuLabel = styled.label`
 `;
 
 const MenuLine = styled.span`
-    display:block;
-    background: #ff5900;
-    width:40px;
-    height:4px;
-    position:absolute;
-    border-radius: 4px;
-    transition: top .2s ease-in-out .2s, transform .3s ease-in-out, opacity .3s ease-in-out .3s;
-    
-    &:nth-child(1) {
-      top:5px;
-    }
-    &:nth-child(2) {
-      background: #201e33;
-      top:20px;
-    }
-    
-    &:nth-child(3) {
-      background: #0cc;
-      top: 35px;
-    }
+  display: block;
+  background: #ff5900;
+  width: 40px;
+  height: 4px;
+  position: absolute;
+  border-radius: 4px;
+  transition: top 0.2s ease-in-out 0.2s, transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out 0.3s;
+
+  &:nth-child(1) {
+    top: 5px;
+  }
+  &:nth-child(2) {
+    background: #201e33;
+    top: 20px;
+  }
+
+  &:nth-child(3) {
+    background: #0cc;
+    top: 35px;
   }
 `;
 
-const UnstyledCheckbox: ComponentType<Props> = props => (
+const UnstyledCheckbox: ComponentType = props => (
   <input type="checkbox" {...props} />
 );
 
@@ -130,13 +131,21 @@ const HiddenMenuCheckbox = styled(UnstyledCheckbox)`
 `;
 
 // Nav functions
-const createLinks: React.FC<Props> = ({ menuLinks }: Props) =>
-  menuLinks &&
-  menuLinks.map(ml => (
-    <NavigationLink to={ml.link} key={`nav_link_${ml.name}`}>
-      {ml.name}
-    </NavigationLink>
-  ));
+const createLinks = (menuLinks: Props['menuLinks'] = []) =>
+  menuLinks?.map(
+    ml =>
+      ml?.link &&
+      ml?.name && (
+        <NavigationLink
+          to={ml.link}
+          key={`nav_link_${ml.name}`}
+          activeStyle={{ color: 'green', fontWeight: 'bold' }}
+          partiallyActive
+        >
+          {ml.name}
+        </NavigationLink>
+      )
+  );
 
 // exports
 export const Navigation: React.FC<Props> = ({ menuLinks }: Props) => (

@@ -15,10 +15,7 @@ type Props = {
 };
 
 const renderContentModules = (contentModules: any = []): React.FC => {
-  if (!contentModules) {
-    return null;
-  }
-  return contentModules.map(cm => {
+  return contentModules?.map((cm: any) => {
     if (!cm || !cm.backgroundImage) {
       return null;
     }

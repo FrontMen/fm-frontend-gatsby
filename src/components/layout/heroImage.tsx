@@ -1,5 +1,4 @@
 import { css } from '@emotion/core';
-import get from 'lodash/get';
 import * as React from 'react';
 
 import { ContentfulLayoutHeroImage } from '../../../types/graphql-types';
@@ -26,15 +25,7 @@ const styles = {
 const generateBackgroundImageUrl = (
   cm: ContentfulLayoutHeroImage
 ): string | undefined => {
-  if (
-    cm &&
-    cm.backgroundImage &&
-    cm.backgroundImage.fluid &&
-    cm.backgroundImage.fluid.src
-  ) {
-    return `https:${cm.backgroundImage.fluid.src}`;
-  }
-  return undefined;
+  return `https:${cm?.backgroundImage?.fluid?.src}`;
 };
 
 export const HeroImage: React.FC<Props> = ({ cm }: Props) => {
