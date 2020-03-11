@@ -14,16 +14,30 @@ const Title = styled.h1`
   margin-bottom: 0;
 `;
 
+
+const Head = styled.header`
+  background-color: #fff;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  
+   ${mqMin[MediaQuerySize.M]} {
+    padding: 20px;
+  }
+  
+  & + * {
+    margin-top: 50px;
+  }
+`;
+
 const Header: React.FC<Props> = ({ siteTitle, menuLinks }: Props) => (
-  <header
-    css={css`
-      background-color: #fff;
-    `}
-  >
+  <Head>
     <div
       css={css`
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        
         ${mqMin[MediaQuerySize.XL]} {
           margin: 0 auto;
           max-width: 1200px;
@@ -42,7 +56,7 @@ const Header: React.FC<Props> = ({ siteTitle, menuLinks }: Props) => (
       </Title>
       <Navigation menuLinks={menuLinks} />
     </div>
-  </header>
+  </Head>
 );
 
 Header.defaultProps = {
