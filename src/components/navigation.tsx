@@ -2,11 +2,12 @@ import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import * as React from 'react';
 
+import { Maybe, SiteSiteMetadataMenuLinks } from '../../types/graphql-types';
 import { MediaQuerySize, mqMin } from '../utils/breakpoints';
 import { rhythm } from '../utils/typography';
 
 interface Props {
-  menuLinks: { name: string; link: string }[];
+  menuLinks: Maybe<SiteSiteMetadataMenuLinks>[] | null | undefined;
 }
 
 export const Navigation: React.FC<Props> = ({ menuLinks }: Props) => (
@@ -21,17 +22,22 @@ export const Navigation: React.FC<Props> = ({ menuLinks }: Props) => (
     `}
   >
     {menuLinks &&
-      menuLinks.map(ml => (
-        <Link
-          to={ml.link}
-          key={`nav_link_${ml.name}`}
-          css={css`
-            text-transform: uppercase;
-            margin-left: ${rhythm(1)};
-          `}
-        >
-          {ml.name}
-        </Link>
-      ))}
+      menuLinks.map(ml => {
+        if (!ml || !ml.name || !ml.link) {
+          return null;
+        }
+        return (
+          <Link
+            to={ml.link}
+            key={`nav_link_${ml.name}`}
+            css={css`
+              text-transform: uppercase;
+              margin-left: ${rhythm(1)};
+            `}
+          >
+            {ml.name}
+          </Link>
+        );
+      })}
   </nav>
 );

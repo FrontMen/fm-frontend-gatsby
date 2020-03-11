@@ -15,6 +15,9 @@ type Props = {
 };
 
 const renderContentModules = (contentModules: any = []): React.FC => {
+  if (!contentModules) {
+    return null;
+  }
   return contentModules.map(cm => {
     if (!cm || !cm.backgroundImage) {
       return null;
@@ -24,7 +27,7 @@ const renderContentModules = (contentModules: any = []): React.FC => {
 };
 
 const IndexPage: React.FC<Props> = ({ data }: Props) => {
-  const layout = data?.contentfulLayout;
+  const layout = data.contentfulLayout;
 
   if (!layout) {
     return null;

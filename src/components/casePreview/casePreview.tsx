@@ -44,10 +44,13 @@ const styles = {
       max-width: 49%;
     }
     ${mqMin[MediaQuerySize.XL]} {
-      &:nth-of-type(1) {
+      width: 100%;
+      &:nth-of-type(1),
+      &:nth-of-type(4) {
         max-width: 780px;
       }
-      &:nth-of-type(2) {
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
         max-width: 380px;
       }
     }
@@ -58,7 +61,7 @@ interface CasePreviewItemProps {
   caseStudy: Case;
 }
 interface CasePreviewProps {
-  caseStudies: Case[];
+  caseStudies?: Case[];
 }
 
 const CasePreviewItem: React.FC<CasePreviewItemProps> = ({
@@ -81,9 +84,10 @@ const CasePreview: React.FC<CasePreviewProps> = ({
     <>
       <h2>Enkele Cases</h2>
       <div css={styles.casePreviewContainer}>
-        {caseStudies.map((ca: Case) => (
-          <CasePreviewItem key={ca.id} caseStudy={ca} />
-        ))}
+        {caseStudies &&
+          caseStudies.map((ca: Case) => (
+            <CasePreviewItem key={ca.id} caseStudy={ca} />
+          ))}
       </div>
     </>
   );

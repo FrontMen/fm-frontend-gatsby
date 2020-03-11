@@ -56,10 +56,7 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
   return (
     <>
       <Skip href="#main">Skip to main content</Skip>
-      <Header
-        siteTitle={data.title || 'Frontmen'}
-        menuLinks={data.menuLinks || []}
-      />
+      <Header siteTitle={data.title || 'Frontmen'} menuLinks={data.menuLinks} />
       <Main id="main">{children}</Main>
       <Footer />
     </>
