@@ -1,11 +1,10 @@
-import styled from '../utils/styled';
 import { Link } from 'gatsby';
 import * as React from 'react';
 
 import { Maybe, SiteSiteMetadataMenuLinks } from '../../types/graphql-types';
 import { MediaQuerySize, mqMax, mqMin } from '../utils/breakpoints';
+import styled, { theme } from '../utils/styled';
 import { rhythm } from '../utils/typography';
-import { COLORS } from '../utils/colors';
 
 interface Props {
   menuLinks: Maybe<SiteSiteMetadataMenuLinks>[] | null | undefined;
@@ -27,14 +26,15 @@ const Nav = styled.nav`
   flex-basis: auto;
   font-size: 2em;
   position: absolute;
-  background-color: ${COLORS.BACKGROUND_COLOR};
+  background-color: ${props => props.theme.colors.background};
   transition: opacity 0.3s ease-out, transform 0.5s ease-in-out;
   opacity: 0;
   transform: translate(0, -100%);
   pointer-events: none;
 
-  ${mqMax[MediaQuerySize.M]} {
-    padding-top: ${rhythm(1)};
+
+  ${mqMax[MediaQuerySize.L]} {
+    padding: ${rhythm(1)} 0;
     z-index: -1;
   }
 
@@ -65,6 +65,7 @@ const Nav = styled.nav`
     top: auto;
     left: auto;
     position: relative;
+    right: ${rhythm(1)};
   }
 `;
 
@@ -72,13 +73,16 @@ const NavigationLink = styled(Link)`
   text-transform: uppercase;
   margin-left: ${rhythm(1)};
   text-decoration: none;
-  color: ${COLORS.TERTIARY_FONT};
+  color: ${props => props.theme.colors.tertiary};
+  display: flex;
+  align-items: center;
+
 
   &:hover,
   &:active,
   &:focus,
   &:visited {
-    color: ${COLORS.TERTIARY_FONT};
+    color: ${props => props.theme.colors.tertiary};
   }
 `;
 
@@ -95,7 +99,7 @@ const MenuLabel = styled.label`
 
 const MenuLine = styled.span`
   display: block;
-  background-color: ${COLORS.SECUNDARY_FONT};
+  background-color: ${props => props.theme.colors.secondary};
   width: 40px;
   height: ${StyleConst.LINE_WIDHT};
   position: absolute;
@@ -107,12 +111,12 @@ const MenuLine = styled.span`
     top: ${StyleConst.LINE_WIDHT};
   }
   &:nth-child(2) {
-    background: ${COLORS.PRIMARY_FONT};
+    background: ${props => props.theme.colors.primary};
     top: 20px;
   }
 
   &:nth-child(3) {
-    background: ${COLORS.TERTIARY_FONT};
+    background: ${props => props.theme.colors.tertiary};
     top: 35px;
     width: 30px;
   }
@@ -143,12 +147,12 @@ const HiddenMenuCheckbox = styled<React.FC<{ id: string }>>(UnstyledCheckbox)`
     left: 0;
     background-color: rgba(127, 127, 127, 0.95);
     opacity: 0;
-    transition: opacity .4s ease-out;
+    transition: opacity 0.4s ease-out;
   }
   &:checked {
     & ~ .overlay {
       opacity: 1;
-      transition: opacity .5s ease-in-out;
+      transition: opacity 0.5s ease-in-out;
     }
 
     & ~ * {
@@ -190,7 +194,7 @@ const createLinks = (menuLinks: Props['menuLinks'] = []) =>
         <NavigationLink
           to={ml.link}
           key={`nav_link_${ml.name}`}
-          activeStyle={{ color: COLORS.SECUNDARY_FONT, fontWeight: 'bold' }}
+          activeStyle={{ color: theme.colors.secondary, fontWeight: 'bold' }}
           partiallyActive
         >
           {ml.name}

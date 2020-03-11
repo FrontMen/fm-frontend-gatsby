@@ -7,7 +7,6 @@ import { Maybe, SiteSiteMetadataMenuLinks } from '../../types/graphql-types';
 import { MediaQuerySize, mqMin } from '../utils/breakpoints';
 import { Navigation } from './navigation';
 import { rhythm } from '../utils/typography';
-import { COLORS } from '../utils/colors';
 
 type Props = {
   siteTitle: string;
@@ -20,14 +19,10 @@ const Title = styled.h1`
 `;
 
 const Head = styled.header`
-  background-color: ${COLORS.BACKGROUND_COLOR};
+  background-color: ${props => props.theme.colors.background};
   position: fixed;
   width: 100vw;
   top: 0;
-
-  ${mqMin[MediaQuerySize.M]} {
-    padding: 20px;
-  }
 
   & + * {
     margin-top: 50px;
@@ -35,14 +30,14 @@ const Head = styled.header`
 `;
 
 const HeaderLink = styled(Link)`
-  color: ${COLORS.PRIMARY_FONT};
+  color: ${props => props.theme.colors.primary};
   text-decoration: none;
 
   &:hover,
   &:active,
   &:focus,
   &:visited {
-    color: ${COLORS.PRIMARY_FONT};
+    color: ${props => props.theme.colors.primary};
   }
 `;
 
@@ -50,7 +45,7 @@ const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: ${COLORS.BACKGROUND_COLOR};
+  background-color: ${props => props.theme.colors.background};
 
   ${mqMin[MediaQuerySize.XL]} {
     margin: 0 auto;

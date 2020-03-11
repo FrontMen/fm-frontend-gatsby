@@ -4,18 +4,16 @@ const colors = {
   orange: '#FF5900',
   mint: '#00CCCC',
   darkBlue: '#201E33',
+  white: '#ffffff',
 };
 
-type Theme = {
+export const theme = {
   colors: {
-    primary: string;
-  };
-};
-
-export const theme: Theme = {
-  colors: {
-    primary: colors.orange,
+    primary: colors.darkBlue,
+    secondary: colors.orange,
+    tertiary: colors.mint,
+    background: colors.white,
   },
 };
 
-export default styled as CreateStyled<Theme>;
+export default styled as CreateStyled<typeof theme>;
