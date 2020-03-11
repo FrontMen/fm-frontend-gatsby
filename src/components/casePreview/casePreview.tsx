@@ -2,6 +2,7 @@ import { css } from '@emotion/core';
 import * as React from 'react';
 
 import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
+import styled from '../../utils/styled';
 import { rhythm } from '../../utils/typography';
 
 const items = [
@@ -57,6 +58,11 @@ const styles = {
   `,
 };
 
+const ClientLabel = styled.span`
+  padding: ${rhythm(0.5)} ${rhythm(1)};
+  background-color: ${(props): string => props.theme.colors.primary};
+`;
+
 interface CasePreviewItemProps {
   caseStudy: Case;
 }
@@ -69,11 +75,12 @@ const CasePreviewItem: React.FC<CasePreviewItemProps> = ({
 }: CasePreviewItemProps) => {
   const background = `https://picsum.photos/id/${`101${caseStudy.id}`}/640/360`;
   return (
-    <div
+    <article
       css={css`${styles.casePreviewItem}; background-image: url(${background})}`}
     >
+      <ClientLabel>{caseStudy.client}</ClientLabel>
       <h3>{caseStudy.title}</h3>
-    </div>
+    </article>
   );
 };
 

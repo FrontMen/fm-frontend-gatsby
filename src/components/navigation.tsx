@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '../utils/styled';
 import { Link } from 'gatsby';
 import * as React from 'react';
 
