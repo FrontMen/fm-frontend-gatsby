@@ -4449,6 +4449,8 @@ export type SitePageFieldsEnum =
   'pluginCreator___pluginOptions___accessToken' |
   'pluginCreator___pluginOptions___host' |
   'pluginCreator___pluginOptions___fileName' |
+  'pluginCreator___pluginOptions___pathToConfigModule' |
+  'pluginCreator___pluginOptions___omitGoogleFont' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
   'pluginCreator___browserAPIs' |
@@ -4653,6 +4655,8 @@ export type SitePluginFieldsEnum =
   'pluginOptions___accessToken' |
   'pluginOptions___host' |
   'pluginOptions___fileName' |
+  'pluginOptions___pathToConfigModule' |
+  'pluginOptions___omitGoogleFont' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
   'browserAPIs' |
@@ -4779,6 +4783,8 @@ export type SitePluginPluginOptions = {
   accessToken?: Maybe<Scalars['String']>,
   host?: Maybe<Scalars['String']>,
   fileName?: Maybe<Scalars['String']>,
+  pathToConfigModule?: Maybe<Scalars['String']>,
+  omitGoogleFont?: Maybe<Scalars['Boolean']>,
   pathCheck?: Maybe<Scalars['Boolean']>,
 };
 
@@ -4796,6 +4802,8 @@ export type SitePluginPluginOptionsFilterInput = {
   accessToken?: Maybe<StringQueryOperatorInput>,
   host?: Maybe<StringQueryOperatorInput>,
   fileName?: Maybe<StringQueryOperatorInput>,
+  pathToConfigModule?: Maybe<StringQueryOperatorInput>,
+  omitGoogleFont?: Maybe<BooleanQueryOperatorInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
 };
 
