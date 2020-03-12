@@ -20,9 +20,9 @@ module.exports = {
     },
   },
   plugins: ['simple-import-sort'],
-  parserOptions: {
-    project: './tsconfig.json',
-  },
+  // parserOptions: {
+  //   project: ['./tsconfig.json',
+  // },
   rules: {
     // 'prettier/prettier': ['error'],
     // 'react/jsx-one-expression-per-line': 0,

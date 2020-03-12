@@ -3,8 +3,8 @@ import * as React from 'react';
 
 import { BlogPagesQueryQuery } from '../../types/graphql-types'; // eslint-disable-line import/no-unresolved
 import ContentfulRichText from '../components/contentfulRichText';
-import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Layout from '../components/layout';
 
 type Props = {
   data: BlogPagesQueryQuery;

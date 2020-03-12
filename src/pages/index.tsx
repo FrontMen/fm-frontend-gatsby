@@ -4,11 +4,11 @@ import * as React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { HomePageQuery } from '../../types/graphql-types';
 import CasePreview from '../components/casePreview/casePreview';
-import Layout from '../components/layout';
 import { CTABox } from '../components/layout/cta-container';
 import { HeroImage } from '../components/layout/heroImage';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
+import Layout from '../components/layout';
 
 type Props = {
   data: HomePageQuery;
@@ -40,9 +40,6 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
       </SectionContainer>
       <SectionContainer>
         <ul>
-          <li>
-            <Link to="/page-2/">Go to page 2</Link>
-          </li>
           <li>
             <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
           </li>
