@@ -4,11 +4,15 @@ const colors = {
   orange: '#FF5900',
   mint: '#00CCCC',
   darkBlue: '#201E33',
+  white: '#ffffff',
 };
 
 export const theme = {
   colors: {
-    primary: colors.orange,
+    primary: colors.darkBlue,
+    secondary: colors.orange,
+    tertiary: colors.mint,
+    background: colors.white,
   },
 };
 

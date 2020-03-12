@@ -6,6 +6,7 @@ import * as React from 'react';
 import { Maybe, SiteSiteMetadataMenuLinks } from '../../types/graphql-types';
 import { MediaQuerySize, mqMin } from '../utils/breakpoints';
 import { Navigation } from './navigation';
+import { rhythm } from '../utils/typography';
 
 type Props = {
   siteTitle: string;
@@ -14,48 +15,52 @@ type Props = {
 
 const Title = styled.h1`
   margin-bottom: 0;
+  padding: 0 0 0 ${rhythm(1)};
 `;
 
 const Head = styled.header`
-  background-color: #fff;
+  background-color: ${props => props.theme.colors.background};
   position: fixed;
   width: 100vw;
   top: 0;
-
-  ${mqMin[MediaQuerySize.M]} {
-    padding: 20px;
-  }
 
   & + * {
     margin-top: 50px;
   }
 `;
 
+const HeaderLink = styled(Link)`
+  color: ${props => props.theme.colors.primary};
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    color: ${props => props.theme.colors.primary};
+  }
+`;
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: ${props => props.theme.colors.background};
+
+  ${mqMin[MediaQuerySize.XL]} {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+`;
+
 const Header: React.FC<Props> = ({ siteTitle, menuLinks }: Props) => (
   <Head>
-    <div
-      css={css`
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        ${mqMin[MediaQuerySize.XL]} {
-          margin: 0 auto;
-          max-width: 1200px;
-        }
-      `}
-    >
+    <HeaderWrapper>
       <Title>
-        <Link
-          to="/"
-          style={{
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
+        <HeaderLink to="/">{siteTitle}</HeaderLink>
       </Title>
       <Navigation menuLinks={menuLinks} />
-    </div>
+    </HeaderWrapper>
   </Head>
 );
 
