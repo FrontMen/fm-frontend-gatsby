@@ -39,6 +39,30 @@ const Skip = styled.a`
   }
 `;
 
+const BackGroundWrapper = styled(ParallaxContainer)`
+  background-color: #fff;
+  background-image: linear-gradient(
+      -40deg,
+      black 80%,
+      black 80%,
+      black 80%,
+      transparent 80%,
+      transparent
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 25%,
+      transparent 25%,
+      transparent 75%,
+      transparent 75%,
+      transparent
+    );
+  background-size: 100%;
+  background-attachment: local;
+  background-position: top;
+  color: #fff;
+`;
+
 const headerFooterHight = rhythm(6);
 
 const Main = styled.main`
@@ -58,7 +82,7 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
   return (
     <ThemeProvider theme={theme}>
       <Skip href="#main">Skip to main content</Skip>
-      <ParallaxContainer>
+      <BackGroundWrapper>
         <ParallaxContainer.ParallaxItem
           top="0%"
           left="240%"
@@ -138,7 +162,7 @@ const Layout: React.FC<Props> = ({ children }: Props) => {
         />
         <Main id="main">{children}</Main>
         <Footer />
-      </ParallaxContainer>
+      </BackGroundWrapper>
     </ThemeProvider>
   );
 };
