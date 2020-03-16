@@ -1,12 +1,11 @@
-import { css } from '@emotion/core';
-import styled from '../utils/styled';
 import { Link } from 'gatsby';
 import * as React from 'react';
 
 import { Maybe, SiteSiteMetadataMenuLinks } from '../../types/graphql-types';
 import { MediaQuerySize, mqMin } from '../utils/breakpoints';
-import { Navigation } from './navigation';
+import styled from '../utils/styled';
 import { rhythm } from '../utils/typography';
+import { Navigation } from './navigation';
 
 type Props = {
   siteTitle: string;
