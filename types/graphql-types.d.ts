@@ -4906,6 +4906,16 @@ export type BlogPagesQueryQuery = { allContentfulBlogPost: { edges: Array<{ node
         & { body: Maybe<Pick<ContentfulBlogPostBodyRichTextNode, 'json'>> }
       ) }> } };
 
+export type CasesPageQueryVariables = {};
+
+
+export type CasesPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 'slug'>> };
+
+export type ContactPageQueryVariables = {};
+
+
+export type ContactPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 'slug'>> };
+
 export type HomePageQueryVariables = {};
 
 
@@ -4916,6 +4926,16 @@ export type HomePageQuery = { contentfulLayout: Maybe<(
       & { backgroundImage: Maybe<{ fluid: Maybe<Pick<ContentfulFluid, 'src'>> }> }
     )>>> }
   )> };
+
+export type ServicesPageQueryVariables = {};
+
+
+export type ServicesPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 'slug'>> };
+
+export type TrainingPageQueryVariables = {};
+
+
+export type TrainingPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 'slug'>> };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
