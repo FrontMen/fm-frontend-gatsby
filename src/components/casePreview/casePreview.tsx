@@ -4,11 +4,17 @@ import * as React from 'react';
 import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
 import styled from '../../utils/styled';
 import { rhythm } from '../../utils/typography';
+import { Link } from 'gatsby';
 
 const items = [
   { id: 1, title: 'how we did this and that', client: 'klm' },
-  { id: 2, title: 'how we did this and that', client: 'klm' },
-  { id: 3, title: 'how we did this and that', client: 'klm' },
+  {
+    id: 2,
+    title:
+      'how we did this and that, and even more when we had time to wite long titles',
+    client: 'klm',
+  },
+  { id: 3, title: 'how we did this and that', client: 'Heineken' },
   { id: 4, title: 'how we did this and that', client: 'klm' },
 ];
 
@@ -19,16 +25,6 @@ type Case = {
 };
 const spacing = rhythm(0.5);
 const styles = {
-  casePreviewContainer: css`
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: ${rhythm(1)};
-    flex-flow: wrap;
-    ${mqMin[MediaQuerySize.L]} {
-      justify-content: space-between;
-    }
-  `,
   casePreviewItem: css`
     box-sizing: border-box;
     width: 100%;
@@ -36,8 +32,10 @@ const styles = {
     background-size: cover;
     min-height: ${rhythm(12)};
     margin-bottom: ${spacing};
-    box-shadow: rgba(0, 188, 212, 0.24) 0px 1px 3px 1px;
     cursor: pointer;
+    &:hover > a > div {
+      transform: translateY(0px);
+    }
     ${mqMin[MediaQuerySize.M]} {
       max-width: 80vw;
     }
@@ -57,10 +55,39 @@ const styles = {
     }
   `,
 };
+const CasePreviewContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: ${rhythm(1)};
+  flex-flow: wrap;
+  ${mqMin[MediaQuerySize.L]} {
+    justify-content: space-between;
+  }
+`;
+
+const CaseLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  position: relative;
+`;
 
 const ClientLabel = styled.span`
-  padding: ${rhythm(0.5)} ${rhythm(1)};
-  background-color: ${(props): string => props.theme.colors.primary};
+  display: block;
+  padding: ${rhythm(0.25)};
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
+const CaseContent = styled.div`
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  transform: translateY(${rhythm(2)});
+  padding: ${rhythm(2)} ${rhythm(1)};
+  color: ${({ theme }) => theme.colors.background};
+  transition: transform 300ms cubic-bezier(0, 0, 0.58, 1) 0s;
 `;
 
 interface CasePreviewItemProps {
@@ -78,8 +105,13 @@ const CasePreviewItem: React.FC<CasePreviewItemProps> = ({
     <article
       css={css`${styles.casePreviewItem}; background-image: url(${background})}`}
     >
-      <ClientLabel>{caseStudy.client}</ClientLabel>
-      <h3>{caseStudy.title}</h3>
+      <CaseLink to="/">
+        <CaseContent>
+          <ClientLabel>{caseStudy.client}</ClientLabel>
+          <h3>{caseStudy.title}</h3>
+          <p>Read more about this case</p>
+        </CaseContent>
+      </CaseLink>
     </article>
   );
 };
@@ -90,12 +122,12 @@ const CasePreview: React.FC<CasePreviewProps> = ({
   return (
     <>
       <h2>Enkele Cases</h2>
-      <div css={styles.casePreviewContainer}>
+      <CasePreviewContainer>
         {caseStudies &&
           caseStudies.map((ca: Case) => (
             <CasePreviewItem key={ca.id} caseStudy={ca} />
           ))}
-      </div>
+      </CasePreviewContainer>
     </>
   );
 };
