@@ -148,6 +148,7 @@ const HiddenMenuCheckbox = styled<React.FC<{ id: string }>>(UnstyledCheckbox)`
     background-color: rgba(127, 127, 127, 0.95);
     opacity: 0;
     transition: opacity 0.4s ease-out;
+    pointer-events: none;
   }
   &:checked {
     & ~ .overlay {

@@ -17,7 +17,7 @@ const styles = {
   heroBody: css`
     max-width: 1200px;
     padding: ${rhythm(2)};
-    color: #ffffff;
+    color: #000;
     margin: 0 auto;
   `,
 };
@@ -33,17 +33,13 @@ export const HeroImage: React.FC<Props> = ({ cm }: Props) => {
   if (!cm || !backgroundUrl) {
     return null;
   }
+
   return (
-    <div
-      css={css`
-        ${styles.heroContainer};
-        background-image: url(${backgroundUrl});
-      `}
-    >
+    <>
       <div css={styles.heroBody}>
         <h1>Frontmen</h1>
         <p>{cm.headline}</p>
       </div>
-    </div>
+    </>
   );
 };
