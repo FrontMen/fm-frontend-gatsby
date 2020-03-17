@@ -3,9 +3,8 @@ import * as React from 'react';
 
 import { Maybe, SiteSiteMetadataMenuLinks } from '../../types/graphql-types';
 import { MediaQuerySize, mqMax, mqMin } from '../utils/breakpoints';
-import styled, { Theme } from '../utils/styled';
+import styled, { useTheme } from '../utils/styled';
 import { rhythm } from '../utils/typography';
-import { useTheme } from 'emotion-theming';
 
 interface Props {
   menuLinks: Maybe<SiteSiteMetadataMenuLinks>[] | null | undefined;
@@ -187,7 +186,7 @@ const HiddenMenuCheckbox = styled<React.FC<{ id: string }>>(UnstyledCheckbox)`
 
 // Nav functions
 const createLinks = (menuLinks: Props['menuLinks'] = []) => {
-  const theme = useTheme<Theme>();
+  const theme = useTheme();
   return menuLinks?.map(
     ml =>
       ml?.link &&

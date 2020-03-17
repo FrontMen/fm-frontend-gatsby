@@ -1,4 +1,5 @@
 import styled, { CreateStyled } from '@emotion/styled';
+import { useTheme as _useTheme } from 'emotion-theming';
 
 const colors = {
   orange: '#FF5900',
@@ -20,5 +21,5 @@ export const theme = {
   },
 };
 export type Theme = typeof theme;
-
+export const useTheme = () => _useTheme<Theme>();
 export default styled as CreateStyled<Theme>;
