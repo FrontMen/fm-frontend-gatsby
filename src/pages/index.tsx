@@ -34,10 +34,18 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
       {layout.title && <SEO title={layout.title} />}
 
       {layout.contentModules && renderContentModules(layout.contentModules)}
-
+      <SectionContainer>
+        <CTABox
+          title="Up Front Technology"
+          payoff="We are always keen to be at the front of new technologies. we help set new standards for online and mobile applications that help deliver more value to their customers..."
+          ctaLabel="What we offer"
+          ctaLink="/cases"
+        />
+      </SectionContainer>
       <SectionContainer>
         <CasePreview />
       </SectionContainer>
+
       <SectionContainer>
         <ul>
           <li>
