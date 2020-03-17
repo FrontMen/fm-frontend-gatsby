@@ -8,7 +8,7 @@ import { CTABox } from '../components/layout/cta-container';
 import { HeroImage } from '../components/layout/heroImage';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
-import Layout from '../components/layout';
+import ParallaxLayout from '../components/parallaxLayout';
 
 type Props = {
   data: HomePageQuery;
@@ -30,7 +30,7 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
     return null;
   }
   return (
-    <Layout>
+    <ParallaxLayout>
       {layout.title && <SEO title={layout.title} />}
 
       {layout.contentModules && renderContentModules(layout.contentModules)}
@@ -62,7 +62,7 @@ the pleasure of working with."
           ctaLink="/contact"
         />
       </SectionContainer>
-    </Layout>
+    </ParallaxLayout>
   );
 };
 
