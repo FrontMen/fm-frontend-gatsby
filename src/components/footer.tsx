@@ -3,17 +3,20 @@ import React from 'react';
 import { MediaQuerySize, mqMin } from '../utils/breakpoints';
 import styled from '../utils/styled';
 import { rhythm } from '../utils/typography';
+import { getSkewed } from '../utils/skewed';
 
 const Wrapper = styled.footer`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  background-color: #201e33;
+  background-color: ${({ theme }) => theme.colors.primary};
   margin: 0 auto;
   padding-top: ${rhythm(1)};
   padding-bottom: ${rhythm(1)};
   min-height: ${rhythm(3)};
+  position: relative;
+  ${getSkewed()}
 `;
 
 const Leader = styled.h1`
