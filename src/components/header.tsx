@@ -21,9 +21,10 @@ const Head = styled.header`
   background-color: ${({theme}) => {
   return theme.colors.background;
 }};
-  position: fixed;
+  position: sticky;
   width: 100vw;
   top: 0;
+  z-index: 2147483647;
 
   & + * {
     margin-top: 50px;
