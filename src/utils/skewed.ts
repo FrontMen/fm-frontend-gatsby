@@ -1,4 +1,5 @@
 import { css } from '@emotion/core';
+import {MediaQuerySize, mqMin} from "./breakpoints";
 
 type Angle = 'left' | 'right';
 
@@ -15,18 +16,30 @@ const skewed = {
       right: 0;
       z-index: -1;
       pointer-events: none;
+
+      ${mqMin[MediaQuerySize.XXL]} {
+        height: 100%;
+      }
     }
   `,
   skewLeft: css`
     &:before {
       transform-origin: 100%;
       transform: skewY(7deg);
+
+      ${mqMin[MediaQuerySize.XXL]} {
+        transform: skewY(6deg);
+      }
     }
   `,
   skewRight: css`
     &:before {
       transform-origin: 0;
       transform: skewY(-7deg);
+
+      ${mqMin[MediaQuerySize.XXL]} {
+        transform: skewY(-6deg);
+      }
     }
   `,
 };

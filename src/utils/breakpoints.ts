@@ -1,4 +1,4 @@
-const breakpoints = [576, 768, 992, 1200];
+const breakpoints = [576, 768, 992, 1200, 1900];
 
 export const mqMin = breakpoints.map(
   bp => `@media screen and (min-width: ${bp}px)`
@@ -13,9 +13,10 @@ export enum MediaQuerySize {
   M,
   L,
   XL,
+  XXL,
 }
 
-/* 
+/*
 Usage
 
 import {mqMin, MediaQuerySize} from 'breakpoints'
