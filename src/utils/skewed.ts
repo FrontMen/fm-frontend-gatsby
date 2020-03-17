@@ -14,6 +14,7 @@ const skewed = {
       position: absolute;
       right: 0;
       z-index: -1;
+      pointer-events: none;
     }
   `,
   skewLeft: css`

@@ -1,26 +1,33 @@
-import { css } from '@emotion/core';
 import * as React from 'react';
 
 import { ContentfulLayoutHeroImage } from '../../../types/graphql-types';
-import { rhythm } from '../../utils/typography';
+import { rhythm, scale } from '../../utils/typography';
+import styled from '../../utils/styled';
+import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
 
 type Props = {
   cm: ContentfulLayoutHeroImage;
 };
 
-const styles = {
-  heroContainer: css`
-    min-height: 40vh;
-    background-position: center;
-    background-repeat: no-repeat;
-  `,
-  heroBody: css`
-    max-width: 1200px;
-    padding: ${rhythm(2)};
-    color: #000;
-    margin: 0 auto;
-  `,
-};
+const HeroBody = styled.div`
+  max-width: 1200px;
+  min-height: 40vh;
+  padding: ${rhythm(2)};
+  margin: 0 auto;
+  color: ${({ theme }) => theme.colors.primary};
+`;
+// ts-ignore-next-line
+const Payoff = styled.h1`
+  ${mqMin[MediaQuerySize.M]} {
+    max-width: 80vw;
+  }
+  ${mqMin[MediaQuerySize.L]} {
+    max-width: 60vw;
+  }
+`;
+const SubHead = styled.p`
+  color: ${({ theme }) => theme.colors.secondary};
+`;
 
 const generateBackgroundImageUrl = (
   cm: ContentfulLayoutHeroImage
@@ -36,10 +43,12 @@ export const HeroImage: React.FC<Props> = ({ cm }: Props) => {
 
   return (
     <>
-      <div css={styles.heroBody}>
-        <h1>Frontmen</h1>
-        <p>{cm.headline}</p>
-      </div>
+      <HeroBody>
+        <Payoff css={{ ...scale(1.5) }}>
+          A technology partner for forward-thinking companies.
+        </Payoff>
+        <SubHead>{cm.headline}</SubHead>
+      </HeroBody>
     </>
   );
 };

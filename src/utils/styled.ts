@@ -19,5 +19,6 @@ export const theme = {
     background: colors.white,
   },
 };
+export type Theme = typeof theme;
 
-export default styled as CreateStyled<typeof theme>;
+export default styled as CreateStyled<Theme>;

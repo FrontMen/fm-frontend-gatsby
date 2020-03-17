@@ -3,8 +3,9 @@ import * as React from 'react';
 
 import { Maybe, SiteSiteMetadataMenuLinks } from '../../types/graphql-types';
 import { MediaQuerySize, mqMax, mqMin } from '../utils/breakpoints';
-import styled, { theme } from '../utils/styled';
+import styled, { Theme } from '../utils/styled';
 import { rhythm } from '../utils/typography';
+import { useTheme } from 'emotion-theming';
 
 interface Props {
   menuLinks: Maybe<SiteSiteMetadataMenuLinks>[] | null | undefined;
@@ -31,7 +32,6 @@ const Nav = styled.nav`
   opacity: 0;
   transform: translate(0, -100%);
   pointer-events: none;
-
 
   ${mqMax[MediaQuerySize.L]} {
     padding: ${rhythm(1)} 0;
@@ -76,7 +76,6 @@ const NavigationLink = styled(Link)`
   color: ${props => props.theme.colors.tertiary};
   display: flex;
   align-items: center;
-
 
   &:hover,
   &:active,
@@ -187,21 +186,23 @@ const HiddenMenuCheckbox = styled<React.FC<{ id: string }>>(UnstyledCheckbox)`
 `;
 
 // Nav functions
-const createLinks = (menuLinks: Props['menuLinks'] = []) =>
-  menuLinks?.map(
+const createLinks = (menuLinks: Props['menuLinks'] = []) => {
+  const theme = useTheme<Theme>();
+  return menuLinks?.map(
     ml =>
       ml?.link &&
       ml?.name && (
         <NavigationLink
           to={ml.link}
           key={`nav_link_${ml.name}`}
-          activeStyle={{ color: theme.colors.secondary, fontWeight: 'bold' }}
+          activeStyle={{ color: theme.colors.secondary }}
           partiallyActive
         >
           {ml.name}
         </NavigationLink>
       )
   );
+};
 
 // exports
 export const Navigation: React.FC<Props> = ({ menuLinks }: Props) => (
