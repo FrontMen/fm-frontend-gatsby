@@ -45,7 +45,6 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
       <SectionContainer>
         <CasePreview />
       </SectionContainer>
-
       <SectionContainer>
         <ul>
           <li>

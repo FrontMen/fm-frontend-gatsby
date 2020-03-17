@@ -11,6 +11,7 @@ const Wrapper = styled.footer`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.primary};
+  border-color: ${({ theme }) => theme.colors.primary};
   margin: 0 auto;
   padding-top: ${rhythm(1)};
   padding-bottom: ${rhythm(1)};
