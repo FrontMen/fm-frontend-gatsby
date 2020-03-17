@@ -33,6 +33,8 @@ const styles = {
     min-height: ${rhythm(12)};
     margin-bottom: ${spacing};
     cursor: pointer;
+    overflow: hidden;
+    
     &:hover > a > div {
       transform: translateY(0px);
     }
@@ -88,6 +90,7 @@ const CaseContent = styled.div`
   padding: ${rhythm(2)} ${rhythm(1)};
   color: ${({ theme }) => theme.colors.background};
   transition: transform 300ms cubic-bezier(0, 0, 0.58, 1) 0s;
+  padding-bottom: 0;
 `;
 
 interface CasePreviewItemProps {
