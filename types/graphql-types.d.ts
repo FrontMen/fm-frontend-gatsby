@@ -1243,14 +1243,14 @@ export type ContentfulLayoutCallToAction = Node & {
   title?: Maybe<Scalars['String']>,
   payoff?: Maybe<Scalars['String']>,
   url?: Maybe<Scalars['String']>,
+  label?: Maybe<Scalars['String']>,
+  layout?: Maybe<Array<Maybe<ContentfulLayout>>>,
   spaceId?: Maybe<Scalars['String']>,
   contentful_id?: Maybe<Scalars['String']>,
   createdAt?: Maybe<Scalars['Date']>,
   updatedAt?: Maybe<Scalars['Date']>,
   sys?: Maybe<ContentfulLayoutCallToActionSys>,
   node_locale?: Maybe<Scalars['String']>,
-  label?: Maybe<Scalars['String']>,
-  layout?: Maybe<Array<Maybe<ContentfulLayout>>>,
 };
 
 
@@ -1388,16 +1388,6 @@ export type ContentfulLayoutCallToActionFieldsEnum =
   'title' |
   'payoff' |
   'url' |
-  'spaceId' |
-  'contentful_id' |
-  'createdAt' |
-  'updatedAt' |
-  'sys___contentType___sys___type' |
-  'sys___contentType___sys___linkType' |
-  'sys___contentType___sys___id' |
-  'sys___contentType___sys___contentful_id' |
-  'sys___revision' |
-  'node_locale' |
   'label' |
   'layout' |
   'layout___id' |
@@ -1445,7 +1435,17 @@ export type ContentfulLayoutCallToActionFieldsEnum =
   'layout___createdAt' |
   'layout___updatedAt' |
   'layout___sys___revision' |
-  'layout___node_locale';
+  'layout___node_locale' |
+  'spaceId' |
+  'contentful_id' |
+  'createdAt' |
+  'updatedAt' |
+  'sys___revision' |
+  'sys___contentType___sys___type' |
+  'sys___contentType___sys___linkType' |
+  'sys___contentType___sys___id' |
+  'sys___contentType___sys___contentful_id' |
+  'node_locale';
 
 export type ContentfulLayoutCallToActionFilterInput = {
   id?: Maybe<StringQueryOperatorInput>,
@@ -1455,14 +1455,14 @@ export type ContentfulLayoutCallToActionFilterInput = {
   title?: Maybe<StringQueryOperatorInput>,
   payoff?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
+  label?: Maybe<StringQueryOperatorInput>,
+  layout?: Maybe<ContentfulLayoutFilterListInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
   createdAt?: Maybe<DateQueryOperatorInput>,
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCallToActionSysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
-  label?: Maybe<StringQueryOperatorInput>,
-  layout?: Maybe<ContentfulLayoutFilterListInput>,
 };
 
 export type ContentfulLayoutCallToActionGroupConnection = {
@@ -1480,8 +1480,8 @@ export type ContentfulLayoutCallToActionSortInput = {
 };
 
 export type ContentfulLayoutCallToActionSys = {
-  contentType?: Maybe<ContentfulLayoutCallToActionSysContentType>,
   revision?: Maybe<Scalars['Int']>,
+  contentType?: Maybe<ContentfulLayoutCallToActionSysContentType>,
 };
 
 export type ContentfulLayoutCallToActionSysContentType = {
@@ -1507,8 +1507,8 @@ export type ContentfulLayoutCallToActionSysContentTypeSysFilterInput = {
 };
 
 export type ContentfulLayoutCallToActionSysFilterInput = {
-  contentType?: Maybe<ContentfulLayoutCallToActionSysContentTypeFilterInput>,
   revision?: Maybe<IntQueryOperatorInput>,
+  contentType?: Maybe<ContentfulLayoutCallToActionSysContentTypeFilterInput>,
 };
 
 export type ContentfulLayoutConnection = {
@@ -3905,14 +3905,14 @@ export type QueryContentfulLayoutCallToActionArgs = {
   title?: Maybe<StringQueryOperatorInput>,
   payoff?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
+  label?: Maybe<StringQueryOperatorInput>,
+  layout?: Maybe<ContentfulLayoutFilterListInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
   createdAt?: Maybe<DateQueryOperatorInput>,
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCallToActionSysFilterInput>,
-  node_locale?: Maybe<StringQueryOperatorInput>,
-  label?: Maybe<StringQueryOperatorInput>,
-  layout?: Maybe<ContentfulLayoutFilterListInput>
+  node_locale?: Maybe<StringQueryOperatorInput>
 };
 
 
