@@ -17,6 +17,7 @@ import styled, { theme } from '../utils/styled';
 import { rhythm } from '../utils/typography';
 import { ParallaxContainer } from './Parralax';
 import { Polygon } from './Polygon';
+import { SkipLink } from './SkipLink';
 
 type Props = {
   children: React.ReactNode;
@@ -25,7 +26,7 @@ type Props = {
 const Skip = styled.a`
   padding: 0 1rem;
   line-height: 60px;
-  background: #2867cf;
+  background: ${({ theme }) => theme.colors.primary};
   color: white;
   z-index: 101;
   position: fixed;
@@ -36,6 +37,7 @@ const Skip = styled.a`
   &:focus,
   &:active,
   &:hover {
+    top: 0;
   }
 `;
 
@@ -47,17 +49,10 @@ const Main = styled.main`
 
 const ParallaxLayout: React.FC<Props> = ({ children }: Props) => {
   const data = useSiteMetadata();
-  function handleFirstTab(e: KeyboardEvent): void {
-    if (e.keyCode === 9) {
-      // eslint-disable-next-line no-undef
-      document.body.classList.add('user-is-tabbing');
-    }
-  }
-  // eslint-disable-next-line no-undef
-  useEffect(() => window.addEventListener('keydown', handleFirstTab), []);
+
   return (
     <ThemeProvider theme={theme}>
-      <Skip href="#main">Skip to main content</Skip>
+      <SkipLink />
       <ParallaxContainer>
         <ParallaxContainer.ParallaxItem
           top="0%"
