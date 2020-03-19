@@ -1,40 +1,44 @@
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import * as React from 'react';
+import ReactMarkdown from 'react-markdown/with-html';
 
 import { rhythm, scale } from '../../utils/typography';
+import styled from '../../utils/styled';
 
 type Props = {
   title: string;
   payoff: string;
   ctaLabel: string;
   ctaLink: string;
+  appearance: string;
 };
-
-const styles = {
-  box: css`
-    text-align: center;
-    padding: ${rhythm(3)} 0;
-  `,
-  title: {
-    ...scale(1.5),
-  },
-  payoff: {
-    ...scale(0.7),
-  },
-};
+const Container = styled.div`
+  text-align: center;
+  padding: ${rhythm(3)} 0;
+`;
+const Title = styled.h1({ ...scale(1.5) });
+const Payoff = styled.h3({ ...scale(0.7) });
 
 export const CTABox: React.FC<Props> = ({
   title,
   payoff,
   ctaLabel,
   ctaLink,
+  appearance,
 }: Props) => {
+  const CtaLink =
+    ctaLink && ctaLabel ? <Link to={ctaLink}>{ctaLabel}</Link> : null;
+  console.log(appearance);
   return (
-    <div css={styles.box}>
-      <h1 css={styles.title}>{title}</h1>
-      <h6 css={styles.payoff}>{payoff}</h6>
-      <Link to={ctaLink}>{ctaLabel}</Link>
-    </div>
+    <Container>
+      {title && <Title>{title}</Title>}
+      {appearance === 'Emphasized' ? (
+        <ReactMarkdown source={payoff} escapeHtml={false} />
+      ) : (
+        <Payoff>{payoff}</Payoff>
+      )}
+      {CtaLink}
+    </Container>
   );
 };

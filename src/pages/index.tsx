@@ -9,6 +9,7 @@ import { HeroImage } from '../components/layout/heroImage';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
 import ParallaxLayout from '../components/parallaxLayout';
+import ContentModules from '../components/contentModules';
 
 type Props = {
   data: HomePageQuery;
@@ -16,10 +17,28 @@ type Props = {
 
 const renderContentModules = (contentModules: any = []): React.FC => {
   return contentModules?.map((cm: any) => {
-    if (!cm || !cm.backgroundImage) {
+    if (!cm?.__typename) {
       return null;
     }
-    return <HeroImage cm={cm} key={cm.id} />;
+    switch (cm.__typename) {
+      case 'ContentfulLayoutHeroImage':
+        return <HeroImage cm={cm} key={cm.id} />;
+      case 'ContentfulLayoutCopy':
+        return (
+          <SectionContainer>
+            <CTABox
+              title={cm.headline}
+              payoff={cm.copy.copy}
+              ctaLabel={cm.ctaTitle}
+              ctaLink={cm.ctaLink}
+              appearance={cm.appearance}
+            />
+          </SectionContainer>
+        );
+      default:
+        return null;
+        break;
+    }
   });
 };
 
@@ -33,15 +52,10 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
     <ParallaxLayout>
       {layout.title && <SEO title={layout.title} />}
 
-      {layout.contentModules && renderContentModules(layout.contentModules)}
-      <SectionContainer>
-        <CTABox
-          title="Up Front Technology"
-          payoff="We are always keen to be at the front of new technologies. we help set new standards for online and mobile applications that help deliver more value to their customers..."
-          ctaLabel="What we offer"
-          ctaLink="/cases"
-        />
-      </SectionContainer>
+      {layout.contentModules && (
+        <ContentModules contentModules={layout.contentModules}></ContentModules>
+      )}
+
       <SectionContainer>
         <CasePreview />
       </SectionContainer>
@@ -60,6 +74,7 @@ and successful businesses that we have had
 the pleasure of working with."
           ctaLabel="Get in touch"
           ctaLink="/contact"
+          appearance="Default"
         />
       </SectionContainer>
     </ParallaxLayout>
@@ -68,24 +83,28 @@ the pleasure of working with."
 
 export const query = graphql`
   query HomePage {
-    contentfulLayout(slug: { eq: "home" }) {
-      slug
+    contentfulLayout(node_locale: { eq: "nl" }, slug: { eq: "home" }) {
       title
       contentModules {
+        ... on ContentfulLayoutCopy {
+          __typename
+          appearance
+          title
+          ctaTitle
+          ctaLink
+          headline
+          copy {
+            copy
+          }
+        }
         ... on ContentfulLayoutHeroImage {
-          id
+          __typename
           headline
           backgroundImage {
             fluid(maxWidth: 1200) {
               src
             }
           }
-        }
-        ... on ContentfulLayoutCallToAction {
-          id
-          title
-          url
-          label
         }
       }
     }

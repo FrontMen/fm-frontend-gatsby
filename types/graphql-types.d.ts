@@ -1210,7 +1210,7 @@ export type ContentfulLayout = Node & {
   internal: Internal,
   title?: Maybe<Scalars['String']>,
   slug?: Maybe<Scalars['String']>,
-  contentModules?: Maybe<Array<Maybe<ContentfulLayoutCallToActionContentfulLayoutHeroImageUnion>>>,
+  contentModules?: Maybe<Array<Maybe<ContentfulLayoutCallToActionContentfulLayoutCopyContentfulLayoutHeroImageUnion>>>,
   spaceId?: Maybe<Scalars['String']>,
   contentful_id?: Maybe<Scalars['String']>,
   createdAt?: Maybe<Scalars['Date']>,
@@ -1244,13 +1244,13 @@ export type ContentfulLayoutCallToAction = Node & {
   payoff?: Maybe<Scalars['String']>,
   url?: Maybe<Scalars['String']>,
   label?: Maybe<Scalars['String']>,
-  layout?: Maybe<Array<Maybe<ContentfulLayout>>>,
   spaceId?: Maybe<Scalars['String']>,
   contentful_id?: Maybe<Scalars['String']>,
   createdAt?: Maybe<Scalars['Date']>,
   updatedAt?: Maybe<Scalars['Date']>,
   sys?: Maybe<ContentfulLayoutCallToActionSys>,
   node_locale?: Maybe<Scalars['String']>,
+  layout?: Maybe<Array<Maybe<ContentfulLayout>>>,
 };
 
 
@@ -1290,7 +1290,7 @@ export type ContentfulLayoutCallToActionConnectionGroupArgs = {
   field: ContentfulLayoutCallToActionFieldsEnum
 };
 
-export type ContentfulLayoutCallToActionContentfulLayoutHeroImageUnion = ContentfulLayoutCallToAction | ContentfulLayoutHeroImage;
+export type ContentfulLayoutCallToActionContentfulLayoutCopyContentfulLayoutHeroImageUnion = ContentfulLayoutCallToAction | ContentfulLayoutCopy | ContentfulLayoutHeroImage;
 
 export type ContentfulLayoutCallToActionEdge = {
   next?: Maybe<ContentfulLayoutCallToAction>,
@@ -1389,6 +1389,16 @@ export type ContentfulLayoutCallToActionFieldsEnum =
   'payoff' |
   'url' |
   'label' |
+  'spaceId' |
+  'contentful_id' |
+  'createdAt' |
+  'updatedAt' |
+  'sys___revision' |
+  'sys___contentType___sys___type' |
+  'sys___contentType___sys___linkType' |
+  'sys___contentType___sys___id' |
+  'sys___contentType___sys___contentful_id' |
+  'node_locale' |
   'layout' |
   'layout___id' |
   'layout___parent___id' |
@@ -1435,17 +1445,7 @@ export type ContentfulLayoutCallToActionFieldsEnum =
   'layout___createdAt' |
   'layout___updatedAt' |
   'layout___sys___revision' |
-  'layout___node_locale' |
-  'spaceId' |
-  'contentful_id' |
-  'createdAt' |
-  'updatedAt' |
-  'sys___revision' |
-  'sys___contentType___sys___type' |
-  'sys___contentType___sys___linkType' |
-  'sys___contentType___sys___id' |
-  'sys___contentType___sys___contentful_id' |
-  'node_locale';
+  'layout___node_locale';
 
 export type ContentfulLayoutCallToActionFilterInput = {
   id?: Maybe<StringQueryOperatorInput>,
@@ -1456,13 +1456,13 @@ export type ContentfulLayoutCallToActionFilterInput = {
   payoff?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
   label?: Maybe<StringQueryOperatorInput>,
-  layout?: Maybe<ContentfulLayoutFilterListInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
   createdAt?: Maybe<DateQueryOperatorInput>,
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCallToActionSysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+  layout?: Maybe<ContentfulLayoutFilterListInput>,
 };
 
 export type ContentfulLayoutCallToActionGroupConnection = {
@@ -1530,6 +1530,511 @@ export type ContentfulLayoutConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>,
   field: ContentfulLayoutFieldsEnum
+};
+
+export type ContentfulLayoutCopy = Node & {
+  id: Scalars['ID'],
+  parent?: Maybe<Node>,
+  children: Array<Node>,
+  internal: Internal,
+  title?: Maybe<Scalars['String']>,
+  headline?: Maybe<Scalars['String']>,
+  ctaTitle?: Maybe<Scalars['String']>,
+  ctaLink?: Maybe<Scalars['String']>,
+  appearance?: Maybe<Scalars['String']>,
+  copy?: Maybe<ContentfulLayoutCopyCopyTextNode>,
+  spaceId?: Maybe<Scalars['String']>,
+  contentful_id?: Maybe<Scalars['String']>,
+  createdAt?: Maybe<Scalars['Date']>,
+  updatedAt?: Maybe<Scalars['Date']>,
+  sys?: Maybe<ContentfulLayoutCopySys>,
+  node_locale?: Maybe<Scalars['String']>,
+  layout?: Maybe<Array<Maybe<ContentfulLayout>>>,
+  childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNode>,
+};
+
+
+export type ContentfulLayoutCopyCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>,
+  fromNow?: Maybe<Scalars['Boolean']>,
+  difference?: Maybe<Scalars['String']>,
+  locale?: Maybe<Scalars['String']>
+};
+
+
+export type ContentfulLayoutCopyUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>,
+  fromNow?: Maybe<Scalars['Boolean']>,
+  difference?: Maybe<Scalars['String']>,
+  locale?: Maybe<Scalars['String']>
+};
+
+export type ContentfulLayoutCopyConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<ContentfulLayoutCopyEdge>,
+  nodes: Array<ContentfulLayoutCopy>,
+  pageInfo: PageInfo,
+  distinct: Array<Scalars['String']>,
+  group: Array<ContentfulLayoutCopyGroupConnection>,
+};
+
+
+export type ContentfulLayoutCopyConnectionDistinctArgs = {
+  field: ContentfulLayoutCopyFieldsEnum
+};
+
+
+export type ContentfulLayoutCopyConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>,
+  field: ContentfulLayoutCopyFieldsEnum
+};
+
+export type ContentfulLayoutCopyCopyTextNode = Node & {
+  id: Scalars['ID'],
+  parent?: Maybe<Node>,
+  children: Array<Node>,
+  internal: Internal,
+  copy?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulLayoutCopyCopyTextNodeConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<ContentfulLayoutCopyCopyTextNodeEdge>,
+  nodes: Array<ContentfulLayoutCopyCopyTextNode>,
+  pageInfo: PageInfo,
+  distinct: Array<Scalars['String']>,
+  group: Array<ContentfulLayoutCopyCopyTextNodeGroupConnection>,
+};
+
+
+export type ContentfulLayoutCopyCopyTextNodeConnectionDistinctArgs = {
+  field: ContentfulLayoutCopyCopyTextNodeFieldsEnum
+};
+
+
+export type ContentfulLayoutCopyCopyTextNodeConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>,
+  field: ContentfulLayoutCopyCopyTextNodeFieldsEnum
+};
+
+export type ContentfulLayoutCopyCopyTextNodeEdge = {
+  next?: Maybe<ContentfulLayoutCopyCopyTextNode>,
+  node: ContentfulLayoutCopyCopyTextNode,
+  previous?: Maybe<ContentfulLayoutCopyCopyTextNode>,
+};
+
+export type ContentfulLayoutCopyCopyTextNodeFieldsEnum = 
+  'id' |
+  'parent___id' |
+  'parent___parent___id' |
+  'parent___parent___parent___id' |
+  'parent___parent___parent___children' |
+  'parent___parent___children' |
+  'parent___parent___children___id' |
+  'parent___parent___children___children' |
+  'parent___parent___internal___content' |
+  'parent___parent___internal___contentDigest' |
+  'parent___parent___internal___description' |
+  'parent___parent___internal___fieldOwners' |
+  'parent___parent___internal___ignoreType' |
+  'parent___parent___internal___mediaType' |
+  'parent___parent___internal___owner' |
+  'parent___parent___internal___type' |
+  'parent___children' |
+  'parent___children___id' |
+  'parent___children___parent___id' |
+  'parent___children___parent___children' |
+  'parent___children___children' |
+  'parent___children___children___id' |
+  'parent___children___children___children' |
+  'parent___children___internal___content' |
+  'parent___children___internal___contentDigest' |
+  'parent___children___internal___description' |
+  'parent___children___internal___fieldOwners' |
+  'parent___children___internal___ignoreType' |
+  'parent___children___internal___mediaType' |
+  'parent___children___internal___owner' |
+  'parent___children___internal___type' |
+  'parent___internal___content' |
+  'parent___internal___contentDigest' |
+  'parent___internal___description' |
+  'parent___internal___fieldOwners' |
+  'parent___internal___ignoreType' |
+  'parent___internal___mediaType' |
+  'parent___internal___owner' |
+  'parent___internal___type' |
+  'children' |
+  'children___id' |
+  'children___parent___id' |
+  'children___parent___parent___id' |
+  'children___parent___parent___children' |
+  'children___parent___children' |
+  'children___parent___children___id' |
+  'children___parent___children___children' |
+  'children___parent___internal___content' |
+  'children___parent___internal___contentDigest' |
+  'children___parent___internal___description' |
+  'children___parent___internal___fieldOwners' |
+  'children___parent___internal___ignoreType' |
+  'children___parent___internal___mediaType' |
+  'children___parent___internal___owner' |
+  'children___parent___internal___type' |
+  'children___children' |
+  'children___children___id' |
+  'children___children___parent___id' |
+  'children___children___parent___children' |
+  'children___children___children' |
+  'children___children___children___id' |
+  'children___children___children___children' |
+  'children___children___internal___content' |
+  'children___children___internal___contentDigest' |
+  'children___children___internal___description' |
+  'children___children___internal___fieldOwners' |
+  'children___children___internal___ignoreType' |
+  'children___children___internal___mediaType' |
+  'children___children___internal___owner' |
+  'children___children___internal___type' |
+  'children___internal___content' |
+  'children___internal___contentDigest' |
+  'children___internal___description' |
+  'children___internal___fieldOwners' |
+  'children___internal___ignoreType' |
+  'children___internal___mediaType' |
+  'children___internal___owner' |
+  'children___internal___type' |
+  'internal___content' |
+  'internal___contentDigest' |
+  'internal___description' |
+  'internal___fieldOwners' |
+  'internal___ignoreType' |
+  'internal___mediaType' |
+  'internal___owner' |
+  'internal___type' |
+  'copy';
+
+export type ContentfulLayoutCopyCopyTextNodeFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  copy?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulLayoutCopyCopyTextNodeGroupConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<ContentfulLayoutCopyCopyTextNodeEdge>,
+  nodes: Array<ContentfulLayoutCopyCopyTextNode>,
+  pageInfo: PageInfo,
+  field: Scalars['String'],
+  fieldValue?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulLayoutCopyCopyTextNodeSortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulLayoutCopyCopyTextNodeFieldsEnum>>>,
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>,
+};
+
+export type ContentfulLayoutCopyEdge = {
+  next?: Maybe<ContentfulLayoutCopy>,
+  node: ContentfulLayoutCopy,
+  previous?: Maybe<ContentfulLayoutCopy>,
+};
+
+export type ContentfulLayoutCopyFieldsEnum = 
+  'id' |
+  'parent___id' |
+  'parent___parent___id' |
+  'parent___parent___parent___id' |
+  'parent___parent___parent___children' |
+  'parent___parent___children' |
+  'parent___parent___children___id' |
+  'parent___parent___children___children' |
+  'parent___parent___internal___content' |
+  'parent___parent___internal___contentDigest' |
+  'parent___parent___internal___description' |
+  'parent___parent___internal___fieldOwners' |
+  'parent___parent___internal___ignoreType' |
+  'parent___parent___internal___mediaType' |
+  'parent___parent___internal___owner' |
+  'parent___parent___internal___type' |
+  'parent___children' |
+  'parent___children___id' |
+  'parent___children___parent___id' |
+  'parent___children___parent___children' |
+  'parent___children___children' |
+  'parent___children___children___id' |
+  'parent___children___children___children' |
+  'parent___children___internal___content' |
+  'parent___children___internal___contentDigest' |
+  'parent___children___internal___description' |
+  'parent___children___internal___fieldOwners' |
+  'parent___children___internal___ignoreType' |
+  'parent___children___internal___mediaType' |
+  'parent___children___internal___owner' |
+  'parent___children___internal___type' |
+  'parent___internal___content' |
+  'parent___internal___contentDigest' |
+  'parent___internal___description' |
+  'parent___internal___fieldOwners' |
+  'parent___internal___ignoreType' |
+  'parent___internal___mediaType' |
+  'parent___internal___owner' |
+  'parent___internal___type' |
+  'children' |
+  'children___id' |
+  'children___parent___id' |
+  'children___parent___parent___id' |
+  'children___parent___parent___children' |
+  'children___parent___children' |
+  'children___parent___children___id' |
+  'children___parent___children___children' |
+  'children___parent___internal___content' |
+  'children___parent___internal___contentDigest' |
+  'children___parent___internal___description' |
+  'children___parent___internal___fieldOwners' |
+  'children___parent___internal___ignoreType' |
+  'children___parent___internal___mediaType' |
+  'children___parent___internal___owner' |
+  'children___parent___internal___type' |
+  'children___children' |
+  'children___children___id' |
+  'children___children___parent___id' |
+  'children___children___parent___children' |
+  'children___children___children' |
+  'children___children___children___id' |
+  'children___children___children___children' |
+  'children___children___internal___content' |
+  'children___children___internal___contentDigest' |
+  'children___children___internal___description' |
+  'children___children___internal___fieldOwners' |
+  'children___children___internal___ignoreType' |
+  'children___children___internal___mediaType' |
+  'children___children___internal___owner' |
+  'children___children___internal___type' |
+  'children___internal___content' |
+  'children___internal___contentDigest' |
+  'children___internal___description' |
+  'children___internal___fieldOwners' |
+  'children___internal___ignoreType' |
+  'children___internal___mediaType' |
+  'children___internal___owner' |
+  'children___internal___type' |
+  'internal___content' |
+  'internal___contentDigest' |
+  'internal___description' |
+  'internal___fieldOwners' |
+  'internal___ignoreType' |
+  'internal___mediaType' |
+  'internal___owner' |
+  'internal___type' |
+  'title' |
+  'headline' |
+  'ctaTitle' |
+  'ctaLink' |
+  'appearance' |
+  'copy___id' |
+  'copy___parent___id' |
+  'copy___parent___parent___id' |
+  'copy___parent___parent___children' |
+  'copy___parent___children' |
+  'copy___parent___children___id' |
+  'copy___parent___children___children' |
+  'copy___parent___internal___content' |
+  'copy___parent___internal___contentDigest' |
+  'copy___parent___internal___description' |
+  'copy___parent___internal___fieldOwners' |
+  'copy___parent___internal___ignoreType' |
+  'copy___parent___internal___mediaType' |
+  'copy___parent___internal___owner' |
+  'copy___parent___internal___type' |
+  'copy___children' |
+  'copy___children___id' |
+  'copy___children___parent___id' |
+  'copy___children___parent___children' |
+  'copy___children___children' |
+  'copy___children___children___id' |
+  'copy___children___children___children' |
+  'copy___children___internal___content' |
+  'copy___children___internal___contentDigest' |
+  'copy___children___internal___description' |
+  'copy___children___internal___fieldOwners' |
+  'copy___children___internal___ignoreType' |
+  'copy___children___internal___mediaType' |
+  'copy___children___internal___owner' |
+  'copy___children___internal___type' |
+  'copy___internal___content' |
+  'copy___internal___contentDigest' |
+  'copy___internal___description' |
+  'copy___internal___fieldOwners' |
+  'copy___internal___ignoreType' |
+  'copy___internal___mediaType' |
+  'copy___internal___owner' |
+  'copy___internal___type' |
+  'copy___copy' |
+  'spaceId' |
+  'contentful_id' |
+  'createdAt' |
+  'updatedAt' |
+  'sys___revision' |
+  'sys___contentType___sys___type' |
+  'sys___contentType___sys___linkType' |
+  'sys___contentType___sys___id' |
+  'sys___contentType___sys___contentful_id' |
+  'node_locale' |
+  'layout' |
+  'layout___id' |
+  'layout___parent___id' |
+  'layout___parent___parent___id' |
+  'layout___parent___parent___children' |
+  'layout___parent___children' |
+  'layout___parent___children___id' |
+  'layout___parent___children___children' |
+  'layout___parent___internal___content' |
+  'layout___parent___internal___contentDigest' |
+  'layout___parent___internal___description' |
+  'layout___parent___internal___fieldOwners' |
+  'layout___parent___internal___ignoreType' |
+  'layout___parent___internal___mediaType' |
+  'layout___parent___internal___owner' |
+  'layout___parent___internal___type' |
+  'layout___children' |
+  'layout___children___id' |
+  'layout___children___parent___id' |
+  'layout___children___parent___children' |
+  'layout___children___children' |
+  'layout___children___children___id' |
+  'layout___children___children___children' |
+  'layout___children___internal___content' |
+  'layout___children___internal___contentDigest' |
+  'layout___children___internal___description' |
+  'layout___children___internal___fieldOwners' |
+  'layout___children___internal___ignoreType' |
+  'layout___children___internal___mediaType' |
+  'layout___children___internal___owner' |
+  'layout___children___internal___type' |
+  'layout___internal___content' |
+  'layout___internal___contentDigest' |
+  'layout___internal___description' |
+  'layout___internal___fieldOwners' |
+  'layout___internal___ignoreType' |
+  'layout___internal___mediaType' |
+  'layout___internal___owner' |
+  'layout___internal___type' |
+  'layout___title' |
+  'layout___slug' |
+  'layout___spaceId' |
+  'layout___contentful_id' |
+  'layout___createdAt' |
+  'layout___updatedAt' |
+  'layout___sys___revision' |
+  'layout___node_locale' |
+  'childContentfulLayoutCopyCopyTextNode___id' |
+  'childContentfulLayoutCopyCopyTextNode___parent___id' |
+  'childContentfulLayoutCopyCopyTextNode___parent___parent___id' |
+  'childContentfulLayoutCopyCopyTextNode___parent___parent___children' |
+  'childContentfulLayoutCopyCopyTextNode___parent___children' |
+  'childContentfulLayoutCopyCopyTextNode___parent___children___id' |
+  'childContentfulLayoutCopyCopyTextNode___parent___children___children' |
+  'childContentfulLayoutCopyCopyTextNode___parent___internal___content' |
+  'childContentfulLayoutCopyCopyTextNode___parent___internal___contentDigest' |
+  'childContentfulLayoutCopyCopyTextNode___parent___internal___description' |
+  'childContentfulLayoutCopyCopyTextNode___parent___internal___fieldOwners' |
+  'childContentfulLayoutCopyCopyTextNode___parent___internal___ignoreType' |
+  'childContentfulLayoutCopyCopyTextNode___parent___internal___mediaType' |
+  'childContentfulLayoutCopyCopyTextNode___parent___internal___owner' |
+  'childContentfulLayoutCopyCopyTextNode___parent___internal___type' |
+  'childContentfulLayoutCopyCopyTextNode___children' |
+  'childContentfulLayoutCopyCopyTextNode___children___id' |
+  'childContentfulLayoutCopyCopyTextNode___children___parent___id' |
+  'childContentfulLayoutCopyCopyTextNode___children___parent___children' |
+  'childContentfulLayoutCopyCopyTextNode___children___children' |
+  'childContentfulLayoutCopyCopyTextNode___children___children___id' |
+  'childContentfulLayoutCopyCopyTextNode___children___children___children' |
+  'childContentfulLayoutCopyCopyTextNode___children___internal___content' |
+  'childContentfulLayoutCopyCopyTextNode___children___internal___contentDigest' |
+  'childContentfulLayoutCopyCopyTextNode___children___internal___description' |
+  'childContentfulLayoutCopyCopyTextNode___children___internal___fieldOwners' |
+  'childContentfulLayoutCopyCopyTextNode___children___internal___ignoreType' |
+  'childContentfulLayoutCopyCopyTextNode___children___internal___mediaType' |
+  'childContentfulLayoutCopyCopyTextNode___children___internal___owner' |
+  'childContentfulLayoutCopyCopyTextNode___children___internal___type' |
+  'childContentfulLayoutCopyCopyTextNode___internal___content' |
+  'childContentfulLayoutCopyCopyTextNode___internal___contentDigest' |
+  'childContentfulLayoutCopyCopyTextNode___internal___description' |
+  'childContentfulLayoutCopyCopyTextNode___internal___fieldOwners' |
+  'childContentfulLayoutCopyCopyTextNode___internal___ignoreType' |
+  'childContentfulLayoutCopyCopyTextNode___internal___mediaType' |
+  'childContentfulLayoutCopyCopyTextNode___internal___owner' |
+  'childContentfulLayoutCopyCopyTextNode___internal___type' |
+  'childContentfulLayoutCopyCopyTextNode___copy';
+
+export type ContentfulLayoutCopyFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  title?: Maybe<StringQueryOperatorInput>,
+  headline?: Maybe<StringQueryOperatorInput>,
+  ctaTitle?: Maybe<StringQueryOperatorInput>,
+  ctaLink?: Maybe<StringQueryOperatorInput>,
+  appearance?: Maybe<StringQueryOperatorInput>,
+  copy?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
+  spaceId?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+  createdAt?: Maybe<DateQueryOperatorInput>,
+  updatedAt?: Maybe<DateQueryOperatorInput>,
+  sys?: Maybe<ContentfulLayoutCopySysFilterInput>,
+  node_locale?: Maybe<StringQueryOperatorInput>,
+  layout?: Maybe<ContentfulLayoutFilterListInput>,
+  childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
+};
+
+export type ContentfulLayoutCopyGroupConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<ContentfulLayoutCopyEdge>,
+  nodes: Array<ContentfulLayoutCopy>,
+  pageInfo: PageInfo,
+  field: Scalars['String'],
+  fieldValue?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulLayoutCopySortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulLayoutCopyFieldsEnum>>>,
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>,
+};
+
+export type ContentfulLayoutCopySys = {
+  revision?: Maybe<Scalars['Int']>,
+  contentType?: Maybe<ContentfulLayoutCopySysContentType>,
+};
+
+export type ContentfulLayoutCopySysContentType = {
+  sys?: Maybe<ContentfulLayoutCopySysContentTypeSys>,
+};
+
+export type ContentfulLayoutCopySysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulLayoutCopySysContentTypeSysFilterInput>,
+};
+
+export type ContentfulLayoutCopySysContentTypeSys = {
+  type?: Maybe<Scalars['String']>,
+  linkType?: Maybe<Scalars['String']>,
+  id?: Maybe<Scalars['String']>,
+  contentful_id?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulLayoutCopySysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>,
+  linkType?: Maybe<StringQueryOperatorInput>,
+  id?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulLayoutCopySysFilterInput = {
+  revision?: Maybe<IntQueryOperatorInput>,
+  contentType?: Maybe<ContentfulLayoutCopySysContentTypeFilterInput>,
 };
 
 export type ContentfulLayoutEdge = {
@@ -3676,6 +4181,10 @@ export type Query = {
   allSitePage: SitePageConnection,
   imageSharp?: Maybe<ImageSharp>,
   allImageSharp: ImageSharpConnection,
+  contentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNode>,
+  allContentfulLayoutCopyCopyTextNode: ContentfulLayoutCopyCopyTextNodeConnection,
+  contentfulLayoutCopy?: Maybe<ContentfulLayoutCopy>,
+  allContentfulLayoutCopy: ContentfulLayoutCopyConnection,
   contentfulAsset?: Maybe<ContentfulAsset>,
   allContentfulAsset: ContentfulAssetConnection,
   contentfulTechnology?: Maybe<ContentfulTechnology>,
@@ -3846,6 +4355,53 @@ export type QueryAllImageSharpArgs = {
 };
 
 
+export type QueryContentfulLayoutCopyCopyTextNodeArgs = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  copy?: Maybe<StringQueryOperatorInput>
+};
+
+
+export type QueryAllContentfulLayoutCopyCopyTextNodeArgs = {
+  filter?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
+  sort?: Maybe<ContentfulLayoutCopyCopyTextNodeSortInput>,
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>
+};
+
+
+export type QueryContentfulLayoutCopyArgs = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  title?: Maybe<StringQueryOperatorInput>,
+  headline?: Maybe<StringQueryOperatorInput>,
+  ctaTitle?: Maybe<StringQueryOperatorInput>,
+  ctaLink?: Maybe<StringQueryOperatorInput>,
+  appearance?: Maybe<StringQueryOperatorInput>,
+  copy?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
+  spaceId?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+  createdAt?: Maybe<DateQueryOperatorInput>,
+  updatedAt?: Maybe<DateQueryOperatorInput>,
+  sys?: Maybe<ContentfulLayoutCopySysFilterInput>,
+  node_locale?: Maybe<StringQueryOperatorInput>,
+  layout?: Maybe<ContentfulLayoutFilterListInput>,
+  childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>
+};
+
+
+export type QueryAllContentfulLayoutCopyArgs = {
+  filter?: Maybe<ContentfulLayoutCopyFilterInput>,
+  sort?: Maybe<ContentfulLayoutCopySortInput>,
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>
+};
+
+
 export type QueryContentfulAssetArgs = {
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
@@ -3906,13 +4462,13 @@ export type QueryContentfulLayoutCallToActionArgs = {
   payoff?: Maybe<StringQueryOperatorInput>,
   url?: Maybe<StringQueryOperatorInput>,
   label?: Maybe<StringQueryOperatorInput>,
-  layout?: Maybe<ContentfulLayoutFilterListInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
   createdAt?: Maybe<DateQueryOperatorInput>,
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCallToActionSysFilterInput>,
-  node_locale?: Maybe<StringQueryOperatorInput>
+  node_locale?: Maybe<StringQueryOperatorInput>,
+  layout?: Maybe<ContentfulLayoutFilterListInput>
 };
 
 
@@ -4914,15 +5470,27 @@ export type CasesPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 's
 export type ContactPageQueryVariables = {};
 
 
-export type ContactPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 'slug'>> };
+export type ContactPageQuery = { contentfulLayout: Maybe<(
+    Pick<ContentfulLayout, 'slug' | 'title'>
+    & { contentModules: Maybe<Array<Maybe<(
+      { __typename: 'ContentfulLayoutCopy' }
+      & Pick<ContentfulLayoutCopy, 'appearance' | 'title' | 'ctaTitle' | 'ctaLink' | 'headline'>
+      & { copy: Maybe<Pick<ContentfulLayoutCopyCopyTextNode, 'copy'>> }
+    )>>> }
+  )> };
 
 export type HomePageQueryVariables = {};
 
 
 export type HomePageQuery = { contentfulLayout: Maybe<(
-    Pick<ContentfulLayout, 'slug' | 'title'>
-    & { contentModules: Maybe<Array<Maybe<Pick<ContentfulLayoutCallToAction, 'id' | 'title' | 'url' | 'label'> | (
-      Pick<ContentfulLayoutHeroImage, 'id' | 'headline'>
+    Pick<ContentfulLayout, 'title'>
+    & { contentModules: Maybe<Array<Maybe<(
+      { __typename: 'ContentfulLayoutCopy' }
+      & Pick<ContentfulLayoutCopy, 'appearance' | 'title' | 'ctaTitle' | 'ctaLink' | 'headline'>
+      & { copy: Maybe<Pick<ContentfulLayoutCopyCopyTextNode, 'copy'>> }
+    ) | (
+      { __typename: 'ContentfulLayoutHeroImage' }
+      & Pick<ContentfulLayoutHeroImage, 'headline'>
       & { backgroundImage: Maybe<{ fluid: Maybe<Pick<ContentfulFluid, 'src'>> }> }
     )>>> }
   )> };
