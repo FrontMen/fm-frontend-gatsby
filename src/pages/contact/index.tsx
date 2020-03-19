@@ -3,10 +3,10 @@ import * as React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { ContactPageQuery } from '../../../types/graphql-types';
+import ContentModules from '../../components/contentModules';
+import Layout from '../../components/layout';
 import { SectionContainer } from '../../components/sectionContainer';
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
-import ContentModules from '../../components/contentModules';
 
 type Props = {
   data: ContactPageQuery;

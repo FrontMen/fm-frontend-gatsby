@@ -18,9 +18,9 @@ const Title = styled.h1`
 `;
 
 const Head = styled.header`
-  background-color: ${({theme}) => {
-  return theme.colors.background;
-}};
+  background-color: ${({ theme }) => {
+    return theme.colors.background;
+  }};
   position: sticky;
   width: 100vw;
   top: 0;

@@ -2,48 +2,32 @@ import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
-import { HomePageQuery } from '../../types/graphql-types';
+import {
+  ContentfulLayoutSetOfFour,
+  HomePageQuery,
+  Maybe,
+} from '../../types/graphql-types';
 import CasePreview from '../components/casePreview/casePreview';
+import ContentModules from '../components/contentModules';
+import { ExternalLink } from '../components/ExternalLink';
 import { CTABox } from '../components/layout/cta-container';
-import { HeroImage } from '../components/layout/heroImage';
+import ParallaxLayout from '../components/parallaxLayout';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
-import ParallaxLayout from '../components/parallaxLayout';
-import ContentModules from '../components/contentModules';
 
 type Props = {
   data: HomePageQuery;
 };
 
-const renderContentModules = (contentModules: any = []): React.FC => {
-  return contentModules?.map((cm: any) => {
-    if (!cm?.__typename) {
-      return null;
-    }
-    switch (cm.__typename) {
-      case 'ContentfulLayoutHeroImage':
-        return <HeroImage cm={cm} key={cm.id} />;
-      case 'ContentfulLayoutCopy':
-        return (
-          <SectionContainer>
-            <CTABox
-              title={cm.headline}
-              payoff={cm.copy.copy}
-              ctaLabel={cm.ctaTitle}
-              ctaLink={cm.ctaLink}
-              appearance={cm.appearance}
-            />
-          </SectionContainer>
-        );
-      default:
-        return null;
-        break;
-    }
-  });
-};
-
 const IndexPage: React.FC<Props> = ({ data }: Props) => {
   const layout = data.contentfulLayout;
+  const isSetOfFour = (
+    variableToCheck: any
+  ): variableToCheck is ContentfulLayoutSetOfFour =>
+    // eslint-disable-next-line no-underscore-dangle
+    !!(variableToCheck as ContentfulLayoutSetOfFour).setItems;
+
+  const setOfFour: any = layout?.contentModules?.find(isSetOfFour);
 
   if (!layout) {
     return null;
@@ -53,7 +37,7 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
       {layout.title && <SEO title={layout.title} />}
 
       {layout.contentModules && (
-        <ContentModules contentModules={layout.contentModules}></ContentModules>
+        <ContentModules contentModules={layout.contentModules} />
       )}
 
       <SectionContainer>
@@ -67,6 +51,20 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
         </ul>
       </SectionContainer>
       <SectionContainer>
+        <h1>Some of the clients we work for</h1>
+        <ul>
+          {isSetOfFour(setOfFour) &&
+            setOfFour?.setItems?.map(
+              client =>
+                client?.link && (
+                  <li>
+                    <ExternalLink to={client.link}>{client.title}</ExternalLink>
+                  </li>
+                )
+            )}
+        </ul>
+      </SectionContainer>
+      <SectionContainer>
         <CTABox
           title="Let's build together"
           payoff="Join a long list of satisfied clients, partners,
@@ -76,6 +74,11 @@ the pleasure of working with."
           ctaLink="/contact"
           appearance="Default"
         />
+      </SectionContainer>
+      <SectionContainer>
+        <pre css={{ backgroundColor: '#efefef', overflow: 'scroll' }}>
+          {JSON.stringify(layout, null, 2)}
+        </pre>
       </SectionContainer>
     </ParallaxLayout>
   );
@@ -104,6 +107,14 @@ export const query = graphql`
             fluid(maxWidth: 1200) {
               src
             }
+          }
+        }
+        ... on ContentfulLayoutSetOfFour {
+          __typename
+          id
+          setItems {
+            link
+            title
           }
         }
       }

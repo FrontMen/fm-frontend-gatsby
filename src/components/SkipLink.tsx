@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import styled from '../utils/styled';
 
 const Skip = styled.a`

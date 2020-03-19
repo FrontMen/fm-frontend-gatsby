@@ -3,8 +3,8 @@ import { Link } from 'gatsby';
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown/with-html';
 
-import { rhythm, scale } from '../../utils/typography';
 import styled from '../../utils/styled';
+import { rhythm, scale } from '../../utils/typography';
 
 type Props = {
   title: string;
@@ -29,7 +29,6 @@ export const CTABox: React.FC<Props> = ({
 }: Props) => {
   const CtaLink =
     ctaLink && ctaLabel ? <Link to={ctaLink}>{ctaLabel}</Link> : null;
-  console.log(appearance);
   return (
     <Container>
       {title && <Title>{title}</Title>}

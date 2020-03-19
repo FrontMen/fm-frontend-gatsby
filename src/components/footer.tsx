@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { MediaQuerySize, mqMin } from '../utils/breakpoints';
+import { getSkewed } from '../utils/skewed';
 import styled from '../utils/styled';
 import { rhythm } from '../utils/typography';
-import { getSkewed } from '../utils/skewed';
 
 const Wrapper = styled.footer`
   display: flex;

@@ -10,11 +10,11 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 import { useEffect } from 'react';
 
-import Footer from './footer';
-import Header from './header';
 import { useSiteMetadata } from '../hooks/useSiteMetaData';
 import styled, { theme } from '../utils/styled';
 import { rhythm } from '../utils/typography';
+import Footer from './footer';
+import Header from './header';
 import { ParallaxContainer } from './Parralax';
 import { Polygon } from './Polygon';
 import { SkipLink } from './SkipLink';

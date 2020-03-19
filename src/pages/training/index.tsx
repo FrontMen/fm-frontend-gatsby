@@ -1,11 +1,11 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import * as React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { TrainingPageQuery } from '../../../types/graphql-types';
+import Layout from '../../components/layout';
 import { SectionContainer } from '../../components/sectionContainer';
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
 
 type Props = {
   data: TrainingPageQuery;
@@ -26,8 +26,7 @@ export const query = graphql`
   query TrainingPage {
     contentfulLayout(slug: { eq: "Training" }) {
       slug
-      #   slug
-      #   title
+      title
       #   contentModules {
       #     ... on ContentfulLayoutHeroImage {
       #       id
