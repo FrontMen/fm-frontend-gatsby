@@ -3297,9 +3297,8 @@ export type ContentfulService = Node & {
   internal: Internal,
   title?: Maybe<Scalars['String']>,
   headline?: Maybe<Scalars['String']>,
-  ctaLabel?: Maybe<Scalars['String']>,
   slug?: Maybe<Scalars['String']>,
-  services?: Maybe<Array<Maybe<ContentfulService>>>,
+  service?: Maybe<Array<Maybe<ContentfulService>>>,
   description?: Maybe<ContentfulServiceDescriptionTextNode>,
   spaceId?: Maybe<Scalars['String']>,
   contentful_id?: Maybe<Scalars['String']>,
@@ -3307,8 +3306,9 @@ export type ContentfulService = Node & {
   updatedAt?: Maybe<Scalars['Date']>,
   sys?: Maybe<ContentfulServiceSys>,
   node_locale?: Maybe<Scalars['String']>,
+  ctaLabel?: Maybe<Scalars['String']>,
+  services?: Maybe<Array<Maybe<ContentfulService>>>,
   payoff?: Maybe<Scalars['String']>,
-  service?: Maybe<Array<Maybe<ContentfulService>>>,
   childContentfulServiceDescriptionTextNode?: Maybe<ContentfulServiceDescriptionTextNode>,
 };
 
@@ -3590,212 +3590,211 @@ export type ContentfulServiceFieldsEnum =
   'internal___type' |
   'title' |
   'headline' |
-  'ctaLabel' |
   'slug' |
-  'services' |
-  'services___id' |
-  'services___parent___id' |
-  'services___parent___parent___id' |
-  'services___parent___parent___children' |
-  'services___parent___children' |
-  'services___parent___children___id' |
-  'services___parent___children___children' |
-  'services___parent___internal___content' |
-  'services___parent___internal___contentDigest' |
-  'services___parent___internal___description' |
-  'services___parent___internal___fieldOwners' |
-  'services___parent___internal___ignoreType' |
-  'services___parent___internal___mediaType' |
-  'services___parent___internal___owner' |
-  'services___parent___internal___type' |
-  'services___children' |
-  'services___children___id' |
-  'services___children___parent___id' |
-  'services___children___parent___children' |
-  'services___children___children' |
-  'services___children___children___id' |
-  'services___children___children___children' |
-  'services___children___internal___content' |
-  'services___children___internal___contentDigest' |
-  'services___children___internal___description' |
-  'services___children___internal___fieldOwners' |
-  'services___children___internal___ignoreType' |
-  'services___children___internal___mediaType' |
-  'services___children___internal___owner' |
-  'services___children___internal___type' |
-  'services___internal___content' |
-  'services___internal___contentDigest' |
-  'services___internal___description' |
-  'services___internal___fieldOwners' |
-  'services___internal___ignoreType' |
-  'services___internal___mediaType' |
-  'services___internal___owner' |
-  'services___internal___type' |
-  'services___title' |
-  'services___headline' |
-  'services___ctaLabel' |
-  'services___slug' |
-  'services___services' |
-  'services___services___id' |
-  'services___services___parent___id' |
-  'services___services___parent___children' |
-  'services___services___children' |
-  'services___services___children___id' |
-  'services___services___children___children' |
-  'services___services___internal___content' |
-  'services___services___internal___contentDigest' |
-  'services___services___internal___description' |
-  'services___services___internal___fieldOwners' |
-  'services___services___internal___ignoreType' |
-  'services___services___internal___mediaType' |
-  'services___services___internal___owner' |
-  'services___services___internal___type' |
-  'services___services___title' |
-  'services___services___headline' |
-  'services___services___ctaLabel' |
-  'services___services___slug' |
-  'services___services___services' |
-  'services___services___services___id' |
-  'services___services___services___children' |
-  'services___services___services___title' |
-  'services___services___services___headline' |
-  'services___services___services___ctaLabel' |
-  'services___services___services___slug' |
-  'services___services___services___services' |
-  'services___services___services___spaceId' |
-  'services___services___services___contentful_id' |
-  'services___services___services___createdAt' |
-  'services___services___services___updatedAt' |
-  'services___services___services___node_locale' |
-  'services___services___services___payoff' |
-  'services___services___services___service' |
-  'services___services___description___id' |
-  'services___services___description___children' |
-  'services___services___description___description' |
-  'services___services___spaceId' |
-  'services___services___contentful_id' |
-  'services___services___createdAt' |
-  'services___services___updatedAt' |
-  'services___services___sys___revision' |
-  'services___services___node_locale' |
-  'services___services___payoff' |
-  'services___services___service' |
-  'services___services___service___id' |
-  'services___services___service___children' |
-  'services___services___service___title' |
-  'services___services___service___headline' |
-  'services___services___service___ctaLabel' |
-  'services___services___service___slug' |
-  'services___services___service___services' |
-  'services___services___service___spaceId' |
-  'services___services___service___contentful_id' |
-  'services___services___service___createdAt' |
-  'services___services___service___updatedAt' |
-  'services___services___service___node_locale' |
-  'services___services___service___payoff' |
-  'services___services___service___service' |
-  'services___services___childContentfulServiceDescriptionTextNode___id' |
-  'services___services___childContentfulServiceDescriptionTextNode___children' |
-  'services___services___childContentfulServiceDescriptionTextNode___description' |
-  'services___description___id' |
-  'services___description___parent___id' |
-  'services___description___parent___children' |
-  'services___description___children' |
-  'services___description___children___id' |
-  'services___description___children___children' |
-  'services___description___internal___content' |
-  'services___description___internal___contentDigest' |
-  'services___description___internal___description' |
-  'services___description___internal___fieldOwners' |
-  'services___description___internal___ignoreType' |
-  'services___description___internal___mediaType' |
-  'services___description___internal___owner' |
-  'services___description___internal___type' |
-  'services___description___description' |
-  'services___spaceId' |
-  'services___contentful_id' |
-  'services___createdAt' |
-  'services___updatedAt' |
-  'services___sys___revision' |
-  'services___node_locale' |
-  'services___payoff' |
-  'services___service' |
-  'services___service___id' |
-  'services___service___parent___id' |
-  'services___service___parent___children' |
-  'services___service___children' |
-  'services___service___children___id' |
-  'services___service___children___children' |
-  'services___service___internal___content' |
-  'services___service___internal___contentDigest' |
-  'services___service___internal___description' |
-  'services___service___internal___fieldOwners' |
-  'services___service___internal___ignoreType' |
-  'services___service___internal___mediaType' |
-  'services___service___internal___owner' |
-  'services___service___internal___type' |
-  'services___service___title' |
-  'services___service___headline' |
-  'services___service___ctaLabel' |
-  'services___service___slug' |
-  'services___service___services' |
-  'services___service___services___id' |
-  'services___service___services___children' |
-  'services___service___services___title' |
-  'services___service___services___headline' |
-  'services___service___services___ctaLabel' |
-  'services___service___services___slug' |
-  'services___service___services___services' |
-  'services___service___services___spaceId' |
-  'services___service___services___contentful_id' |
-  'services___service___services___createdAt' |
-  'services___service___services___updatedAt' |
-  'services___service___services___node_locale' |
-  'services___service___services___payoff' |
-  'services___service___services___service' |
-  'services___service___description___id' |
-  'services___service___description___children' |
-  'services___service___description___description' |
-  'services___service___spaceId' |
-  'services___service___contentful_id' |
-  'services___service___createdAt' |
-  'services___service___updatedAt' |
-  'services___service___sys___revision' |
-  'services___service___node_locale' |
-  'services___service___payoff' |
-  'services___service___service' |
-  'services___service___service___id' |
-  'services___service___service___children' |
-  'services___service___service___title' |
-  'services___service___service___headline' |
-  'services___service___service___ctaLabel' |
-  'services___service___service___slug' |
-  'services___service___service___services' |
-  'services___service___service___spaceId' |
-  'services___service___service___contentful_id' |
-  'services___service___service___createdAt' |
-  'services___service___service___updatedAt' |
-  'services___service___service___node_locale' |
-  'services___service___service___payoff' |
-  'services___service___service___service' |
-  'services___service___childContentfulServiceDescriptionTextNode___id' |
-  'services___service___childContentfulServiceDescriptionTextNode___children' |
-  'services___service___childContentfulServiceDescriptionTextNode___description' |
-  'services___childContentfulServiceDescriptionTextNode___id' |
-  'services___childContentfulServiceDescriptionTextNode___parent___id' |
-  'services___childContentfulServiceDescriptionTextNode___parent___children' |
-  'services___childContentfulServiceDescriptionTextNode___children' |
-  'services___childContentfulServiceDescriptionTextNode___children___id' |
-  'services___childContentfulServiceDescriptionTextNode___children___children' |
-  'services___childContentfulServiceDescriptionTextNode___internal___content' |
-  'services___childContentfulServiceDescriptionTextNode___internal___contentDigest' |
-  'services___childContentfulServiceDescriptionTextNode___internal___description' |
-  'services___childContentfulServiceDescriptionTextNode___internal___fieldOwners' |
-  'services___childContentfulServiceDescriptionTextNode___internal___ignoreType' |
-  'services___childContentfulServiceDescriptionTextNode___internal___mediaType' |
-  'services___childContentfulServiceDescriptionTextNode___internal___owner' |
-  'services___childContentfulServiceDescriptionTextNode___internal___type' |
-  'services___childContentfulServiceDescriptionTextNode___description' |
+  'service' |
+  'service___id' |
+  'service___parent___id' |
+  'service___parent___parent___id' |
+  'service___parent___parent___children' |
+  'service___parent___children' |
+  'service___parent___children___id' |
+  'service___parent___children___children' |
+  'service___parent___internal___content' |
+  'service___parent___internal___contentDigest' |
+  'service___parent___internal___description' |
+  'service___parent___internal___fieldOwners' |
+  'service___parent___internal___ignoreType' |
+  'service___parent___internal___mediaType' |
+  'service___parent___internal___owner' |
+  'service___parent___internal___type' |
+  'service___children' |
+  'service___children___id' |
+  'service___children___parent___id' |
+  'service___children___parent___children' |
+  'service___children___children' |
+  'service___children___children___id' |
+  'service___children___children___children' |
+  'service___children___internal___content' |
+  'service___children___internal___contentDigest' |
+  'service___children___internal___description' |
+  'service___children___internal___fieldOwners' |
+  'service___children___internal___ignoreType' |
+  'service___children___internal___mediaType' |
+  'service___children___internal___owner' |
+  'service___children___internal___type' |
+  'service___internal___content' |
+  'service___internal___contentDigest' |
+  'service___internal___description' |
+  'service___internal___fieldOwners' |
+  'service___internal___ignoreType' |
+  'service___internal___mediaType' |
+  'service___internal___owner' |
+  'service___internal___type' |
+  'service___title' |
+  'service___headline' |
+  'service___slug' |
+  'service___service' |
+  'service___service___id' |
+  'service___service___parent___id' |
+  'service___service___parent___children' |
+  'service___service___children' |
+  'service___service___children___id' |
+  'service___service___children___children' |
+  'service___service___internal___content' |
+  'service___service___internal___contentDigest' |
+  'service___service___internal___description' |
+  'service___service___internal___fieldOwners' |
+  'service___service___internal___ignoreType' |
+  'service___service___internal___mediaType' |
+  'service___service___internal___owner' |
+  'service___service___internal___type' |
+  'service___service___title' |
+  'service___service___headline' |
+  'service___service___slug' |
+  'service___service___service' |
+  'service___service___service___id' |
+  'service___service___service___children' |
+  'service___service___service___title' |
+  'service___service___service___headline' |
+  'service___service___service___slug' |
+  'service___service___service___service' |
+  'service___service___service___spaceId' |
+  'service___service___service___contentful_id' |
+  'service___service___service___createdAt' |
+  'service___service___service___updatedAt' |
+  'service___service___service___node_locale' |
+  'service___service___service___ctaLabel' |
+  'service___service___service___services' |
+  'service___service___service___payoff' |
+  'service___service___description___id' |
+  'service___service___description___children' |
+  'service___service___description___description' |
+  'service___service___spaceId' |
+  'service___service___contentful_id' |
+  'service___service___createdAt' |
+  'service___service___updatedAt' |
+  'service___service___sys___revision' |
+  'service___service___node_locale' |
+  'service___service___ctaLabel' |
+  'service___service___services' |
+  'service___service___services___id' |
+  'service___service___services___children' |
+  'service___service___services___title' |
+  'service___service___services___headline' |
+  'service___service___services___slug' |
+  'service___service___services___service' |
+  'service___service___services___spaceId' |
+  'service___service___services___contentful_id' |
+  'service___service___services___createdAt' |
+  'service___service___services___updatedAt' |
+  'service___service___services___node_locale' |
+  'service___service___services___ctaLabel' |
+  'service___service___services___services' |
+  'service___service___services___payoff' |
+  'service___service___payoff' |
+  'service___service___childContentfulServiceDescriptionTextNode___id' |
+  'service___service___childContentfulServiceDescriptionTextNode___children' |
+  'service___service___childContentfulServiceDescriptionTextNode___description' |
+  'service___description___id' |
+  'service___description___parent___id' |
+  'service___description___parent___children' |
+  'service___description___children' |
+  'service___description___children___id' |
+  'service___description___children___children' |
+  'service___description___internal___content' |
+  'service___description___internal___contentDigest' |
+  'service___description___internal___description' |
+  'service___description___internal___fieldOwners' |
+  'service___description___internal___ignoreType' |
+  'service___description___internal___mediaType' |
+  'service___description___internal___owner' |
+  'service___description___internal___type' |
+  'service___description___description' |
+  'service___spaceId' |
+  'service___contentful_id' |
+  'service___createdAt' |
+  'service___updatedAt' |
+  'service___sys___revision' |
+  'service___node_locale' |
+  'service___ctaLabel' |
+  'service___services' |
+  'service___services___id' |
+  'service___services___parent___id' |
+  'service___services___parent___children' |
+  'service___services___children' |
+  'service___services___children___id' |
+  'service___services___children___children' |
+  'service___services___internal___content' |
+  'service___services___internal___contentDigest' |
+  'service___services___internal___description' |
+  'service___services___internal___fieldOwners' |
+  'service___services___internal___ignoreType' |
+  'service___services___internal___mediaType' |
+  'service___services___internal___owner' |
+  'service___services___internal___type' |
+  'service___services___title' |
+  'service___services___headline' |
+  'service___services___slug' |
+  'service___services___service' |
+  'service___services___service___id' |
+  'service___services___service___children' |
+  'service___services___service___title' |
+  'service___services___service___headline' |
+  'service___services___service___slug' |
+  'service___services___service___service' |
+  'service___services___service___spaceId' |
+  'service___services___service___contentful_id' |
+  'service___services___service___createdAt' |
+  'service___services___service___updatedAt' |
+  'service___services___service___node_locale' |
+  'service___services___service___ctaLabel' |
+  'service___services___service___services' |
+  'service___services___service___payoff' |
+  'service___services___description___id' |
+  'service___services___description___children' |
+  'service___services___description___description' |
+  'service___services___spaceId' |
+  'service___services___contentful_id' |
+  'service___services___createdAt' |
+  'service___services___updatedAt' |
+  'service___services___sys___revision' |
+  'service___services___node_locale' |
+  'service___services___ctaLabel' |
+  'service___services___services' |
+  'service___services___services___id' |
+  'service___services___services___children' |
+  'service___services___services___title' |
+  'service___services___services___headline' |
+  'service___services___services___slug' |
+  'service___services___services___service' |
+  'service___services___services___spaceId' |
+  'service___services___services___contentful_id' |
+  'service___services___services___createdAt' |
+  'service___services___services___updatedAt' |
+  'service___services___services___node_locale' |
+  'service___services___services___ctaLabel' |
+  'service___services___services___services' |
+  'service___services___services___payoff' |
+  'service___services___payoff' |
+  'service___services___childContentfulServiceDescriptionTextNode___id' |
+  'service___services___childContentfulServiceDescriptionTextNode___children' |
+  'service___services___childContentfulServiceDescriptionTextNode___description' |
+  'service___payoff' |
+  'service___childContentfulServiceDescriptionTextNode___id' |
+  'service___childContentfulServiceDescriptionTextNode___parent___id' |
+  'service___childContentfulServiceDescriptionTextNode___parent___children' |
+  'service___childContentfulServiceDescriptionTextNode___children' |
+  'service___childContentfulServiceDescriptionTextNode___children___id' |
+  'service___childContentfulServiceDescriptionTextNode___children___children' |
+  'service___childContentfulServiceDescriptionTextNode___internal___content' |
+  'service___childContentfulServiceDescriptionTextNode___internal___contentDigest' |
+  'service___childContentfulServiceDescriptionTextNode___internal___description' |
+  'service___childContentfulServiceDescriptionTextNode___internal___fieldOwners' |
+  'service___childContentfulServiceDescriptionTextNode___internal___ignoreType' |
+  'service___childContentfulServiceDescriptionTextNode___internal___mediaType' |
+  'service___childContentfulServiceDescriptionTextNode___internal___owner' |
+  'service___childContentfulServiceDescriptionTextNode___internal___type' |
+  'service___childContentfulServiceDescriptionTextNode___description' |
   'description___id' |
   'description___parent___id' |
   'description___parent___parent___id' |
@@ -3845,211 +3844,212 @@ export type ContentfulServiceFieldsEnum =
   'sys___contentType___sys___id' |
   'sys___contentType___sys___contentful_id' |
   'node_locale' |
+  'ctaLabel' |
+  'services' |
+  'services___id' |
+  'services___parent___id' |
+  'services___parent___parent___id' |
+  'services___parent___parent___children' |
+  'services___parent___children' |
+  'services___parent___children___id' |
+  'services___parent___children___children' |
+  'services___parent___internal___content' |
+  'services___parent___internal___contentDigest' |
+  'services___parent___internal___description' |
+  'services___parent___internal___fieldOwners' |
+  'services___parent___internal___ignoreType' |
+  'services___parent___internal___mediaType' |
+  'services___parent___internal___owner' |
+  'services___parent___internal___type' |
+  'services___children' |
+  'services___children___id' |
+  'services___children___parent___id' |
+  'services___children___parent___children' |
+  'services___children___children' |
+  'services___children___children___id' |
+  'services___children___children___children' |
+  'services___children___internal___content' |
+  'services___children___internal___contentDigest' |
+  'services___children___internal___description' |
+  'services___children___internal___fieldOwners' |
+  'services___children___internal___ignoreType' |
+  'services___children___internal___mediaType' |
+  'services___children___internal___owner' |
+  'services___children___internal___type' |
+  'services___internal___content' |
+  'services___internal___contentDigest' |
+  'services___internal___description' |
+  'services___internal___fieldOwners' |
+  'services___internal___ignoreType' |
+  'services___internal___mediaType' |
+  'services___internal___owner' |
+  'services___internal___type' |
+  'services___title' |
+  'services___headline' |
+  'services___slug' |
+  'services___service' |
+  'services___service___id' |
+  'services___service___parent___id' |
+  'services___service___parent___children' |
+  'services___service___children' |
+  'services___service___children___id' |
+  'services___service___children___children' |
+  'services___service___internal___content' |
+  'services___service___internal___contentDigest' |
+  'services___service___internal___description' |
+  'services___service___internal___fieldOwners' |
+  'services___service___internal___ignoreType' |
+  'services___service___internal___mediaType' |
+  'services___service___internal___owner' |
+  'services___service___internal___type' |
+  'services___service___title' |
+  'services___service___headline' |
+  'services___service___slug' |
+  'services___service___service' |
+  'services___service___service___id' |
+  'services___service___service___children' |
+  'services___service___service___title' |
+  'services___service___service___headline' |
+  'services___service___service___slug' |
+  'services___service___service___service' |
+  'services___service___service___spaceId' |
+  'services___service___service___contentful_id' |
+  'services___service___service___createdAt' |
+  'services___service___service___updatedAt' |
+  'services___service___service___node_locale' |
+  'services___service___service___ctaLabel' |
+  'services___service___service___services' |
+  'services___service___service___payoff' |
+  'services___service___description___id' |
+  'services___service___description___children' |
+  'services___service___description___description' |
+  'services___service___spaceId' |
+  'services___service___contentful_id' |
+  'services___service___createdAt' |
+  'services___service___updatedAt' |
+  'services___service___sys___revision' |
+  'services___service___node_locale' |
+  'services___service___ctaLabel' |
+  'services___service___services' |
+  'services___service___services___id' |
+  'services___service___services___children' |
+  'services___service___services___title' |
+  'services___service___services___headline' |
+  'services___service___services___slug' |
+  'services___service___services___service' |
+  'services___service___services___spaceId' |
+  'services___service___services___contentful_id' |
+  'services___service___services___createdAt' |
+  'services___service___services___updatedAt' |
+  'services___service___services___node_locale' |
+  'services___service___services___ctaLabel' |
+  'services___service___services___services' |
+  'services___service___services___payoff' |
+  'services___service___payoff' |
+  'services___service___childContentfulServiceDescriptionTextNode___id' |
+  'services___service___childContentfulServiceDescriptionTextNode___children' |
+  'services___service___childContentfulServiceDescriptionTextNode___description' |
+  'services___description___id' |
+  'services___description___parent___id' |
+  'services___description___parent___children' |
+  'services___description___children' |
+  'services___description___children___id' |
+  'services___description___children___children' |
+  'services___description___internal___content' |
+  'services___description___internal___contentDigest' |
+  'services___description___internal___description' |
+  'services___description___internal___fieldOwners' |
+  'services___description___internal___ignoreType' |
+  'services___description___internal___mediaType' |
+  'services___description___internal___owner' |
+  'services___description___internal___type' |
+  'services___description___description' |
+  'services___spaceId' |
+  'services___contentful_id' |
+  'services___createdAt' |
+  'services___updatedAt' |
+  'services___sys___revision' |
+  'services___node_locale' |
+  'services___ctaLabel' |
+  'services___services' |
+  'services___services___id' |
+  'services___services___parent___id' |
+  'services___services___parent___children' |
+  'services___services___children' |
+  'services___services___children___id' |
+  'services___services___children___children' |
+  'services___services___internal___content' |
+  'services___services___internal___contentDigest' |
+  'services___services___internal___description' |
+  'services___services___internal___fieldOwners' |
+  'services___services___internal___ignoreType' |
+  'services___services___internal___mediaType' |
+  'services___services___internal___owner' |
+  'services___services___internal___type' |
+  'services___services___title' |
+  'services___services___headline' |
+  'services___services___slug' |
+  'services___services___service' |
+  'services___services___service___id' |
+  'services___services___service___children' |
+  'services___services___service___title' |
+  'services___services___service___headline' |
+  'services___services___service___slug' |
+  'services___services___service___service' |
+  'services___services___service___spaceId' |
+  'services___services___service___contentful_id' |
+  'services___services___service___createdAt' |
+  'services___services___service___updatedAt' |
+  'services___services___service___node_locale' |
+  'services___services___service___ctaLabel' |
+  'services___services___service___services' |
+  'services___services___service___payoff' |
+  'services___services___description___id' |
+  'services___services___description___children' |
+  'services___services___description___description' |
+  'services___services___spaceId' |
+  'services___services___contentful_id' |
+  'services___services___createdAt' |
+  'services___services___updatedAt' |
+  'services___services___sys___revision' |
+  'services___services___node_locale' |
+  'services___services___ctaLabel' |
+  'services___services___services' |
+  'services___services___services___id' |
+  'services___services___services___children' |
+  'services___services___services___title' |
+  'services___services___services___headline' |
+  'services___services___services___slug' |
+  'services___services___services___service' |
+  'services___services___services___spaceId' |
+  'services___services___services___contentful_id' |
+  'services___services___services___createdAt' |
+  'services___services___services___updatedAt' |
+  'services___services___services___node_locale' |
+  'services___services___services___ctaLabel' |
+  'services___services___services___services' |
+  'services___services___services___payoff' |
+  'services___services___payoff' |
+  'services___services___childContentfulServiceDescriptionTextNode___id' |
+  'services___services___childContentfulServiceDescriptionTextNode___children' |
+  'services___services___childContentfulServiceDescriptionTextNode___description' |
+  'services___payoff' |
+  'services___childContentfulServiceDescriptionTextNode___id' |
+  'services___childContentfulServiceDescriptionTextNode___parent___id' |
+  'services___childContentfulServiceDescriptionTextNode___parent___children' |
+  'services___childContentfulServiceDescriptionTextNode___children' |
+  'services___childContentfulServiceDescriptionTextNode___children___id' |
+  'services___childContentfulServiceDescriptionTextNode___children___children' |
+  'services___childContentfulServiceDescriptionTextNode___internal___content' |
+  'services___childContentfulServiceDescriptionTextNode___internal___contentDigest' |
+  'services___childContentfulServiceDescriptionTextNode___internal___description' |
+  'services___childContentfulServiceDescriptionTextNode___internal___fieldOwners' |
+  'services___childContentfulServiceDescriptionTextNode___internal___ignoreType' |
+  'services___childContentfulServiceDescriptionTextNode___internal___mediaType' |
+  'services___childContentfulServiceDescriptionTextNode___internal___owner' |
+  'services___childContentfulServiceDescriptionTextNode___internal___type' |
+  'services___childContentfulServiceDescriptionTextNode___description' |
   'payoff' |
-  'service' |
-  'service___id' |
-  'service___parent___id' |
-  'service___parent___parent___id' |
-  'service___parent___parent___children' |
-  'service___parent___children' |
-  'service___parent___children___id' |
-  'service___parent___children___children' |
-  'service___parent___internal___content' |
-  'service___parent___internal___contentDigest' |
-  'service___parent___internal___description' |
-  'service___parent___internal___fieldOwners' |
-  'service___parent___internal___ignoreType' |
-  'service___parent___internal___mediaType' |
-  'service___parent___internal___owner' |
-  'service___parent___internal___type' |
-  'service___children' |
-  'service___children___id' |
-  'service___children___parent___id' |
-  'service___children___parent___children' |
-  'service___children___children' |
-  'service___children___children___id' |
-  'service___children___children___children' |
-  'service___children___internal___content' |
-  'service___children___internal___contentDigest' |
-  'service___children___internal___description' |
-  'service___children___internal___fieldOwners' |
-  'service___children___internal___ignoreType' |
-  'service___children___internal___mediaType' |
-  'service___children___internal___owner' |
-  'service___children___internal___type' |
-  'service___internal___content' |
-  'service___internal___contentDigest' |
-  'service___internal___description' |
-  'service___internal___fieldOwners' |
-  'service___internal___ignoreType' |
-  'service___internal___mediaType' |
-  'service___internal___owner' |
-  'service___internal___type' |
-  'service___title' |
-  'service___headline' |
-  'service___ctaLabel' |
-  'service___slug' |
-  'service___services' |
-  'service___services___id' |
-  'service___services___parent___id' |
-  'service___services___parent___children' |
-  'service___services___children' |
-  'service___services___children___id' |
-  'service___services___children___children' |
-  'service___services___internal___content' |
-  'service___services___internal___contentDigest' |
-  'service___services___internal___description' |
-  'service___services___internal___fieldOwners' |
-  'service___services___internal___ignoreType' |
-  'service___services___internal___mediaType' |
-  'service___services___internal___owner' |
-  'service___services___internal___type' |
-  'service___services___title' |
-  'service___services___headline' |
-  'service___services___ctaLabel' |
-  'service___services___slug' |
-  'service___services___services' |
-  'service___services___services___id' |
-  'service___services___services___children' |
-  'service___services___services___title' |
-  'service___services___services___headline' |
-  'service___services___services___ctaLabel' |
-  'service___services___services___slug' |
-  'service___services___services___services' |
-  'service___services___services___spaceId' |
-  'service___services___services___contentful_id' |
-  'service___services___services___createdAt' |
-  'service___services___services___updatedAt' |
-  'service___services___services___node_locale' |
-  'service___services___services___payoff' |
-  'service___services___services___service' |
-  'service___services___description___id' |
-  'service___services___description___children' |
-  'service___services___description___description' |
-  'service___services___spaceId' |
-  'service___services___contentful_id' |
-  'service___services___createdAt' |
-  'service___services___updatedAt' |
-  'service___services___sys___revision' |
-  'service___services___node_locale' |
-  'service___services___payoff' |
-  'service___services___service' |
-  'service___services___service___id' |
-  'service___services___service___children' |
-  'service___services___service___title' |
-  'service___services___service___headline' |
-  'service___services___service___ctaLabel' |
-  'service___services___service___slug' |
-  'service___services___service___services' |
-  'service___services___service___spaceId' |
-  'service___services___service___contentful_id' |
-  'service___services___service___createdAt' |
-  'service___services___service___updatedAt' |
-  'service___services___service___node_locale' |
-  'service___services___service___payoff' |
-  'service___services___service___service' |
-  'service___services___childContentfulServiceDescriptionTextNode___id' |
-  'service___services___childContentfulServiceDescriptionTextNode___children' |
-  'service___services___childContentfulServiceDescriptionTextNode___description' |
-  'service___description___id' |
-  'service___description___parent___id' |
-  'service___description___parent___children' |
-  'service___description___children' |
-  'service___description___children___id' |
-  'service___description___children___children' |
-  'service___description___internal___content' |
-  'service___description___internal___contentDigest' |
-  'service___description___internal___description' |
-  'service___description___internal___fieldOwners' |
-  'service___description___internal___ignoreType' |
-  'service___description___internal___mediaType' |
-  'service___description___internal___owner' |
-  'service___description___internal___type' |
-  'service___description___description' |
-  'service___spaceId' |
-  'service___contentful_id' |
-  'service___createdAt' |
-  'service___updatedAt' |
-  'service___sys___revision' |
-  'service___node_locale' |
-  'service___payoff' |
-  'service___service' |
-  'service___service___id' |
-  'service___service___parent___id' |
-  'service___service___parent___children' |
-  'service___service___children' |
-  'service___service___children___id' |
-  'service___service___children___children' |
-  'service___service___internal___content' |
-  'service___service___internal___contentDigest' |
-  'service___service___internal___description' |
-  'service___service___internal___fieldOwners' |
-  'service___service___internal___ignoreType' |
-  'service___service___internal___mediaType' |
-  'service___service___internal___owner' |
-  'service___service___internal___type' |
-  'service___service___title' |
-  'service___service___headline' |
-  'service___service___ctaLabel' |
-  'service___service___slug' |
-  'service___service___services' |
-  'service___service___services___id' |
-  'service___service___services___children' |
-  'service___service___services___title' |
-  'service___service___services___headline' |
-  'service___service___services___ctaLabel' |
-  'service___service___services___slug' |
-  'service___service___services___services' |
-  'service___service___services___spaceId' |
-  'service___service___services___contentful_id' |
-  'service___service___services___createdAt' |
-  'service___service___services___updatedAt' |
-  'service___service___services___node_locale' |
-  'service___service___services___payoff' |
-  'service___service___services___service' |
-  'service___service___description___id' |
-  'service___service___description___children' |
-  'service___service___description___description' |
-  'service___service___spaceId' |
-  'service___service___contentful_id' |
-  'service___service___createdAt' |
-  'service___service___updatedAt' |
-  'service___service___sys___revision' |
-  'service___service___node_locale' |
-  'service___service___payoff' |
-  'service___service___service' |
-  'service___service___service___id' |
-  'service___service___service___children' |
-  'service___service___service___title' |
-  'service___service___service___headline' |
-  'service___service___service___ctaLabel' |
-  'service___service___service___slug' |
-  'service___service___service___services' |
-  'service___service___service___spaceId' |
-  'service___service___service___contentful_id' |
-  'service___service___service___createdAt' |
-  'service___service___service___updatedAt' |
-  'service___service___service___node_locale' |
-  'service___service___service___payoff' |
-  'service___service___service___service' |
-  'service___service___childContentfulServiceDescriptionTextNode___id' |
-  'service___service___childContentfulServiceDescriptionTextNode___children' |
-  'service___service___childContentfulServiceDescriptionTextNode___description' |
-  'service___childContentfulServiceDescriptionTextNode___id' |
-  'service___childContentfulServiceDescriptionTextNode___parent___id' |
-  'service___childContentfulServiceDescriptionTextNode___parent___children' |
-  'service___childContentfulServiceDescriptionTextNode___children' |
-  'service___childContentfulServiceDescriptionTextNode___children___id' |
-  'service___childContentfulServiceDescriptionTextNode___children___children' |
-  'service___childContentfulServiceDescriptionTextNode___internal___content' |
-  'service___childContentfulServiceDescriptionTextNode___internal___contentDigest' |
-  'service___childContentfulServiceDescriptionTextNode___internal___description' |
-  'service___childContentfulServiceDescriptionTextNode___internal___fieldOwners' |
-  'service___childContentfulServiceDescriptionTextNode___internal___ignoreType' |
-  'service___childContentfulServiceDescriptionTextNode___internal___mediaType' |
-  'service___childContentfulServiceDescriptionTextNode___internal___owner' |
-  'service___childContentfulServiceDescriptionTextNode___internal___type' |
-  'service___childContentfulServiceDescriptionTextNode___description' |
   'childContentfulServiceDescriptionTextNode___id' |
   'childContentfulServiceDescriptionTextNode___parent___id' |
   'childContentfulServiceDescriptionTextNode___parent___parent___id' |
@@ -4097,9 +4097,8 @@ export type ContentfulServiceFilterInput = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   headline?: Maybe<StringQueryOperatorInput>,
-  ctaLabel?: Maybe<StringQueryOperatorInput>,
   slug?: Maybe<StringQueryOperatorInput>,
-  services?: Maybe<ContentfulServiceFilterListInput>,
+  service?: Maybe<ContentfulServiceFilterListInput>,
   description?: Maybe<ContentfulServiceDescriptionTextNodeFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
@@ -4107,8 +4106,9 @@ export type ContentfulServiceFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulServiceSysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+  ctaLabel?: Maybe<StringQueryOperatorInput>,
+  services?: Maybe<ContentfulServiceFilterListInput>,
   payoff?: Maybe<StringQueryOperatorInput>,
-  service?: Maybe<ContentfulServiceFilterListInput>,
   childContentfulServiceDescriptionTextNode?: Maybe<ContentfulServiceDescriptionTextNodeFilterInput>,
 };
 
@@ -5737,12 +5737,12 @@ export type Query = {
   allSitePage: SitePageConnection,
   imageSharp?: Maybe<ImageSharp>,
   allImageSharp: ImageSharpConnection,
+  contentfulAsset?: Maybe<ContentfulAsset>,
+  allContentfulAsset: ContentfulAssetConnection,
   contentfulServiceDescriptionTextNode?: Maybe<ContentfulServiceDescriptionTextNode>,
   allContentfulServiceDescriptionTextNode: ContentfulServiceDescriptionTextNodeConnection,
   contentfulService?: Maybe<ContentfulService>,
   allContentfulService: ContentfulServiceConnection,
-  contentfulAsset?: Maybe<ContentfulAsset>,
-  allContentfulAsset: ContentfulAssetConnection,
   contentfulLayoutSetOfFour?: Maybe<ContentfulLayoutSetOfFour>,
   allContentfulLayoutSetOfFour: ContentfulLayoutSetOfFourConnection,
   contentfulClient?: Maybe<ContentfulClient>,
@@ -5883,6 +5883,7 @@ export type QuerySitePageArgs = {
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>,
+  context?: Maybe<SitePageContextFilterInput>,
   pluginCreator?: Maybe<SitePluginFilterInput>,
   pluginCreatorId?: Maybe<StringQueryOperatorInput>,
   componentPath?: Maybe<StringQueryOperatorInput>
@@ -5919,6 +5920,32 @@ export type QueryAllImageSharpArgs = {
 };
 
 
+export type QueryContentfulAssetArgs = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+  file?: Maybe<ContentfulAssetFileFilterInput>,
+  title?: Maybe<StringQueryOperatorInput>,
+  description?: Maybe<StringQueryOperatorInput>,
+  node_locale?: Maybe<StringQueryOperatorInput>,
+  fixed?: Maybe<ContentfulFixedFilterInput>,
+  resolutions?: Maybe<ContentfulResolutionsFilterInput>,
+  fluid?: Maybe<ContentfulFluidFilterInput>,
+  sizes?: Maybe<ContentfulSizesFilterInput>,
+  resize?: Maybe<ContentfulResizeFilterInput>
+};
+
+
+export type QueryAllContentfulAssetArgs = {
+  filter?: Maybe<ContentfulAssetFilterInput>,
+  sort?: Maybe<ContentfulAssetSortInput>,
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>
+};
+
+
 export type QueryContentfulServiceDescriptionTextNodeArgs = {
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
@@ -5943,9 +5970,8 @@ export type QueryContentfulServiceArgs = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   headline?: Maybe<StringQueryOperatorInput>,
-  ctaLabel?: Maybe<StringQueryOperatorInput>,
   slug?: Maybe<StringQueryOperatorInput>,
-  services?: Maybe<ContentfulServiceFilterListInput>,
+  service?: Maybe<ContentfulServiceFilterListInput>,
   description?: Maybe<ContentfulServiceDescriptionTextNodeFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
@@ -5953,8 +5979,9 @@ export type QueryContentfulServiceArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulServiceSysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+  ctaLabel?: Maybe<StringQueryOperatorInput>,
+  services?: Maybe<ContentfulServiceFilterListInput>,
   payoff?: Maybe<StringQueryOperatorInput>,
-  service?: Maybe<ContentfulServiceFilterListInput>,
   childContentfulServiceDescriptionTextNode?: Maybe<ContentfulServiceDescriptionTextNodeFilterInput>
 };
 
@@ -5962,32 +5989,6 @@ export type QueryContentfulServiceArgs = {
 export type QueryAllContentfulServiceArgs = {
   filter?: Maybe<ContentfulServiceFilterInput>,
   sort?: Maybe<ContentfulServiceSortInput>,
-  skip?: Maybe<Scalars['Int']>,
-  limit?: Maybe<Scalars['Int']>
-};
-
-
-export type QueryContentfulAssetArgs = {
-  id?: Maybe<StringQueryOperatorInput>,
-  parent?: Maybe<NodeFilterInput>,
-  children?: Maybe<NodeFilterListInput>,
-  internal?: Maybe<InternalFilterInput>,
-  contentful_id?: Maybe<StringQueryOperatorInput>,
-  file?: Maybe<ContentfulAssetFileFilterInput>,
-  title?: Maybe<StringQueryOperatorInput>,
-  description?: Maybe<StringQueryOperatorInput>,
-  node_locale?: Maybe<StringQueryOperatorInput>,
-  fixed?: Maybe<ContentfulFixedFilterInput>,
-  resolutions?: Maybe<ContentfulResolutionsFilterInput>,
-  fluid?: Maybe<ContentfulFluidFilterInput>,
-  sizes?: Maybe<ContentfulSizesFilterInput>,
-  resize?: Maybe<ContentfulResizeFilterInput>
-};
-
-
-export type QueryAllContentfulAssetArgs = {
-  filter?: Maybe<ContentfulAssetFilterInput>,
-  sort?: Maybe<ContentfulAssetSortInput>,
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>
 };
@@ -6483,6 +6484,7 @@ export type SitePage = Node & {
   children: Array<Node>,
   internal: Internal,
   isCreatedByStatefulCreatePages?: Maybe<Scalars['Boolean']>,
+  context?: Maybe<SitePageContext>,
   pluginCreator?: Maybe<SitePlugin>,
   pluginCreatorId?: Maybe<Scalars['String']>,
   componentPath?: Maybe<Scalars['String']>,
@@ -6507,6 +6509,14 @@ export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>,
   limit?: Maybe<Scalars['Int']>,
   field: SitePageFieldsEnum
+};
+
+export type SitePageContext = {
+  id?: Maybe<Scalars['String']>,
+};
+
+export type SitePageContextFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageEdge = {
@@ -6608,6 +6618,7 @@ export type SitePageFieldsEnum =
   'internal___owner' |
   'internal___type' |
   'isCreatedByStatefulCreatePages' |
+  'context___id' |
   'pluginCreator___id' |
   'pluginCreator___parent___id' |
   'pluginCreator___parent___parent___id' |
@@ -6703,6 +6714,7 @@ export type SitePageFilterInput = {
   children?: Maybe<NodeFilterListInput>,
   internal?: Maybe<InternalFilterInput>,
   isCreatedByStatefulCreatePages?: Maybe<BooleanQueryOperatorInput>,
+  context?: Maybe<SitePageContextFilterInput>,
   pluginCreator?: Maybe<SitePluginFilterInput>,
   pluginCreatorId?: Maybe<StringQueryOperatorInput>,
   componentPath?: Maybe<StringQueryOperatorInput>,
@@ -7176,6 +7188,19 @@ export type TrainingPageQueryVariables = {};
 
 
 export type TrainingPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 'slug' | 'title'>> };
+
+export type ServiceDetailQueryVariables = {
+  id: Scalars['String']
+};
+
+
+export type ServiceDetailQuery = { contentfulService: Maybe<(
+    Pick<ContentfulService, 'payoff' | 'headline'>
+    & { description: Maybe<Pick<ContentfulServiceDescriptionTextNode, 'description'>>, services: Maybe<Array<Maybe<(
+      Pick<ContentfulService, 'headline' | 'payoff'>
+      & { description: Maybe<Pick<ContentfulServiceDescriptionTextNode, 'description'>> }
+    )>>> }
+  )> };
 
 export type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

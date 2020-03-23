@@ -79,7 +79,7 @@ const CaseLink = styled(Link)`
 const ClientLabel = styled.span`
   display: block;
   padding: ${rhythm(0.25)};
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }): string => theme.colors.primary};
 `;
 
 const CaseContent = styled.div`
@@ -88,7 +88,7 @@ const CaseContent = styled.div`
   left: 0px;
   transform: translateY(${rhythm(2)});
   padding: ${rhythm(2)} ${rhythm(1)};
-  color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }): string => theme.colors.background};
   transition: transform 300ms cubic-bezier(0, 0, 0.58, 1) 0s;
   padding-bottom: 0;
 `;
