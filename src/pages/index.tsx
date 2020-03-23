@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 
@@ -13,7 +14,6 @@ import { CTABox } from '../components/layout/cta-container';
 import ParallaxLayout from '../components/parallaxLayout';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
-import { css } from '@emotion/core';
 
 type Props = {
   data: HomePageQuery;
@@ -21,6 +21,20 @@ type Props = {
 
 const IndexPage: React.FC<Props> = ({ data }: Props) => {
   const layout = data.contentfulLayout;
+  const technologies = data.allContentfulTechnology.edges
+    .filter(edge => edge.node.technology)
+    .map(edge => {
+      const { technology, url } = edge.node;
+      return { technology, url };
+    });
+  const serviceWithHeadlines = data.allContentfulService.edges
+    .filter(edge => edge.node.services)
+    .map(edge => {
+      const { headline, services } = edge.node;
+      const { description } = edge.node.description || { description: '' };
+      const headlines = services ? services.map(serv => serv?.headline) : [];
+      return { headline, description, headlines };
+    });
 
   const isSetOfFour = (
     variableToCheck: any
@@ -29,11 +43,7 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
     !!(variableToCheck as ContentfulLayoutSetOfFour).setItems;
 
   const setOfFour: any = layout?.contentModules?.find(isSetOfFour);
-  const services = [
-    'Bedrijfsinnovatie & Branding',
-    'Experience design & Development',
-    'Organisational design & on-site talent',
-  ];
+
   if (!layout) {
     return null;
   }
@@ -79,21 +89,40 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
             width: 100%;
           `}
         >
-          {services.map(service => (
-            <div
-              css={css`
-                position: relative;
-                flex-direction: column;
-                display: flex;
-                width: 100%;
-                margin-bottom: 48px;
-              `}
-            >
-              <h2>{service}</h2>
-            </div>
-          ))}
+          {serviceWithHeadlines.map(({ headline, description, headlines }) => {
+            return (
+              <div
+                css={css`
+                  position: relative;
+                  flex-direction: column;
+                  display: flex;
+                  width: 100%;
+                  margin-bottom: 48px;
+                `}
+              >
+                <h2>{headline}</h2>
+                <p>{description}</p>
+                <ul>{headlines && headlines.map(hl => <li>{hl}</li>)}</ul>
+              </div>
+            );
+          })}
         </div>
       </SectionContainer>
+      {technologies && (
+        <SectionContainer>
+          <h1>Tech we work with</h1>
+          {technologies.map(tech => {
+            if (!tech.url) {
+              return null;
+            }
+            return (
+              <h3>
+                <ExternalLink to={tech.url}>{tech.technology}</ExternalLink>
+              </h3>
+            );
+          })}
+        </SectionContainer>
+      )}
       <SectionContainer>
         <CTABox
           title="Let's build together"
@@ -107,7 +136,7 @@ the pleasure of working with."
       </SectionContainer>
       <SectionContainer>
         <pre css={{ backgroundColor: '#efefef', overflow: 'scroll' }}>
-          {JSON.stringify(layout, null, 2)}
+          {JSON.stringify(data, null, 2)}
         </pre>
       </SectionContainer>
     </ParallaxLayout>
@@ -116,7 +145,7 @@ the pleasure of working with."
 
 export const query = graphql`
   query HomePage {
-    contentfulLayout(node_locale: { eq: "nl" }, slug: { eq: "home" }) {
+    contentfulLayout(node_locale: { eq: "en-US" }, slug: { eq: "home" }) {
       title
       contentModules {
         ... on ContentfulLayoutCopy {
@@ -145,6 +174,30 @@ export const query = graphql`
           setItems {
             link
             title
+          }
+        }
+      }
+    }
+    allContentfulTechnology(filter: { node_locale: { eq: "en-US" } }) {
+      edges {
+        node {
+          technology
+          url
+        }
+      }
+    }
+    allContentfulService(filter: { node_locale: { eq: "en-US" } }) {
+      edges {
+        node {
+          services {
+            headline
+            description {
+              description
+            }
+          }
+          headline
+          description {
+            description
           }
         }
       }
