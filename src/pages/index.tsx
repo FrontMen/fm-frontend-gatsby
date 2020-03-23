@@ -65,20 +65,24 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
           </li>
         </ul>
       </SectionContainer>
-      <SectionContainer css={{ backgroundColor: '#00CCCC' }}>
-        <h1>Some of the clients we work for</h1>
-        <ul>
-          {isSetOfFour(setOfFour) &&
-            setOfFour?.setItems?.map(
-              client =>
-                client?.link && (
-                  <li>
-                    <ExternalLink to={client.link}>{client.title}</ExternalLink>
-                  </li>
-                )
-            )}
-        </ul>
-      </SectionContainer>
+      <div css={{ backgroundColor: '#00CCCC' }}>
+        <SectionContainer>
+          <h1>Some of the clients we work for</h1>
+          <ul>
+            {isSetOfFour(setOfFour) &&
+              setOfFour?.setItems?.map(
+                client =>
+                  client?.link && (
+                    <li>
+                      <ExternalLink to={client.link}>
+                        {client.title}
+                      </ExternalLink>
+                    </li>
+                  )
+              )}
+          </ul>
+        </SectionContainer>
+      </div>
       <SectionContainer>
         <div
           css={css`
