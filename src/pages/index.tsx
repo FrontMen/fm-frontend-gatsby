@@ -5,7 +5,6 @@ import * as React from 'react';
 import {
   ContentfulLayoutSetOfFour,
   HomePageQuery,
-  Maybe,
 } from '../../types/graphql-types';
 import CasePreview from '../components/casePreview/casePreview';
 import ContentModules from '../components/contentModules';
@@ -14,6 +13,7 @@ import { CTABox } from '../components/layout/cta-container';
 import ParallaxLayout from '../components/parallaxLayout';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
+import { css } from '@emotion/core';
 
 type Props = {
   data: HomePageQuery;
@@ -21,6 +21,7 @@ type Props = {
 
 const IndexPage: React.FC<Props> = ({ data }: Props) => {
   const layout = data.contentfulLayout;
+
   const isSetOfFour = (
     variableToCheck: any
   ): variableToCheck is ContentfulLayoutSetOfFour =>
@@ -28,7 +29,11 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
     !!(variableToCheck as ContentfulLayoutSetOfFour).setItems;
 
   const setOfFour: any = layout?.contentModules?.find(isSetOfFour);
-
+  const services = [
+    'Bedrijfsinnovatie & Branding',
+    'Experience design & Development',
+    'Organisational design & on-site talent',
+  ];
   if (!layout) {
     return null;
   }
@@ -50,7 +55,7 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
           </li>
         </ul>
       </SectionContainer>
-      <SectionContainer>
+      <SectionContainer css={{ backgroundColor: '#00CCCC' }}>
         <h1>Some of the clients we work for</h1>
         <ul>
           {isSetOfFour(setOfFour) &&
@@ -63,6 +68,31 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
                 )
             )}
         </ul>
+      </SectionContainer>
+      <SectionContainer>
+        <div
+          css={css`
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            width: 100%;
+          `}
+        >
+          {services.map(service => (
+            <div
+              css={css`
+                position: relative;
+                flex-direction: column;
+                display: flex;
+                width: 100%;
+                margin-bottom: 48px;
+              `}
+            >
+              <h2>{service}</h2>
+            </div>
+          ))}
+        </div>
       </SectionContainer>
       <SectionContainer>
         <CTABox
