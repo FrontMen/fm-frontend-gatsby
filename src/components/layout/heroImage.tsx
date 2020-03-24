@@ -11,7 +11,7 @@ type Props = {
 
 const HeroBody = styled.div`
   max-width: 1200px;
-  min-height: 40vh;
+  min-height: 80vh;
   padding: ${rhythm(2)};
   margin: 0 auto;
   color: ${({ theme }) => theme.colors.primary};
