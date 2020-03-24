@@ -20,6 +20,7 @@ export const theme = {
     background: colors.white,
   },
 };
+
 export type Theme = typeof theme;
-export const useTheme = () => _useTheme<Theme>();
+export const useTheme = (): Theme => _useTheme<Theme>();
 export default styled as CreateStyled<Theme>;

@@ -1,4 +1,5 @@
-import { css } from '@emotion/core';
+import { css, SerializedStyles } from '@emotion/core';
+
 import { MediaQuerySize, mqMin } from './breakpoints';
 
 type Angle = 'left' | 'right';
@@ -62,7 +63,7 @@ const skewed = {
   `,
 };
 
-export const getSkewed = (angle: Angle = 'left') => {
+export const getSkewed = (angle: Angle = 'left'): SerializedStyles => {
   const skewLR = angle === 'right' ? skewed.skewRight : skewed.skewLeft;
   return css`
     ${skewed.base}

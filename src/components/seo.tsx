@@ -19,9 +19,16 @@ type Props = {
   lang?: string;
   meta?: metaType;
   title: string;
+  siteUrl?: string;
 };
 
-const SEO: React.FC<Props> = ({ description, lang, meta, title }: Props) => {
+const SEO: React.FC<Props> = ({
+  description,
+  lang,
+  meta,
+  title,
+  siteUrl,
+}: Props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -30,6 +37,7 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }: Props) => {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -81,7 +89,16 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }: Props) => {
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={defaultMeta.concat(propMeta)}
-    />
+    >
+      <script type="application/ld+json">{`
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "${title}"
+      "url": "${siteUrl}"
+    }
+  `}</script>
+    </Helmet>
   );
 };
 
@@ -89,6 +106,7 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
+  siteUrl: 'https://www.frontmen.nl',
 };
 
 export default SEO;

@@ -1,30 +1,48 @@
+import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
-import { HomePageQuery } from '../../types/graphql-types';
+import {
+  ContentfulLayoutSetOfFour,
+  HomePageQuery,
+} from '../../types/graphql-types';
 import CasePreview from '../components/casePreview/casePreview';
+import ContentModules from '../components/contentModules';
+import { ExternalLink } from '../components/ExternalLink';
 import { CTABox } from '../components/layout/cta-container';
-import { HeroImage } from '../components/layout/heroImage';
+import ParallaxLayout from '../components/parallaxLayout';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
-import ParallaxLayout from '../components/parallaxLayout';
 
 type Props = {
   data: HomePageQuery;
 };
 
-const renderContentModules = (contentModules: any = []): React.FC => {
-  return contentModules?.map((cm: any) => {
-    if (!cm || !cm.backgroundImage) {
-      return null;
-    }
-    return <HeroImage cm={cm} key={cm.id} />;
-  });
-};
-
 const IndexPage: React.FC<Props> = ({ data }: Props) => {
   const layout = data.contentfulLayout;
+  const technologies = data.allContentfulTechnology.edges
+    .filter(edge => edge.node.technology)
+    .map(edge => {
+      const { technology, url } = edge.node;
+      return { technology, url };
+    });
+  const serviceWithHeadlines = data.allContentfulService.edges
+    .filter(edge => edge.node.services)
+    .map(edge => {
+      const { headline, services } = edge.node;
+      const { description } = edge.node.description || { description: '' };
+      const headlines = services ? services.map(serv => serv?.headline) : [];
+      return { headline, description, headlines };
+    });
+
+  const isSetOfFour = (
+    variableToCheck: any
+  ): variableToCheck is ContentfulLayoutSetOfFour =>
+    // eslint-disable-next-line no-underscore-dangle
+    !!(variableToCheck as ContentfulLayoutSetOfFour).setItems;
+
+  const setOfFour: any = layout?.contentModules?.find(isSetOfFour);
 
   if (!layout) {
     return null;
@@ -33,15 +51,10 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
     <ParallaxLayout>
       {layout.title && <SEO title={layout.title} />}
 
-      {layout.contentModules && renderContentModules(layout.contentModules)}
-      <SectionContainer>
-        <CTABox
-          title="Up Front Technology"
-          payoff="We are always keen to be at the front of new technologies. we help set new standards for online and mobile applications that help deliver more value to their customers..."
-          ctaLabel="What we offer"
-          ctaLink="/cases"
-        />
-      </SectionContainer>
+      {layout.contentModules && (
+        <ContentModules contentModules={layout.contentModules} />
+      )}
+
       <SectionContainer>
         <CasePreview />
       </SectionContainer>
@@ -52,6 +65,68 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
           </li>
         </ul>
       </SectionContainer>
+      <div css={{ backgroundColor: '#00CCCC' }}>
+        <SectionContainer>
+          <h1>Some of the clients we work for</h1>
+          <ul>
+            {isSetOfFour(setOfFour) &&
+              setOfFour?.setItems?.map(
+                client =>
+                  client?.link && (
+                    <li>
+                      <ExternalLink to={client.link}>
+                        {client.title}
+                      </ExternalLink>
+                    </li>
+                  )
+              )}
+          </ul>
+        </SectionContainer>
+      </div>
+      <SectionContainer>
+        <div
+          css={css`
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            width: 100%;
+          `}
+        >
+          {serviceWithHeadlines.map(({ headline, description, headlines }) => {
+            return (
+              <div
+                css={css`
+                  position: relative;
+                  flex-direction: column;
+                  display: flex;
+                  width: 100%;
+                  margin-bottom: 48px;
+                `}
+              >
+                <h2>{headline}</h2>
+                <p>{description}</p>
+                <ul>{headlines && headlines.map(hl => <li>{hl}</li>)}</ul>
+              </div>
+            );
+          })}
+        </div>
+      </SectionContainer>
+      {technologies && (
+        <SectionContainer>
+          <h1>Tech we work with</h1>
+          {technologies.map(tech => {
+            if (!tech.url) {
+              return null;
+            }
+            return (
+              <h3>
+                <ExternalLink to={tech.url}>{tech.technology}</ExternalLink>
+              </h3>
+            );
+          })}
+        </SectionContainer>
+      )}
       <SectionContainer>
         <CTABox
           title="Let's build together"
@@ -60,7 +135,13 @@ and successful businesses that we have had
 the pleasure of working with."
           ctaLabel="Get in touch"
           ctaLink="/contact"
+          appearance="Default"
         />
+      </SectionContainer>
+      <SectionContainer>
+        <pre css={{ backgroundColor: '#efefef', overflow: 'scroll' }}>
+          {JSON.stringify(data, null, 2)}
+        </pre>
       </SectionContainer>
     </ParallaxLayout>
   );
@@ -68,12 +149,22 @@ the pleasure of working with."
 
 export const query = graphql`
   query HomePage {
-    contentfulLayout(slug: { eq: "home" }) {
-      slug
+    contentfulLayout(node_locale: { eq: "en-US" }, slug: { eq: "home" }) {
       title
       contentModules {
+        ... on ContentfulLayoutCopy {
+          __typename
+          appearance
+          title
+          ctaTitle
+          ctaLink
+          headline
+          copy {
+            copy
+          }
+        }
         ... on ContentfulLayoutHeroImage {
-          id
+          __typename
           headline
           backgroundImage {
             fluid(maxWidth: 1200) {
@@ -81,11 +172,37 @@ export const query = graphql`
             }
           }
         }
-        ... on ContentfulLayoutCallToAction {
+        ... on ContentfulLayoutSetOfFour {
+          __typename
           id
-          title
+          setItems {
+            link
+            title
+          }
+        }
+      }
+    }
+    allContentfulTechnology(filter: { node_locale: { eq: "en-US" } }) {
+      edges {
+        node {
+          technology
           url
-          label
+        }
+      }
+    }
+    allContentfulService(filter: { node_locale: { eq: "en-US" } }) {
+      edges {
+        node {
+          services {
+            headline
+            description {
+              description
+            }
+          }
+          headline
+          description {
+            description
+          }
         }
       }
     }

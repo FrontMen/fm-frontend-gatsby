@@ -1,10 +1,10 @@
 import { css } from '@emotion/core';
+import { Link } from 'gatsby';
 import * as React from 'react';
 
 import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
 import styled from '../../utils/styled';
 import { rhythm } from '../../utils/typography';
-import { Link } from 'gatsby';
 
 const items = [
   { id: 1, title: 'how we did this and that', client: 'klm' },
@@ -34,7 +34,7 @@ const styles = {
     margin-bottom: ${spacing};
     cursor: pointer;
     overflow: hidden;
-    
+
     &:hover > a > div {
       transform: translateY(0px);
     }

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { ContentfulLayoutHeroImage } from '../../../types/graphql-types';
-import { rhythm, scale } from '../../utils/typography';
-import styled from '../../utils/styled';
 import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
+import styled from '../../utils/styled';
+import { rhythm, scale } from '../../utils/typography';
 
 type Props = {
   cm: ContentfulLayoutHeroImage;

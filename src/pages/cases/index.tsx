@@ -3,9 +3,9 @@ import * as React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { CasesPageQuery } from '../../../types/graphql-types';
+import Layout from '../../components/layout';
 import { SectionContainer } from '../../components/sectionContainer';
 import SEO from '../../components/seo';
-import Layout from '../../components/layout';
 
 type Props = {
   data: CasesPageQuery;
