@@ -26,7 +26,7 @@ function handleFirstTab(e: KeyboardEvent): void {
   }
 }
 
-export const SkipLink = () => {
+export const SkipLink: React.FC = () => {
   // eslint-disable-next-line no-undef
   React.useEffect(() => window.addEventListener('keydown', handleFirstTab), []);
   return <Skip href="#main">Go to main content</Skip>;

@@ -16,6 +16,10 @@ export const useSiteMetadata = (): SiteSiteMetadata => {
               name
               link
             }
+            languages {
+              langs
+              defaultLangKey
+            }
           }
         }
       }

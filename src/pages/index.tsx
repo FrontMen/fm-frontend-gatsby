@@ -30,10 +30,10 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
   const serviceWithHeadlines = data.allContentfulService.edges
     .filter(edge => edge.node.services)
     .map(edge => {
-      const { headline, services } = edge.node;
+      const { headline, slug, services } = edge.node;
       const { description } = edge.node.description || { description: '' };
       const headlines = services ? services.map(serv => serv?.headline) : [];
-      return { headline, description, headlines };
+      return { headline, slug, description, headlines };
     });
 
   const isSetOfFour = (
@@ -93,23 +93,27 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
             width: 100%;
           `}
         >
-          {serviceWithHeadlines.map(({ headline, description, headlines }) => {
-            return (
-              <div
-                css={css`
-                  position: relative;
-                  flex-direction: column;
-                  display: flex;
-                  width: 100%;
-                  margin-bottom: 48px;
-                `}
-              >
-                <h2>{headline}</h2>
-                <p>{description}</p>
-                <ul>{headlines && headlines.map(hl => <li>{hl}</li>)}</ul>
-              </div>
-            );
-          })}
+          {serviceWithHeadlines.map(
+            ({ headline, slug, description, headlines }) => {
+              return (
+                <div
+                  css={css`
+                    position: relative;
+                    flex-direction: column;
+                    display: flex;
+                    width: 100%;
+                    margin-bottom: 48px;
+                  `}
+                >
+                  <h2>
+                    <Link to={`/service/${slug}`}>{headline}</Link>
+                  </h2>
+                  <p>{description}</p>
+                  <ul>{headlines && headlines.map(hl => <li>{hl}</li>)}</ul>
+                </div>
+              );
+            }
+          )}
         </div>
       </SectionContainer>
       {technologies && (
@@ -199,6 +203,7 @@ export const query = graphql`
               description
             }
           }
+          slug
           headline
           description {
             description
