@@ -66,7 +66,7 @@ const ParallaxLayout: React.FC<Props> = ({ children }: Props) => {
           <Polygon color={theme.colors.primary} />
         </ParallaxContainer.ParallaxItem>
         <ParallaxContainer.ParallaxItem
-          top="50%"
+          top="70%"
           left="30%"
           scale={0.5}
           zlocation={2}
@@ -82,7 +82,7 @@ const ParallaxLayout: React.FC<Props> = ({ children }: Props) => {
           <Polygon color={theme.colors.primary} />
         </ParallaxContainer.ParallaxItem>
         <ParallaxContainer.ParallaxItem
-          top="50%"
+          top="70%"
           left="40%"
           scale={0.4}
           zlocation={0.5}
@@ -90,7 +90,7 @@ const ParallaxLayout: React.FC<Props> = ({ children }: Props) => {
           <Polygon color={theme.colors.secondary} />
         </ParallaxContainer.ParallaxItem>
         <ParallaxContainer.ParallaxItem
-          top="30%"
+          top="50%"
           left="40%"
           scale={0.25}
           zlocation={3}
@@ -98,7 +98,7 @@ const ParallaxLayout: React.FC<Props> = ({ children }: Props) => {
           <Polygon color={theme.colors.quinary} />
         </ParallaxContainer.ParallaxItem>
         <ParallaxContainer.ParallaxItem
-          top="45%"
+          top="50%"
           left="35%"
           scale={0.2}
           zlocation={6}
