@@ -1,7 +1,6 @@
 import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
-
 // eslint-disable-next-line import/no-unresolved
 import {
   ContentfulLayoutSetOfFour,
@@ -12,7 +11,10 @@ import ContentModules from '../components/contentModules';
 import { ExternalLink } from '../components/ExternalLink';
 import { CTABox } from '../components/layout/cta-container';
 import ParallaxLayout from '../components/parallaxLayout';
-import { SectionContainer } from '../components/sectionContainer';
+import {
+  SectionContainer,
+  SelectableThemes,
+} from '../components/sectionContainer';
 import SEO from '../components/seo';
 
 type Props = {
@@ -55,35 +57,34 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
         <ContentModules contentModules={layout.contentModules} />
       )}
 
-      <SectionContainer>
+      <SectionContainer selectedTheme={SelectableThemes.Darkblue}>
         <CasePreview />
       </SectionContainer>
-      <SectionContainer>
+      <SectionContainer selectedTheme={SelectableThemes.Orange}>
         <ul>
-          <li>
+          <li key="blogpost">
             <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
           </li>
         </ul>
       </SectionContainer>
-      <div css={{ backgroundColor: '#00CCCC' }}>
-        <SectionContainer>
-          <h1>Some of the clients we work for</h1>
-          <ul>
-            {isSetOfFour(setOfFour) &&
-              setOfFour?.setItems?.map(
-                client =>
-                  client?.link && (
-                    <li>
-                      <ExternalLink to={client.link}>
-                        {client.title}
-                      </ExternalLink>
-                    </li>
-                  )
-              )}
-          </ul>
-        </SectionContainer>
-      </div>
-      <SectionContainer>
+      <SectionContainer selectedTheme={SelectableThemes.Darkblue}>
+        <h1>Some of the clients we work for</h1>
+        <ul>
+          {isSetOfFour(setOfFour) &&
+            setOfFour?.setItems?.map(
+              (client, index) =>
+                client?.link && (
+                  <li key={index + 'link'}>
+                    <ExternalLink to={client.link}>{client.title}</ExternalLink>
+                  </li>
+                )
+            )}
+        </ul>
+      </SectionContainer>
+      <SectionContainer
+        skew={SelectableThemes.SkewPositive}
+        selectedTheme={SelectableThemes.Orange}
+      >
         <div
           css={css`
             flex-direction: column;
@@ -124,14 +125,17 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
               return null;
             }
             return (
-              <h3>
+              <h3 key={tech.url}>
                 <ExternalLink to={tech.url}>{tech.technology}</ExternalLink>
               </h3>
             );
           })}
         </SectionContainer>
       )}
-      <SectionContainer>
+      <SectionContainer
+        skew={SelectableThemes.SkewNeutral}
+        selectedTheme={SelectableThemes.Mint}
+      >
         <CTABox
           title="Let's build together"
           payoff="Join a long list of satisfied clients, partners,

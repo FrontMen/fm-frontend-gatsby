@@ -105,15 +105,15 @@ const MenuLine = styled.span`
   transition: top 0.2s ease-in-out 0.2s, transform 0.3s ease-in-out,
     opacity 0.3s ease-in-out 0.3s, width 0.4s ease-in-out;
 
-  &:nth-child(1) {
+  &:nth-of-type(1) {
     top: ${StyleConst.LINE_WIDHT};
   }
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     background: ${props => props.theme.colors.primary};
     top: 20px;
   }
 
-  &:nth-child(3) {
+  &:nth-of-type(3) {
     background: ${props => props.theme.colors.tertiary};
     top: 35px;
     width: 30px;
@@ -159,15 +159,15 @@ const HiddenMenuCheckbox = styled<React.FC<{ id: string }>>(UnstyledCheckbox)`
         transition: top 0.3s ease-in-out, transform 0.4s ease-in-out 0.3s,
           opacity 0.4s ease-in-out, width 0.4s ease-in-out;
 
-        &:nth-child(1) {
+        &:nth-of-type(1) {
           top: 20px;
           transform: rotate(45deg);
         }
-        &:nth-child(2) {
+        &:nth-of-type(2) {
           opacity: 0;
         }
 
-        &:nth-child(3) {
+        &:nth-of-type(3) {
           top: 20px;
           transform: rotate(-45deg);
           width: 40px;
