@@ -64,21 +64,6 @@ const MintSectionItem = (props: any) => css`
   }
 `;
 
-const FlatBottom = (props: any) => css`
-  &:before {
-    background: inherit;
-    bottom: -3vw;
-    content: '';
-    display: block;
-    height: 80%;
-    left: 0;
-    position: absolute;
-    right: 0;
-    z-index: -1;
-    pointer-events: none;
-  }
-`;
-
 const SectionItem = styled.section`
   width: 100%;
   opacity: 1;
