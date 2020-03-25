@@ -10,11 +10,11 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { useSiteMetadata } from '../hooks/useSiteMetaData';
-import styled, { theme } from '../utils/styled';
+import styled from '../utils/styled';
 import { rhythm } from '../utils/typography';
+import BaseLayout from './baseLayout';
 import Footer from './footer';
 import Header from './header';
-import { SkipLink } from './SkipLink';
 
 type Props = {
   children: React.ReactNode;
@@ -29,12 +29,11 @@ const Main = styled.main`
 const Layout: React.FC<Props> = ({ children }: Props) => {
   const data = useSiteMetadata();
   return (
-    <ThemeProvider theme={theme}>
-      <SkipLink />
+    <BaseLayout>
       <Header siteTitle={data.title || 'Frontmen'} menuLinks={data.menuLinks} />
       <Main id="main">{children}</Main>
       <Footer />
-    </ThemeProvider>
+    </BaseLayout>
   );
 };
 

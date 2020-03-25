@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
-// eslint-disable-next-line import/no-unresolved
+
 import {
   ContentfulLayoutSetOfFour,
   HomePageQuery,
@@ -9,7 +9,8 @@ import {
 import CasePreview from '../components/casePreview/casePreview';
 import ContentModules from '../components/contentModules';
 import { ExternalLink } from '../components/ExternalLink';
-import { CTABox } from '../components/layout/cta-container';
+import { HighlightServices } from '../components/highlightServices';
+import { LayoutBody } from '../components/layout/layoutBody';
 import ParallaxLayout from '../components/parallaxLayout';
 import {
   SectionContainer,
@@ -32,10 +33,10 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
   const serviceWithHeadlines = data.allContentfulService.edges
     .filter(edge => edge.node.services)
     .map(edge => {
-      const { headline, services } = edge.node;
+      const { headline, slug, services } = edge.node;
       const { description } = edge.node.description || { description: '' };
       const headlines = services ? services.map(serv => serv?.headline) : [];
-      return { headline, description, headlines };
+      return { headline, slug, description, headlines };
     });
 
   const isSetOfFour = (
@@ -82,39 +83,11 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
         </ul>
       </SectionContainer>
       <SectionContainer
-          selectedTheme={SelectableThemes.Darkblue}>
-        <div
-          css={css`
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            display: flex;
-            width: 100%;
-          `}
-        >
-          {serviceWithHeadlines.map(
-            ({ headline, description, headlines }, index) => {
-              return (
-                <div
-                  key={index}
-                  css={css`
-                    position: relative;
-                    flex-direction: column;
-                    display: flex;
-                    width: 100%;
-                    margin-bottom: 48px;
-                  `}
-                >
-                  <h2>{headline}</h2>
-                  <p>{description}</p>
-                  <ul>
-                    {headlines && headlines.map((hl, index) => <li key={index}>{hl}</li>)}
-                  </ul>
-                </div>
-              );
-            }
-          )}
-        </div>
+        selectedTheme={SelectableThemes.Darkblue}
+      >
+        <HighlightServices
+          serviceWithHeadlines={serviceWithHeadlines}
+        ></HighlightServices>
       </SectionContainer>
       {technologies && (
         <SectionContainer>
@@ -135,7 +108,7 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
         skew={SelectableThemes.SkewNeutral}
         selectedTheme={SelectableThemes.Mint}
       >
-        <CTABox
+        <LayoutBody
           title="Let's build together"
           payoff="Join a long list of satisfied clients, partners,
 and successful businesses that we have had
@@ -206,6 +179,7 @@ export const query = graphql`
               description
             }
           }
+          slug
           headline
           description {
             description

@@ -5,41 +5,21 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import { ThemeProvider } from 'emotion-theming';
 import PropTypes from 'prop-types';
 import * as React from 'react';
-import { useEffect } from 'react';
 
 import { useSiteMetadata } from '../hooks/useSiteMetaData';
 import styled, { theme } from '../utils/styled';
 import { rhythm } from '../utils/typography';
+import BaseLayout from './baseLayout';
 import Footer from './footer';
 import Header from './header';
 import { ParallaxContainer } from './Parralax';
 import { Polygon } from './Polygon';
-import { SkipLink } from './SkipLink';
 
 type Props = {
   children: React.ReactNode;
 };
-
-const Skip = styled.a`
-  padding: 0 1rem;
-  line-height: 60px;
-  background: ${({ theme }) => theme.colors.primary};
-  color: white;
-  z-index: 101;
-  position: fixed;
-  top: -100%;
-  &:hover {
-    text-decoration: underline;
-  }
-  &:focus,
-  &:active,
-  &:hover {
-    top: 0;
-  }
-`;
 
 const headerFooterHight = rhythm(6);
 
@@ -51,8 +31,7 @@ const ParallaxLayout: React.FC<Props> = ({ children }: Props) => {
   const data = useSiteMetadata();
 
   return (
-    <ThemeProvider theme={theme}>
-      <SkipLink />
+    <BaseLayout>
       <ParallaxContainer>
         <ParallaxContainer.ParallaxItem
           top="0%"
@@ -134,7 +113,7 @@ const ParallaxLayout: React.FC<Props> = ({ children }: Props) => {
         <Main id="main">{children}</Main>
         <Footer />
       </ParallaxContainer>
-    </ThemeProvider>
+    </BaseLayout>
   );
 };
 
