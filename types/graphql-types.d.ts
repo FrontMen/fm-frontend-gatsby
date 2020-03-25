@@ -7385,7 +7385,14 @@ export type HomePageQuery = { contentfulLayout: Maybe<(
 export type ServicesPageQueryVariables = {};
 
 
-export type ServicesPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 'slug'>> };
+export type ServicesPageQuery = { contentfulLayout: Maybe<(
+    Pick<ContentfulLayout, 'title'>
+    & { contentModules: Maybe<Array<Maybe<(
+      { __typename: 'ContentfulLayoutCopy' }
+      & Pick<ContentfulLayoutCopy, 'id' | 'appearance' | 'headline'>
+      & { copy: Maybe<Pick<ContentfulLayoutCopyCopyTextNode, 'copy'>> }
+    )>>> }
+  )> };
 
 export type TrainingPageQueryVariables = {};
 

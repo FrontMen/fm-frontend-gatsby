@@ -118,11 +118,6 @@ the pleasure of working with."
           appearance="Default"
         />
       </SectionContainer>
-      <SectionContainer>
-        <pre css={{ backgroundColor: '#efefef', overflow: 'scroll' }}>
-          {JSON.stringify(data, null, 2)}
-        </pre>
-      </SectionContainer>
     </ParallaxLayout>
   );
 };
