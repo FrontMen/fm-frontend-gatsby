@@ -4,6 +4,7 @@ import * as React from 'react';
 
 import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
 import styled from '../../utils/styled';
+import { Button } from '../../utils/styles/buttons';
 import { rhythm } from '../../utils/typography';
 
 const items = [
@@ -34,6 +35,18 @@ const styles = {
     margin-bottom: ${spacing};
     cursor: pointer;
     overflow: hidden;
+    position: relative;
+
+    &:after {
+      content: '';
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(10, 10, 10, 0.4);
+      top: 0;
+      left: 0;
+    }
 
     &:hover > a > div {
       transform: translateY(0px);
@@ -74,12 +87,12 @@ const CaseLink = styled(Link)`
   height: 100%;
   text-decoration: none;
   position: relative;
+  z-index: 2;
 `;
 
 const ClientLabel = styled.span`
-  display: block;
-  padding: ${rhythm(0.25)};
-  background-color: ${({ theme }): string => theme.colors.primary};
+  ${props => Button}
+}
 `;
 
 const CaseContent = styled.div`
@@ -91,6 +104,8 @@ const CaseContent = styled.div`
   color: ${({ theme }): string => theme.colors.background};
   transition: transform 300ms cubic-bezier(0, 0, 0.58, 1) 0s;
   padding-bottom: 0;
+  width: 100%;
+  max-width: 25em;
 `;
 
 interface CasePreviewItemProps {
