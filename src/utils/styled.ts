@@ -13,8 +13,11 @@ const colors = {
 export const theme = {
   colors: {
     primary: colors.darkBlue,
+    primaryText: colors.white,
     secondary: colors.orange,
+    secondaryText: colors.white,
     tertiary: colors.mint,
+    tertiaryText: colors.white,
     quaternary: colors.darkgrey,
     quinary: colors.lightgrey,
     background: colors.white,

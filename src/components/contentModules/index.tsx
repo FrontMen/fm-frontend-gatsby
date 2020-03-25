@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { CTABox } from '../layout/cta-container';
 import { HeroImage } from '../layout/heroImage';
-import { SectionContainer } from '../sectionContainer';
+import { SectionContainer, SelectableThemes } from '../sectionContainer';
 
 type Props = {
   contentModules: any;
@@ -22,7 +22,11 @@ const ContentModules: React.FC<Props> = ({ contentModules }) => {
         return <HeroImage cm={cm} key={`ContentfulLayoutHeroImage_${cm.id}`} />;
       case 'ContentfulLayoutCopy':
         return (
-          <SectionContainer key={`ContentfulLayoutCopy_${cm.id}`}>
+          <SectionContainer
+            skew={SelectableThemes.SkewPositive}
+            selectedTheme={SelectableThemes.Mint}
+            key={`ContentfulLayoutCopy_${cm.id}`}
+          >
             <CTABox
               title={cm.headline}
               payoff={cm.copy.copy}
