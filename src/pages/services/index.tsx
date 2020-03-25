@@ -1,8 +1,10 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import * as React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { ServicesPageQuery } from '../../../types/graphql-types';
+import ContentModules from '../../components/contentModules';
+import { DebugData } from '../../components/debugData';
 import Layout from '../../components/layout';
 import { SectionContainer } from '../../components/sectionContainer';
 import SEO from '../../components/seo';
@@ -12,39 +14,35 @@ type Props = {
 };
 
 const ServicesPage: React.FC<Props> = ({ data }: Props) => {
+  const title = data.contentfulLayout?.title || 'Services';
+  const contentModules = data.contentfulLayout?.contentModules;
   return (
     <Layout>
-      <SEO title="Services" />
+      <SEO title={title} />
       <SectionContainer>
-        <h1>Services</h1>
+        <ContentModules contentModules={contentModules} />
       </SectionContainer>
+
+      <DebugData data={data} />
     </Layout>
   );
 };
 
 export const query = graphql`
   query ServicesPage {
-    contentfulLayout(slug: { eq: "services" }) {
-      slug
-      #   slug
-      #   title
-      #   contentModules {
-      #     ... on ContentfulLayoutHeroImage {
-      #       id
-      #       headline
-      #       backgroundImage {
-      #         fluid(maxWidth: 1200) {
-      #           src
-      #         }
-      #       }
-      #     }
-      #     ... on ContentfulLayoutCallToAction {
-      #       id
-      #       title
-      #       url
-      #       label
-      #     }
-      #   }
+    contentfulLayout(slug: { eq: "services" }, node_locale: { eq: "en-US" }) {
+      title
+      contentModules {
+        ... on ContentfulLayoutCopy {
+          __typename
+          id
+          appearance
+          headline
+          copy {
+            copy
+          }
+        }
+      }
     }
   }
 `;
