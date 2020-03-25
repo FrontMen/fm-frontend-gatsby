@@ -60,15 +60,15 @@ export const HighlightServices: React.FC<Props> = ({
         // @TODO: fix types
         ({ headline, slug, description, headlines }: any) => {
           return (
-            <HighlightedService>
+            <HighlightedService key={headline}>
               <ServiceTitle>
                 <Link to={`/service/${slug}`}>{headline}</Link>
               </ServiceTitle>
               <p>{description}</p>
               {headlines && (
                 <ServiceList>
-                  {headlines.map((hl: string) => (
-                    <ServiceListItem>{hl}</ServiceListItem>
+                  {headlines.map((hl: string, index: number) => (
+                    <ServiceListItem key={hl}>{hl}</ServiceListItem>
                   ))}
                 </ServiceList>
               )}

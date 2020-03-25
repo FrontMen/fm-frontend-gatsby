@@ -1866,9 +1866,6 @@ export type ContentfulLayoutCopy = Node & {
   internal: Internal,
   title?: Maybe<Scalars['String']>,
   headline?: Maybe<Scalars['String']>,
-  ctaTitle?: Maybe<Scalars['String']>,
-  ctaLink?: Maybe<Scalars['String']>,
-  appearance?: Maybe<Scalars['String']>,
   layout?: Maybe<Array<Maybe<ContentfulLayout>>>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNode>,
   spaceId?: Maybe<Scalars['String']>,
@@ -1877,6 +1874,9 @@ export type ContentfulLayoutCopy = Node & {
   updatedAt?: Maybe<Scalars['Date']>,
   sys?: Maybe<ContentfulLayoutCopySys>,
   node_locale?: Maybe<Scalars['String']>,
+  appearance?: Maybe<Scalars['String']>,
+  ctaTitle?: Maybe<Scalars['String']>,
+  ctaLink?: Maybe<Scalars['String']>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNode>,
 };
 
@@ -2158,9 +2158,6 @@ export type ContentfulLayoutCopyFieldsEnum =
   'internal___type' |
   'title' |
   'headline' |
-  'ctaTitle' |
-  'ctaLink' |
-  'appearance' |
   'layout' |
   'layout___id' |
   'layout___parent___id' |
@@ -2257,6 +2254,9 @@ export type ContentfulLayoutCopyFieldsEnum =
   'sys___contentType___sys___id' |
   'sys___contentType___sys___contentful_id' |
   'node_locale' |
+  'appearance' |
+  'ctaTitle' |
+  'ctaLink' |
   'childContentfulLayoutCopyCopyTextNode___id' |
   'childContentfulLayoutCopyCopyTextNode___parent___id' |
   'childContentfulLayoutCopyCopyTextNode___parent___parent___id' |
@@ -2304,9 +2304,6 @@ export type ContentfulLayoutCopyFilterInput = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   headline?: Maybe<StringQueryOperatorInput>,
-  ctaTitle?: Maybe<StringQueryOperatorInput>,
-  ctaLink?: Maybe<StringQueryOperatorInput>,
-  appearance?: Maybe<StringQueryOperatorInput>,
   layout?: Maybe<ContentfulLayoutFilterListInput>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
@@ -2315,6 +2312,9 @@ export type ContentfulLayoutCopyFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCopySysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+  appearance?: Maybe<StringQueryOperatorInput>,
+  ctaTitle?: Maybe<StringQueryOperatorInput>,
+  ctaLink?: Maybe<StringQueryOperatorInput>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
 };
 
@@ -6094,9 +6094,6 @@ export type QueryContentfulLayoutCopyArgs = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   headline?: Maybe<StringQueryOperatorInput>,
-  ctaTitle?: Maybe<StringQueryOperatorInput>,
-  ctaLink?: Maybe<StringQueryOperatorInput>,
-  appearance?: Maybe<StringQueryOperatorInput>,
   layout?: Maybe<ContentfulLayoutFilterListInput>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
@@ -6105,6 +6102,9 @@ export type QueryContentfulLayoutCopyArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCopySysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+  appearance?: Maybe<StringQueryOperatorInput>,
+  ctaTitle?: Maybe<StringQueryOperatorInput>,
+  ctaLink?: Maybe<StringQueryOperatorInput>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>
 };
 

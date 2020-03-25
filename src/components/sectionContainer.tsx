@@ -23,6 +23,7 @@ type Props = {
 
 const DarkBlueSectionItem = (props: any) => css`
   color: ${props.theme.colors.primaryText};
+  
   a,
   a:hover,
   a:visited,
@@ -30,7 +31,7 @@ const DarkBlueSectionItem = (props: any) => css`
     color: ${props.theme.colors.primaryText};
   }
 
-  &:after {
+  &:after, &:before {
     background: ${props.theme.colors.primary};
   }
 `;
@@ -44,7 +45,7 @@ const OrangeSectionItem = (props: any) => css`
     color: ${props.theme.colors.secondaryText};
   }
 
-  &:after {
+  &:after, &:before {
     background: ${props.theme.colors.secondary};
   }
 `;
@@ -58,8 +59,23 @@ const MintSectionItem = (props: any) => css`
     color: ${props.theme.colors.tertiaryText};
   }
 
-  &:after {
+  &:after, &:before {
     background: ${props.theme.colors.tertiary};
+  }
+`;
+
+const FlatBottom = (props: any) => css`
+  &:before {
+    background: inherit;
+    bottom: -3vw;
+    content: '';
+    display: block;
+    height: 80%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    pointer-events: none;
   }
 `;
 
@@ -67,17 +83,35 @@ const SectionItem = styled.section`
   width: 100%;
   opacity: 1;
   max-width: 1200px;
+  min-height: 12em;
   padding: 2em 12px;
   position: relative;
   transition: opacity 400ms cubic-bezier(0, 0, 0, 1) 0s;
   margin: ${rhythm(2)} auto;
+  
+  &:before {
+    bottom: -6vw;
+    content: '';
+    display: block;
+    height: 80%;
+    width: 100vw;
+    left: 0;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    pointer-events: none;
+    
+     ${mqMin[MediaQuerySize.XL]} {
+      left: calc((100vw - 1200px) / -2);
+    }
+  }
   
    &:after {
     content: '';
     position: absolute;
     height: 100%;
     width: 100vw;
-    top: 0;
+    top: -4vw;
     left: 0;
     z-index: -1;
     pointer-events: none;

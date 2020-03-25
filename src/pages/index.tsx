@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 
@@ -57,17 +58,17 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
         <ContentModules contentModules={layout.contentModules} />
       )}
 
-      <SectionContainer selectedTheme={SelectableThemes.Darkblue}>
+      <SectionContainer>
         <CasePreview />
       </SectionContainer>
-      <SectionContainer selectedTheme={SelectableThemes.Orange}>
+      <SectionContainer skew={SelectableThemes.SkewNegative} selectedTheme={SelectableThemes.Orange}>
         <ul>
           <li key="blogpost">
             <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
           </li>
         </ul>
       </SectionContainer>
-      <SectionContainer selectedTheme={SelectableThemes.Darkblue}>
+      <SectionContainer>
         <h1>Some of the clients we work for</h1>
         <ul>
           {isSetOfFour(setOfFour) &&
@@ -82,8 +83,7 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
         </ul>
       </SectionContainer>
       <SectionContainer
-        skew={SelectableThemes.SkewPositive}
-        selectedTheme={SelectableThemes.Orange}
+        selectedTheme={SelectableThemes.Darkblue}
       >
         <HighlightServices
           serviceWithHeadlines={serviceWithHeadlines}

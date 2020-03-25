@@ -15,10 +15,9 @@ type Props = {
 };
 const Container = styled.div`
   text-align: center;
-  padding: ${rhythm(3)} 0;
 `;
-const Title = styled.h1({ ...scale(1.5) });
-const Payoff = styled.h3({ ...scale(0.7) });
+const Title = styled.h1({ ...scale(1) });
+const Payoff = styled.h3({ ...scale(0.6) });
 
 export const LayoutBody: React.FC<Props> = ({
   title,
