@@ -72,7 +72,7 @@ const SectionItem = styled.section`
   padding: 2em 12px;
   position: relative;
   transition: opacity 400ms cubic-bezier(0, 0, 0, 1) 0s;
-  margin: ${rhythm(2)} auto;
+  margin: 10vw auto;
   
   &:before {
     bottom: -6vw;
@@ -87,6 +87,7 @@ const SectionItem = styled.section`
     pointer-events: none;
     
      ${mqMin[MediaQuerySize.XL]} {
+      height: 100%;
       left: calc((100vw - 1200px) / -2);
     }
   }
@@ -96,11 +97,11 @@ const SectionItem = styled.section`
     position: absolute;
     height: 100%;
     width: 100vw;
-    top: -4vw;
+    top: -1vw;
     left: 0;
     z-index: -1;
     pointer-events: none;
-    transform-origin: 20%;
+    transform-origin: 50%;
     
     transform: ${({ skew }: Props) =>
       skew === SelectableThemes.SkewNegative
