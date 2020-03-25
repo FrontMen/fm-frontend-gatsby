@@ -13,10 +13,10 @@ type Props = {
 };
 
 const ContactPage: React.FC<Props> = ({ data }: Props) => {
-  const layout = data?.contentfulLayout;
+  const layout = data.contentfulLayout;
   return (
     <Layout>
-      <SEO title="Contact" />
+      <SEO title={layout?.title || 'Contact'} />
       <SectionContainer>
         <h1>{layout?.title}</h1>
       </SectionContainer>
@@ -34,15 +34,7 @@ export const query = graphql`
       title
       contentModules {
         ... on ContentfulLayoutCopy {
-          __typename
-          appearance
-          title
-          ctaTitle
-          ctaLink
-          headline
-          copy {
-            copy
-          }
+          ...ContentfulLayoutCopyFragment
         }
       }
     }

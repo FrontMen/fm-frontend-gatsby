@@ -61,7 +61,10 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
       <SectionContainer>
         <CasePreview />
       </SectionContainer>
-      <SectionContainer skew={SelectableThemes.SkewNegative} selectedTheme={SelectableThemes.Orange}>
+      <SectionContainer
+        skew={SelectableThemes.SkewNegative}
+        selectedTheme={SelectableThemes.Orange}
+      >
         <ul>
           <li key="blogpost">
             <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
@@ -82,12 +85,8 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
             )}
         </ul>
       </SectionContainer>
-      <SectionContainer
-        selectedTheme={SelectableThemes.Darkblue}
-      >
-        <HighlightServices
-          serviceWithHeadlines={serviceWithHeadlines}
-        ></HighlightServices>
+      <SectionContainer selectedTheme={SelectableThemes.Darkblue}>
+        <HighlightServices serviceWithHeadlines={serviceWithHeadlines} />
       </SectionContainer>
       {technologies && (
         <SectionContainer>
@@ -128,24 +127,10 @@ export const query = graphql`
       title
       contentModules {
         ... on ContentfulLayoutCopy {
-          __typename
-          appearance
-          title
-          ctaTitle
-          ctaLink
-          headline
-          copy {
-            copy
-          }
+          ...ContentfulLayoutCopyFragment
         }
         ... on ContentfulLayoutHeroImage {
-          __typename
-          headline
-          backgroundImage {
-            fluid(maxWidth: 1200) {
-              src
-            }
-          }
+          ...ContentfulLayoutHeroImageFragment
         }
         ... on ContentfulLayoutSetOfFour {
           __typename

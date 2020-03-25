@@ -4,6 +4,7 @@ import { ContentfulLayoutHeroImage } from '../../../types/graphql-types';
 import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
 import styled from '../../utils/styled';
 import { rhythm, scale } from '../../utils/typography';
+import { graphql } from 'gatsby';
 
 type Props = {
   cm: ContentfulLayoutHeroImage;
@@ -52,3 +53,15 @@ export const HeroImage: React.FC<Props> = ({ cm }: Props) => {
     </>
   );
 };
+
+export const query = graphql`
+  fragment ContentfulLayoutHeroImageFragment on ContentfulLayoutHeroImage {
+    __typename
+    headline
+    backgroundImage {
+      fluid(maxWidth: 1200) {
+        src
+      }
+    }
+  }
+`;
