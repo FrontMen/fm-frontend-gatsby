@@ -14,11 +14,12 @@ type Props = {
 
 const ContactPage: React.FC<Props> = ({ data }: Props) => {
   const layout = data.contentfulLayout;
+  const title = layout?.title || 'Contact';
   return (
     <Layout>
-      <SEO title={layout?.title || 'Contact'} />
+      <SEO title={title} />
       <SectionContainer>
-        <h1>{layout?.title}</h1>
+        <h1>{title}</h1>
       </SectionContainer>
       {layout?.contentModules && (
         <ContentModules contentModules={layout.contentModules} />

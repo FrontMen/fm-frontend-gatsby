@@ -3,9 +3,9 @@ import * as React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { CasesPageQuery } from '../../../types/graphql-types';
+import ContentModules from '../../components/contentModules';
 import { DebugData } from '../../components/debugData';
 import Layout from '../../components/layout';
-import { SectionContainer } from '../../components/sectionContainer';
 import SEO from '../../components/seo';
 
 type Props = {
@@ -18,10 +18,10 @@ const CasesPage: React.FC<Props> = ({ data }: Props) => {
   return (
     <Layout>
       <SEO title={title} />
-      <SectionContainer>
-        <h1>{title}</h1>
-      </SectionContainer>
-      <DebugData data={layout} />
+      {layout?.contentModules && (
+        <ContentModules contentModules={layout.contentModules} />
+      )}
+      <DebugData data={data} />
     </Layout>
   );
 };
