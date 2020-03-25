@@ -34,13 +34,7 @@ export const query = graphql`
       title
       contentModules {
         ... on ContentfulLayoutCopy {
-          __typename
-          id
-          appearance
-          headline
-          copy {
-            copy
-          }
+          ...ContentfulLayoutCopyFragment
         }
       }
     }

@@ -1,8 +1,9 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import * as React from 'react';
 
 // eslint-disable-next-line import/no-unresolved
 import { CasesPageQuery } from '../../../types/graphql-types';
+import { DebugData } from '../../components/debugData';
 import Layout from '../../components/layout';
 import { SectionContainer } from '../../components/sectionContainer';
 import SEO from '../../components/seo';
@@ -12,39 +13,32 @@ type Props = {
 };
 
 const CasesPage: React.FC<Props> = ({ data }: Props) => {
+  const layout = data.contentfulLayout;
+  const title = layout?.title || 'Case Studies';
   return (
     <Layout>
-      <SEO title="Cases" />
+      <SEO title={title} />
       <SectionContainer>
-        <h1>Cases</h1>
+        <h1>{title}</h1>
       </SectionContainer>
+      <DebugData data={layout} />
     </Layout>
   );
 };
 
 export const query = graphql`
   query CasesPage {
-    contentfulLayout(slug: { eq: "Cases" }) {
+    contentfulLayout(
+      node_locale: { eq: "en-US" }
+      slug: { eq: "case-studies" }
+    ) {
       slug
-      #   slug
-      #   title
-      #   contentModules {
-      #     ... on ContentfulLayoutHeroImage {
-      #       id
-      #       headline
-      #       backgroundImage {
-      #         fluid(maxWidth: 1200) {
-      #           src
-      #         }
-      #       }
-      #     }
-      #     ... on ContentfulLayoutCallToAction {
-      #       id
-      #       title
-      #       url
-      #       label
-      #     }
-      #   }
+      title
+      contentModules {
+        ... on ContentfulLayoutCopy {
+          ...ContentfulLayoutCopyFragment
+        }
+      }
     }
   }
 `;

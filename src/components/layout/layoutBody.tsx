@@ -1,5 +1,5 @@
 import { css } from '@emotion/core';
-import { Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown/with-html';
 
@@ -40,3 +40,17 @@ export const LayoutBody: React.FC<Props> = ({
     </Container>
   );
 };
+
+export const query = graphql`
+  fragment ContentfulLayoutCopyFragment on ContentfulLayoutCopy {
+    __typename
+    appearance
+    title
+    ctaTitle
+    ctaLink
+    headline
+    copy {
+      copy
+    }
+  }
+`;
