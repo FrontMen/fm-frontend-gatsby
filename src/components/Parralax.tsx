@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import * as React from 'react';
 
 import styled from '../utils/styled';
+import { MediaQuerySize, mqMax } from '../utils/breakpoints';
 
 type Props = {
   children: React.ReactNode;
@@ -20,6 +21,13 @@ const ParallaxItemSpan = styled.span`
   position: absolute;
   transform-origin: 0 50%;
   z-index: -1;
+  opacity: 1;
+  transition: transform 2s ease-out, opacity 2s ease-out;
+
+  ${mqMax[MediaQuerySize.S]} {
+    transform: scale(0.1) !important;
+    opacity: 0;
+  }
 `;
 
 export const ParallaxContainer = styled.div`

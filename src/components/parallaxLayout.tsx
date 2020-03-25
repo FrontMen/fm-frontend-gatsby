@@ -87,7 +87,7 @@ const ParallaxLayout: React.FC<Props> = ({ children }: Props) => {
           <Polygon color={theme.colors.primary} />
         </ParallaxContainer.ParallaxItem>
         <ParallaxContainer.ParallaxItem
-          top="70%"
+          top="60%"
           left="30%"
           scale={0.5}
           zlocation={2}

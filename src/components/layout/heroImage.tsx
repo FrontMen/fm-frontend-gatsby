@@ -44,7 +44,7 @@ export const HeroImage: React.FC<Props> = ({ cm }: Props) => {
   return (
     <>
       <HeroBody>
-        <Payoff css={{ ...scale(1.5) }}>
+        <Payoff css={{ ...scale(1) }}>
           A technology partner for forward-thinking companies.
         </Payoff>
         <SubHead>{cm.headline}</SubHead>

@@ -24,7 +24,7 @@ const ContentModules: React.FC<Props> = ({ contentModules }) => {
         return (
           <SectionContainer
             skew={SelectableThemes.SkewPositive}
-            selectedTheme={SelectableThemes.Mint}
+            selectedTheme={SelectableThemes.Darkblue}
             key={`ContentfulLayoutCopy_${cm.id}`}
           >
             <CTABox
