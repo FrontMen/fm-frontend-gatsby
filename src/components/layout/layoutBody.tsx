@@ -20,7 +20,7 @@ const Container = styled.div`
 const Title = styled.h1({ ...scale(1.5) });
 const Payoff = styled.h3({ ...scale(0.7) });
 
-export const CTABox: React.FC<Props> = ({
+export const LayoutBody: React.FC<Props> = ({
   title,
   payoff,
   ctaLabel,

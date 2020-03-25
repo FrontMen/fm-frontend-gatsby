@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CTABox } from '../layout/cta-container';
+import { LayoutBody } from '../layout/layoutBody';
 import { HeroImage } from '../layout/heroImage';
 import { SectionContainer, SelectableThemes } from '../sectionContainer';
 
@@ -27,7 +27,7 @@ const ContentModules: React.FC<Props> = ({ contentModules }) => {
             selectedTheme={SelectableThemes.Mint}
             key={`ContentfulLayoutCopy_${cm.id}`}
           >
-            <CTABox
+            <LayoutBody
               title={cm.headline}
               payoff={cm.copy.copy}
               ctaLabel={cm.ctaTitle}

@@ -1,7 +1,6 @@
-import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
-// eslint-disable-next-line import/no-unresolved
+
 import {
   ContentfulLayoutSetOfFour,
   HomePageQuery,
@@ -9,7 +8,8 @@ import {
 import CasePreview from '../components/casePreview/casePreview';
 import ContentModules from '../components/contentModules';
 import { ExternalLink } from '../components/ExternalLink';
-import { CTABox } from '../components/layout/cta-container';
+import { HighlightServices } from '../components/highlightServices';
+import { LayoutBody } from '../components/layout/layoutBody';
 import ParallaxLayout from '../components/parallaxLayout';
 import {
   SectionContainer,
@@ -85,37 +85,9 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
         skew={SelectableThemes.SkewPositive}
         selectedTheme={SelectableThemes.Orange}
       >
-        <div
-          css={css`
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            display: flex;
-            width: 100%;
-          `}
-        >
-          {serviceWithHeadlines.map(
-            ({ headline, slug, description, headlines }) => {
-              return (
-                <div
-                  css={css`
-                    position: relative;
-                    flex-direction: column;
-                    display: flex;
-                    width: 100%;
-                    margin-bottom: 48px;
-                  `}
-                >
-                  <h2>
-                    <Link to={`/service/${slug}`}>{headline}</Link>
-                  </h2>
-                  <p>{description}</p>
-                  <ul>{headlines && headlines.map(hl => <li>{hl}</li>)}</ul>
-                </div>
-              );
-            }
-          )}
-        </div>
+        <HighlightServices
+          serviceWithHeadlines={serviceWithHeadlines}
+        ></HighlightServices>
       </SectionContainer>
       {technologies && (
         <SectionContainer>
@@ -136,7 +108,7 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
         skew={SelectableThemes.SkewNeutral}
         selectedTheme={SelectableThemes.Mint}
       >
-        <CTABox
+        <LayoutBody
           title="Let's build together"
           payoff="Join a long list of satisfied clients, partners,
 and successful businesses that we have had
