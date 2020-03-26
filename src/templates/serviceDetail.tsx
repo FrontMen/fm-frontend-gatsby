@@ -6,6 +6,9 @@ import Layout from '../components/layout';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
 import styled from '../utils/styled';
+import { css } from '@emotion/core';
+import { rhythm } from '../utils/typography';
+import { mqMin, MediaQuerySize } from '../utils/breakpoints';
 
 type Props = {
   data: ServiceDetailQuery;
@@ -36,6 +39,52 @@ const ServiceDetailPage: React.FC<Props> = ({ data }: Props) => {
               </ServiceDetail>
             )
         )}
+      </SectionContainer>
+      <SectionContainer>
+        <h1>Bedrijfsinnovatie & branding</h1>
+        <p>
+          Door een frisse, creative blik te combineren met gebruikers-validatie
+          ontdekken wij de kansen die een onderscheidende waarde bieden.
+        </p>
+        <div css={css``}>
+          <article
+            css={css`
+              display: flex;
+              flex-direction: column;
+              ${mqMin[MediaQuerySize.M]} {
+                flex-direction: row;
+              }
+              border-bottom: 1px solid blue;
+              margin: ${rhythm(1)};
+            `}
+          >
+            <h2>Migrate to a modern Frontend stack</h2>
+            <p>
+              Technology is constantly evolving. By leveraging the most modern
+              technologies you put yourself ahead of the competition, making
+              your software more secure, reliable and maintainable
+            </p>
+          </article>
+          <article
+            css={css`
+              display: flex;
+              flex-direction: column;
+              ${mqMin[MediaQuerySize.M]} {
+                flex-direction: row;
+              }
+              border-bottom: 1px solid blue;
+              margin: ${rhythm(1)};
+            `}
+          >
+            <h2>Migrate to a modern Frontend stack</h2>
+            <p>
+              Technology is constantly evolving. By leveraging the most modern
+              technologies you put yourself ahead of the competition, making
+              your software more secure, reliable and maintainable
+            </p>
+            <blockquote>Some epic quote about something</blockquote>
+          </article>
+        </div>
       </SectionContainer>
     </Layout>
   );
