@@ -48,17 +48,18 @@ const styles = {
       max-width: 80vw;
     }
     ${mqMin[MediaQuerySize.L]} {
-      max-width: 49%;
-    }
-    ${mqMin[MediaQuerySize.XL]} {
-      width: 100%;
+      &:nth-of-type(1),
+      &:nth-of-type(3) {
+        margin-right: 20px;
+      }
+
       &:nth-of-type(1),
       &:nth-of-type(4) {
-        max-width: 780px;
+        max-width: calc(60% - 20px);
       }
       &:nth-of-type(2),
       &:nth-of-type(3) {
-        max-width: 380px;
+        max-width: 40%;
       }
     }
   `,
