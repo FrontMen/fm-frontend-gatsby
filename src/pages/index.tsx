@@ -1,11 +1,7 @@
-import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import * as React from 'react';
 
-import {
-  ContentfulLayoutSetOfFour,
-  HomePageQuery,
-} from '../../types/graphql-types';
+import { HomePageQuery } from '../../types/graphql-types';
 import CasePreview from '../components/casePreview/casePreview';
 import ContentModules from '../components/contentModules';
 import { ExternalLink } from '../components/ExternalLink';
@@ -39,14 +35,6 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
       return { headline, slug, description, headlines };
     });
 
-  const isSetOfFour = (
-    variableToCheck: any
-  ): variableToCheck is ContentfulLayoutSetOfFour =>
-    // eslint-disable-next-line no-underscore-dangle
-    !!(variableToCheck as ContentfulLayoutSetOfFour).setItems;
-
-  const setOfFour: any = layout?.contentModules?.find(isSetOfFour);
-
   if (!layout) {
     return null;
   }
@@ -69,20 +57,6 @@ const IndexPage: React.FC<Props> = ({ data }: Props) => {
           <li key="blogpost">
             <Link to="/blogPosts/">Go to blog posts (Source: Contentful)</Link>
           </li>
-        </ul>
-      </SectionContainer>
-      <SectionContainer>
-        <h1>Some of the clients we work for</h1>
-        <ul>
-          {isSetOfFour(setOfFour) &&
-            setOfFour?.setItems?.map(
-              (client, index) =>
-                client?.link && (
-                  <li key={index + 'link'}>
-                    <ExternalLink to={client.link}>{client.title}</ExternalLink>
-                  </li>
-                )
-            )}
         </ul>
       </SectionContainer>
       <SectionContainer selectedTheme={SelectableThemes.Darkblue}>
@@ -133,11 +107,16 @@ export const query = graphql`
           ...ContentfulLayoutHeroImageFragment
         }
         ... on ContentfulLayoutSetOfFour {
-          __typename
           id
           setItems {
-            link
+            logo {
+              file {
+                fileName
+                url
+              }
+            }
             title
+            link
           }
         }
       }

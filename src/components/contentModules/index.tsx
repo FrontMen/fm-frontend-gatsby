@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-import { LayoutBody } from '../layout/layoutBody';
+import { Clients } from '../Clients';
 import { HeroImage } from '../layout/heroImage';
+import { LayoutBody } from '../layout/layoutBody';
 import { SectionContainer, SelectableThemes } from '../sectionContainer';
 
 type Props = {
@@ -34,6 +35,12 @@ const ContentModules: React.FC<Props> = ({ contentModules }) => {
               ctaLink={cm.ctaLink}
               appearance={cm.appearance}
             />
+          </SectionContainer>
+        );
+      case 'ContentfulLayoutSetOfFour':
+        return (
+          <SectionContainer>
+            <Clients clients={cm.setItems} />
           </SectionContainer>
         );
       default:

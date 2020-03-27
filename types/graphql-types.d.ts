@@ -993,13 +993,14 @@ export type ContentfulClient = Node & {
   internal: Internal,
   title?: Maybe<Scalars['String']>,
   link?: Maybe<Scalars['String']>,
-  layout___set_of_four?: Maybe<Array<Maybe<ContentfulLayoutSetOfFour>>>,
+  logo?: Maybe<ContentfulAsset>,
   spaceId?: Maybe<Scalars['String']>,
   contentful_id?: Maybe<Scalars['String']>,
   createdAt?: Maybe<Scalars['Date']>,
   updatedAt?: Maybe<Scalars['Date']>,
   sys?: Maybe<ContentfulClientSys>,
   node_locale?: Maybe<Scalars['String']>,
+  layout___set_of_four?: Maybe<Array<Maybe<ContentfulLayoutSetOfFour>>>,
 };
 
 
@@ -1134,6 +1135,102 @@ export type ContentfulClientFieldsEnum =
   'internal___type' |
   'title' |
   'link' |
+  'logo___id' |
+  'logo___parent___id' |
+  'logo___parent___parent___id' |
+  'logo___parent___parent___children' |
+  'logo___parent___children' |
+  'logo___parent___children___id' |
+  'logo___parent___children___children' |
+  'logo___parent___internal___content' |
+  'logo___parent___internal___contentDigest' |
+  'logo___parent___internal___description' |
+  'logo___parent___internal___fieldOwners' |
+  'logo___parent___internal___ignoreType' |
+  'logo___parent___internal___mediaType' |
+  'logo___parent___internal___owner' |
+  'logo___parent___internal___type' |
+  'logo___children' |
+  'logo___children___id' |
+  'logo___children___parent___id' |
+  'logo___children___parent___children' |
+  'logo___children___children' |
+  'logo___children___children___id' |
+  'logo___children___children___children' |
+  'logo___children___internal___content' |
+  'logo___children___internal___contentDigest' |
+  'logo___children___internal___description' |
+  'logo___children___internal___fieldOwners' |
+  'logo___children___internal___ignoreType' |
+  'logo___children___internal___mediaType' |
+  'logo___children___internal___owner' |
+  'logo___children___internal___type' |
+  'logo___internal___content' |
+  'logo___internal___contentDigest' |
+  'logo___internal___description' |
+  'logo___internal___fieldOwners' |
+  'logo___internal___ignoreType' |
+  'logo___internal___mediaType' |
+  'logo___internal___owner' |
+  'logo___internal___type' |
+  'logo___contentful_id' |
+  'logo___file___url' |
+  'logo___file___details___size' |
+  'logo___file___fileName' |
+  'logo___file___contentType' |
+  'logo___title' |
+  'logo___description' |
+  'logo___node_locale' |
+  'logo___fixed___base64' |
+  'logo___fixed___tracedSVG' |
+  'logo___fixed___aspectRatio' |
+  'logo___fixed___width' |
+  'logo___fixed___height' |
+  'logo___fixed___src' |
+  'logo___fixed___srcSet' |
+  'logo___fixed___srcWebp' |
+  'logo___fixed___srcSetWebp' |
+  'logo___resolutions___base64' |
+  'logo___resolutions___tracedSVG' |
+  'logo___resolutions___aspectRatio' |
+  'logo___resolutions___width' |
+  'logo___resolutions___height' |
+  'logo___resolutions___src' |
+  'logo___resolutions___srcSet' |
+  'logo___resolutions___srcWebp' |
+  'logo___resolutions___srcSetWebp' |
+  'logo___fluid___base64' |
+  'logo___fluid___tracedSVG' |
+  'logo___fluid___aspectRatio' |
+  'logo___fluid___src' |
+  'logo___fluid___srcSet' |
+  'logo___fluid___srcWebp' |
+  'logo___fluid___srcSetWebp' |
+  'logo___fluid___sizes' |
+  'logo___sizes___base64' |
+  'logo___sizes___tracedSVG' |
+  'logo___sizes___aspectRatio' |
+  'logo___sizes___src' |
+  'logo___sizes___srcSet' |
+  'logo___sizes___srcWebp' |
+  'logo___sizes___srcSetWebp' |
+  'logo___sizes___sizes' |
+  'logo___resize___base64' |
+  'logo___resize___tracedSVG' |
+  'logo___resize___src' |
+  'logo___resize___width' |
+  'logo___resize___height' |
+  'logo___resize___aspectRatio' |
+  'spaceId' |
+  'contentful_id' |
+  'createdAt' |
+  'updatedAt' |
+  'sys___contentType___sys___type' |
+  'sys___contentType___sys___linkType' |
+  'sys___contentType___sys___id' |
+  'sys___contentType___sys___contentful_id' |
+  'sys___revision' |
+  'node_locale' |
   'layout___set_of_four' |
   'layout___set_of_four___id' |
   'layout___set_of_four___parent___id' |
@@ -1191,6 +1288,18 @@ export type ContentfulClientFieldsEnum =
   'layout___set_of_four___setItems___internal___type' |
   'layout___set_of_four___setItems___title' |
   'layout___set_of_four___setItems___link' |
+  'layout___set_of_four___setItems___logo___id' |
+  'layout___set_of_four___setItems___logo___children' |
+  'layout___set_of_four___setItems___logo___contentful_id' |
+  'layout___set_of_four___setItems___logo___title' |
+  'layout___set_of_four___setItems___logo___description' |
+  'layout___set_of_four___setItems___logo___node_locale' |
+  'layout___set_of_four___setItems___spaceId' |
+  'layout___set_of_four___setItems___contentful_id' |
+  'layout___set_of_four___setItems___createdAt' |
+  'layout___set_of_four___setItems___updatedAt' |
+  'layout___set_of_four___setItems___sys___revision' |
+  'layout___set_of_four___setItems___node_locale' |
   'layout___set_of_four___setItems___layout___set_of_four' |
   'layout___set_of_four___setItems___layout___set_of_four___id' |
   'layout___set_of_four___setItems___layout___set_of_four___children' |
@@ -1202,12 +1311,6 @@ export type ContentfulClientFieldsEnum =
   'layout___set_of_four___setItems___layout___set_of_four___createdAt' |
   'layout___set_of_four___setItems___layout___set_of_four___updatedAt' |
   'layout___set_of_four___setItems___layout___set_of_four___node_locale' |
-  'layout___set_of_four___setItems___spaceId' |
-  'layout___set_of_four___setItems___contentful_id' |
-  'layout___set_of_four___setItems___createdAt' |
-  'layout___set_of_four___setItems___updatedAt' |
-  'layout___set_of_four___setItems___sys___revision' |
-  'layout___set_of_four___setItems___node_locale' |
   'layout___set_of_four___layout' |
   'layout___set_of_four___layout___id' |
   'layout___set_of_four___layout___parent___id' |
@@ -1235,17 +1338,7 @@ export type ContentfulClientFieldsEnum =
   'layout___set_of_four___contentful_id' |
   'layout___set_of_four___createdAt' |
   'layout___set_of_four___updatedAt' |
-  'layout___set_of_four___node_locale' |
-  'spaceId' |
-  'contentful_id' |
-  'createdAt' |
-  'updatedAt' |
-  'sys___contentType___sys___type' |
-  'sys___contentType___sys___linkType' |
-  'sys___contentType___sys___id' |
-  'sys___contentType___sys___contentful_id' |
-  'sys___revision' |
-  'node_locale';
+  'layout___set_of_four___node_locale';
 
 export type ContentfulClientFilterInput = {
   id?: Maybe<StringQueryOperatorInput>,
@@ -1254,13 +1347,14 @@ export type ContentfulClientFilterInput = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   link?: Maybe<StringQueryOperatorInput>,
-  layout___set_of_four?: Maybe<ContentfulLayoutSetOfFourFilterListInput>,
+  logo?: Maybe<ContentfulAssetFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
   createdAt?: Maybe<DateQueryOperatorInput>,
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulClientSysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+  layout___set_of_four?: Maybe<ContentfulLayoutSetOfFourFilterListInput>,
 };
 
 export type ContentfulClientFilterListInput = {
@@ -1866,7 +1960,6 @@ export type ContentfulLayoutCopy = Node & {
   internal: Internal,
   title?: Maybe<Scalars['String']>,
   headline?: Maybe<Scalars['String']>,
-  appearance?: Maybe<Scalars['String']>,
   layout?: Maybe<Array<Maybe<ContentfulLayout>>>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNode>,
   spaceId?: Maybe<Scalars['String']>,
@@ -1875,6 +1968,7 @@ export type ContentfulLayoutCopy = Node & {
   updatedAt?: Maybe<Scalars['Date']>,
   sys?: Maybe<ContentfulLayoutCopySys>,
   node_locale?: Maybe<Scalars['String']>,
+  appearance?: Maybe<Scalars['String']>,
   ctaTitle?: Maybe<Scalars['String']>,
   ctaLink?: Maybe<Scalars['String']>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNode>,
@@ -2158,7 +2252,6 @@ export type ContentfulLayoutCopyFieldsEnum =
   'internal___type' |
   'title' |
   'headline' |
-  'appearance' |
   'layout' |
   'layout___id' |
   'layout___parent___id' |
@@ -2255,6 +2348,7 @@ export type ContentfulLayoutCopyFieldsEnum =
   'sys___contentType___sys___id' |
   'sys___contentType___sys___contentful_id' |
   'node_locale' |
+  'appearance' |
   'ctaTitle' |
   'ctaLink' |
   'childContentfulLayoutCopyCopyTextNode___id' |
@@ -2304,7 +2398,6 @@ export type ContentfulLayoutCopyFilterInput = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   headline?: Maybe<StringQueryOperatorInput>,
-  appearance?: Maybe<StringQueryOperatorInput>,
   layout?: Maybe<ContentfulLayoutFilterListInput>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
@@ -2313,6 +2406,7 @@ export type ContentfulLayoutCopyFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCopySysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+  appearance?: Maybe<StringQueryOperatorInput>,
   ctaTitle?: Maybe<StringQueryOperatorInput>,
   ctaLink?: Maybe<StringQueryOperatorInput>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
@@ -3042,6 +3136,73 @@ export type ContentfulLayoutSetOfFourFieldsEnum =
   'setItems___internal___type' |
   'setItems___title' |
   'setItems___link' |
+  'setItems___logo___id' |
+  'setItems___logo___parent___id' |
+  'setItems___logo___parent___children' |
+  'setItems___logo___children' |
+  'setItems___logo___children___id' |
+  'setItems___logo___children___children' |
+  'setItems___logo___internal___content' |
+  'setItems___logo___internal___contentDigest' |
+  'setItems___logo___internal___description' |
+  'setItems___logo___internal___fieldOwners' |
+  'setItems___logo___internal___ignoreType' |
+  'setItems___logo___internal___mediaType' |
+  'setItems___logo___internal___owner' |
+  'setItems___logo___internal___type' |
+  'setItems___logo___contentful_id' |
+  'setItems___logo___file___url' |
+  'setItems___logo___file___fileName' |
+  'setItems___logo___file___contentType' |
+  'setItems___logo___title' |
+  'setItems___logo___description' |
+  'setItems___logo___node_locale' |
+  'setItems___logo___fixed___base64' |
+  'setItems___logo___fixed___tracedSVG' |
+  'setItems___logo___fixed___aspectRatio' |
+  'setItems___logo___fixed___width' |
+  'setItems___logo___fixed___height' |
+  'setItems___logo___fixed___src' |
+  'setItems___logo___fixed___srcSet' |
+  'setItems___logo___fixed___srcWebp' |
+  'setItems___logo___fixed___srcSetWebp' |
+  'setItems___logo___resolutions___base64' |
+  'setItems___logo___resolutions___tracedSVG' |
+  'setItems___logo___resolutions___aspectRatio' |
+  'setItems___logo___resolutions___width' |
+  'setItems___logo___resolutions___height' |
+  'setItems___logo___resolutions___src' |
+  'setItems___logo___resolutions___srcSet' |
+  'setItems___logo___resolutions___srcWebp' |
+  'setItems___logo___resolutions___srcSetWebp' |
+  'setItems___logo___fluid___base64' |
+  'setItems___logo___fluid___tracedSVG' |
+  'setItems___logo___fluid___aspectRatio' |
+  'setItems___logo___fluid___src' |
+  'setItems___logo___fluid___srcSet' |
+  'setItems___logo___fluid___srcWebp' |
+  'setItems___logo___fluid___srcSetWebp' |
+  'setItems___logo___fluid___sizes' |
+  'setItems___logo___sizes___base64' |
+  'setItems___logo___sizes___tracedSVG' |
+  'setItems___logo___sizes___aspectRatio' |
+  'setItems___logo___sizes___src' |
+  'setItems___logo___sizes___srcSet' |
+  'setItems___logo___sizes___srcWebp' |
+  'setItems___logo___sizes___srcSetWebp' |
+  'setItems___logo___sizes___sizes' |
+  'setItems___logo___resize___base64' |
+  'setItems___logo___resize___tracedSVG' |
+  'setItems___logo___resize___src' |
+  'setItems___logo___resize___width' |
+  'setItems___logo___resize___height' |
+  'setItems___logo___resize___aspectRatio' |
+  'setItems___spaceId' |
+  'setItems___contentful_id' |
+  'setItems___createdAt' |
+  'setItems___updatedAt' |
+  'setItems___sys___revision' |
+  'setItems___node_locale' |
   'setItems___layout___set_of_four' |
   'setItems___layout___set_of_four___id' |
   'setItems___layout___set_of_four___parent___id' |
@@ -3063,12 +3224,12 @@ export type ContentfulLayoutSetOfFourFieldsEnum =
   'setItems___layout___set_of_four___setItems___children' |
   'setItems___layout___set_of_four___setItems___title' |
   'setItems___layout___set_of_four___setItems___link' |
-  'setItems___layout___set_of_four___setItems___layout___set_of_four' |
   'setItems___layout___set_of_four___setItems___spaceId' |
   'setItems___layout___set_of_four___setItems___contentful_id' |
   'setItems___layout___set_of_four___setItems___createdAt' |
   'setItems___layout___set_of_four___setItems___updatedAt' |
   'setItems___layout___set_of_four___setItems___node_locale' |
+  'setItems___layout___set_of_four___setItems___layout___set_of_four' |
   'setItems___layout___set_of_four___layout' |
   'setItems___layout___set_of_four___layout___id' |
   'setItems___layout___set_of_four___layout___children' |
@@ -3084,12 +3245,6 @@ export type ContentfulLayoutSetOfFourFieldsEnum =
   'setItems___layout___set_of_four___createdAt' |
   'setItems___layout___set_of_four___updatedAt' |
   'setItems___layout___set_of_four___node_locale' |
-  'setItems___spaceId' |
-  'setItems___contentful_id' |
-  'setItems___createdAt' |
-  'setItems___updatedAt' |
-  'setItems___sys___revision' |
-  'setItems___node_locale' |
   'layout' |
   'layout___id' |
   'layout___parent___id' |
@@ -6052,13 +6207,14 @@ export type QueryContentfulClientArgs = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   link?: Maybe<StringQueryOperatorInput>,
-  layout___set_of_four?: Maybe<ContentfulLayoutSetOfFourFilterListInput>,
+  logo?: Maybe<ContentfulAssetFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
   contentful_id?: Maybe<StringQueryOperatorInput>,
   createdAt?: Maybe<DateQueryOperatorInput>,
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulClientSysFilterInput>,
-  node_locale?: Maybe<StringQueryOperatorInput>
+  node_locale?: Maybe<StringQueryOperatorInput>,
+  layout___set_of_four?: Maybe<ContentfulLayoutSetOfFourFilterListInput>
 };
 
 
@@ -6094,7 +6250,6 @@ export type QueryContentfulLayoutCopyArgs = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   headline?: Maybe<StringQueryOperatorInput>,
-  appearance?: Maybe<StringQueryOperatorInput>,
   layout?: Maybe<ContentfulLayoutFilterListInput>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
@@ -6103,6 +6258,7 @@ export type QueryContentfulLayoutCopyArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCopySysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+  appearance?: Maybe<StringQueryOperatorInput>,
   ctaTitle?: Maybe<StringQueryOperatorInput>,
   ctaLink?: Maybe<StringQueryOperatorInput>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>
@@ -7373,9 +7529,11 @@ export type HomePageQueryVariables = {};
 export type HomePageQuery = { contentfulLayout: Maybe<(
     Pick<ContentfulLayout, 'title'>
     & { contentModules: Maybe<Array<Maybe<ContentfulLayoutCopyFragmentFragment | ContentfulLayoutHeroImageFragmentFragment | (
-      { __typename: 'ContentfulLayoutSetOfFour' }
-      & Pick<ContentfulLayoutSetOfFour, 'id'>
-      & { setItems: Maybe<Array<Maybe<Pick<ContentfulClient, 'link' | 'title'>>>> }
+      Pick<ContentfulLayoutSetOfFour, 'id'>
+      & { setItems: Maybe<Array<Maybe<(
+        Pick<ContentfulClient, 'title' | 'link'>
+        & { logo: Maybe<{ file: Maybe<Pick<ContentfulAssetFile, 'fileName' | 'url'>> }> }
+      )>>> }
     )>>> }
   )>, allContentfulTechnology: { edges: Array<{ node: Pick<ContentfulTechnology, 'technology' | 'url'> }> }, allContentfulService: { edges: Array<{ node: (
         Pick<ContentfulService, 'slug' | 'headline'>
