@@ -67,7 +67,7 @@ export const HighlightServices: React.FC<Props> = ({
               <p>{description}</p>
               {headlines && (
                 <ServiceList>
-                  {headlines.map((hl: string, index: number) => (
+                  {headlines.map((hl: string) => (
                     <ServiceListItem key={hl}>{hl}</ServiceListItem>
                   ))}
                 </ServiceList>

@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import { graphql } from 'gatsby';
 import * as React from 'react';
 
@@ -5,10 +6,9 @@ import { ServiceDetailQuery } from '../../types/graphql-types';
 import Layout from '../components/layout';
 import { SectionContainer } from '../components/sectionContainer';
 import SEO from '../components/seo';
+import { MediaQuerySize, mqMin } from '../utils/breakpoints';
 import styled from '../utils/styled';
-import { css } from '@emotion/core';
 import { rhythm } from '../utils/typography';
-import { mqMin, MediaQuerySize } from '../utils/breakpoints';
 
 type Props = {
   data: ServiceDetailQuery;

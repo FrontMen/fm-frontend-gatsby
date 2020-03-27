@@ -986,6 +986,570 @@ export type ContentfulBlogPostSysFilterInput = {
   contentType?: Maybe<ContentfulBlogPostSysContentTypeFilterInput>,
 };
 
+export type ContentfulCaseStudy = Node & {
+  id: Scalars['ID'],
+  parent?: Maybe<Node>,
+  children: Array<Node>,
+  internal: Internal,
+  title?: Maybe<Scalars['String']>,
+  slug?: Maybe<Scalars['String']>,
+  shortDescription?: Maybe<Scalars['String']>,
+  imageOrVideo?: Maybe<ContentfulAsset>,
+  client?: Maybe<ContentfulClient>,
+  technologies?: Maybe<Array<Maybe<ContentfulTechnology>>>,
+  spaceId?: Maybe<Scalars['String']>,
+  contentful_id?: Maybe<Scalars['String']>,
+  createdAt?: Maybe<Scalars['Date']>,
+  updatedAt?: Maybe<Scalars['Date']>,
+  sys?: Maybe<ContentfulCaseStudySys>,
+  node_locale?: Maybe<Scalars['String']>,
+};
+
+
+export type ContentfulCaseStudyCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>,
+  fromNow?: Maybe<Scalars['Boolean']>,
+  difference?: Maybe<Scalars['String']>,
+  locale?: Maybe<Scalars['String']>
+};
+
+
+export type ContentfulCaseStudyUpdatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>,
+  fromNow?: Maybe<Scalars['Boolean']>,
+  difference?: Maybe<Scalars['String']>,
+  locale?: Maybe<Scalars['String']>
+};
+
+export type ContentfulCaseStudyConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<ContentfulCaseStudyEdge>,
+  nodes: Array<ContentfulCaseStudy>,
+  pageInfo: PageInfo,
+  distinct: Array<Scalars['String']>,
+  group: Array<ContentfulCaseStudyGroupConnection>,
+};
+
+
+export type ContentfulCaseStudyConnectionDistinctArgs = {
+  field: ContentfulCaseStudyFieldsEnum
+};
+
+
+export type ContentfulCaseStudyConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>,
+  field: ContentfulCaseStudyFieldsEnum
+};
+
+export type ContentfulCaseStudyEdge = {
+  next?: Maybe<ContentfulCaseStudy>,
+  node: ContentfulCaseStudy,
+  previous?: Maybe<ContentfulCaseStudy>,
+};
+
+export type ContentfulCaseStudyFieldsEnum = 
+  'id' |
+  'parent___id' |
+  'parent___parent___id' |
+  'parent___parent___parent___id' |
+  'parent___parent___parent___children' |
+  'parent___parent___children' |
+  'parent___parent___children___id' |
+  'parent___parent___children___children' |
+  'parent___parent___internal___content' |
+  'parent___parent___internal___contentDigest' |
+  'parent___parent___internal___description' |
+  'parent___parent___internal___fieldOwners' |
+  'parent___parent___internal___ignoreType' |
+  'parent___parent___internal___mediaType' |
+  'parent___parent___internal___owner' |
+  'parent___parent___internal___type' |
+  'parent___children' |
+  'parent___children___id' |
+  'parent___children___parent___id' |
+  'parent___children___parent___children' |
+  'parent___children___children' |
+  'parent___children___children___id' |
+  'parent___children___children___children' |
+  'parent___children___internal___content' |
+  'parent___children___internal___contentDigest' |
+  'parent___children___internal___description' |
+  'parent___children___internal___fieldOwners' |
+  'parent___children___internal___ignoreType' |
+  'parent___children___internal___mediaType' |
+  'parent___children___internal___owner' |
+  'parent___children___internal___type' |
+  'parent___internal___content' |
+  'parent___internal___contentDigest' |
+  'parent___internal___description' |
+  'parent___internal___fieldOwners' |
+  'parent___internal___ignoreType' |
+  'parent___internal___mediaType' |
+  'parent___internal___owner' |
+  'parent___internal___type' |
+  'children' |
+  'children___id' |
+  'children___parent___id' |
+  'children___parent___parent___id' |
+  'children___parent___parent___children' |
+  'children___parent___children' |
+  'children___parent___children___id' |
+  'children___parent___children___children' |
+  'children___parent___internal___content' |
+  'children___parent___internal___contentDigest' |
+  'children___parent___internal___description' |
+  'children___parent___internal___fieldOwners' |
+  'children___parent___internal___ignoreType' |
+  'children___parent___internal___mediaType' |
+  'children___parent___internal___owner' |
+  'children___parent___internal___type' |
+  'children___children' |
+  'children___children___id' |
+  'children___children___parent___id' |
+  'children___children___parent___children' |
+  'children___children___children' |
+  'children___children___children___id' |
+  'children___children___children___children' |
+  'children___children___internal___content' |
+  'children___children___internal___contentDigest' |
+  'children___children___internal___description' |
+  'children___children___internal___fieldOwners' |
+  'children___children___internal___ignoreType' |
+  'children___children___internal___mediaType' |
+  'children___children___internal___owner' |
+  'children___children___internal___type' |
+  'children___internal___content' |
+  'children___internal___contentDigest' |
+  'children___internal___description' |
+  'children___internal___fieldOwners' |
+  'children___internal___ignoreType' |
+  'children___internal___mediaType' |
+  'children___internal___owner' |
+  'children___internal___type' |
+  'internal___content' |
+  'internal___contentDigest' |
+  'internal___description' |
+  'internal___fieldOwners' |
+  'internal___ignoreType' |
+  'internal___mediaType' |
+  'internal___owner' |
+  'internal___type' |
+  'title' |
+  'slug' |
+  'shortDescription' |
+  'imageOrVideo___id' |
+  'imageOrVideo___parent___id' |
+  'imageOrVideo___parent___parent___id' |
+  'imageOrVideo___parent___parent___children' |
+  'imageOrVideo___parent___children' |
+  'imageOrVideo___parent___children___id' |
+  'imageOrVideo___parent___children___children' |
+  'imageOrVideo___parent___internal___content' |
+  'imageOrVideo___parent___internal___contentDigest' |
+  'imageOrVideo___parent___internal___description' |
+  'imageOrVideo___parent___internal___fieldOwners' |
+  'imageOrVideo___parent___internal___ignoreType' |
+  'imageOrVideo___parent___internal___mediaType' |
+  'imageOrVideo___parent___internal___owner' |
+  'imageOrVideo___parent___internal___type' |
+  'imageOrVideo___children' |
+  'imageOrVideo___children___id' |
+  'imageOrVideo___children___parent___id' |
+  'imageOrVideo___children___parent___children' |
+  'imageOrVideo___children___children' |
+  'imageOrVideo___children___children___id' |
+  'imageOrVideo___children___children___children' |
+  'imageOrVideo___children___internal___content' |
+  'imageOrVideo___children___internal___contentDigest' |
+  'imageOrVideo___children___internal___description' |
+  'imageOrVideo___children___internal___fieldOwners' |
+  'imageOrVideo___children___internal___ignoreType' |
+  'imageOrVideo___children___internal___mediaType' |
+  'imageOrVideo___children___internal___owner' |
+  'imageOrVideo___children___internal___type' |
+  'imageOrVideo___internal___content' |
+  'imageOrVideo___internal___contentDigest' |
+  'imageOrVideo___internal___description' |
+  'imageOrVideo___internal___fieldOwners' |
+  'imageOrVideo___internal___ignoreType' |
+  'imageOrVideo___internal___mediaType' |
+  'imageOrVideo___internal___owner' |
+  'imageOrVideo___internal___type' |
+  'imageOrVideo___contentful_id' |
+  'imageOrVideo___file___url' |
+  'imageOrVideo___file___details___size' |
+  'imageOrVideo___file___fileName' |
+  'imageOrVideo___file___contentType' |
+  'imageOrVideo___title' |
+  'imageOrVideo___description' |
+  'imageOrVideo___node_locale' |
+  'imageOrVideo___fixed___base64' |
+  'imageOrVideo___fixed___tracedSVG' |
+  'imageOrVideo___fixed___aspectRatio' |
+  'imageOrVideo___fixed___width' |
+  'imageOrVideo___fixed___height' |
+  'imageOrVideo___fixed___src' |
+  'imageOrVideo___fixed___srcSet' |
+  'imageOrVideo___fixed___srcWebp' |
+  'imageOrVideo___fixed___srcSetWebp' |
+  'imageOrVideo___resolutions___base64' |
+  'imageOrVideo___resolutions___tracedSVG' |
+  'imageOrVideo___resolutions___aspectRatio' |
+  'imageOrVideo___resolutions___width' |
+  'imageOrVideo___resolutions___height' |
+  'imageOrVideo___resolutions___src' |
+  'imageOrVideo___resolutions___srcSet' |
+  'imageOrVideo___resolutions___srcWebp' |
+  'imageOrVideo___resolutions___srcSetWebp' |
+  'imageOrVideo___fluid___base64' |
+  'imageOrVideo___fluid___tracedSVG' |
+  'imageOrVideo___fluid___aspectRatio' |
+  'imageOrVideo___fluid___src' |
+  'imageOrVideo___fluid___srcSet' |
+  'imageOrVideo___fluid___srcWebp' |
+  'imageOrVideo___fluid___srcSetWebp' |
+  'imageOrVideo___fluid___sizes' |
+  'imageOrVideo___sizes___base64' |
+  'imageOrVideo___sizes___tracedSVG' |
+  'imageOrVideo___sizes___aspectRatio' |
+  'imageOrVideo___sizes___src' |
+  'imageOrVideo___sizes___srcSet' |
+  'imageOrVideo___sizes___srcWebp' |
+  'imageOrVideo___sizes___srcSetWebp' |
+  'imageOrVideo___sizes___sizes' |
+  'imageOrVideo___resize___base64' |
+  'imageOrVideo___resize___tracedSVG' |
+  'imageOrVideo___resize___src' |
+  'imageOrVideo___resize___width' |
+  'imageOrVideo___resize___height' |
+  'imageOrVideo___resize___aspectRatio' |
+  'client___id' |
+  'client___parent___id' |
+  'client___parent___parent___id' |
+  'client___parent___parent___children' |
+  'client___parent___children' |
+  'client___parent___children___id' |
+  'client___parent___children___children' |
+  'client___parent___internal___content' |
+  'client___parent___internal___contentDigest' |
+  'client___parent___internal___description' |
+  'client___parent___internal___fieldOwners' |
+  'client___parent___internal___ignoreType' |
+  'client___parent___internal___mediaType' |
+  'client___parent___internal___owner' |
+  'client___parent___internal___type' |
+  'client___children' |
+  'client___children___id' |
+  'client___children___parent___id' |
+  'client___children___parent___children' |
+  'client___children___children' |
+  'client___children___children___id' |
+  'client___children___children___children' |
+  'client___children___internal___content' |
+  'client___children___internal___contentDigest' |
+  'client___children___internal___description' |
+  'client___children___internal___fieldOwners' |
+  'client___children___internal___ignoreType' |
+  'client___children___internal___mediaType' |
+  'client___children___internal___owner' |
+  'client___children___internal___type' |
+  'client___internal___content' |
+  'client___internal___contentDigest' |
+  'client___internal___description' |
+  'client___internal___fieldOwners' |
+  'client___internal___ignoreType' |
+  'client___internal___mediaType' |
+  'client___internal___owner' |
+  'client___internal___type' |
+  'client___title' |
+  'client___link' |
+  'client___logo___id' |
+  'client___logo___parent___id' |
+  'client___logo___parent___children' |
+  'client___logo___children' |
+  'client___logo___children___id' |
+  'client___logo___children___children' |
+  'client___logo___internal___content' |
+  'client___logo___internal___contentDigest' |
+  'client___logo___internal___description' |
+  'client___logo___internal___fieldOwners' |
+  'client___logo___internal___ignoreType' |
+  'client___logo___internal___mediaType' |
+  'client___logo___internal___owner' |
+  'client___logo___internal___type' |
+  'client___logo___contentful_id' |
+  'client___logo___file___url' |
+  'client___logo___file___fileName' |
+  'client___logo___file___contentType' |
+  'client___logo___title' |
+  'client___logo___description' |
+  'client___logo___node_locale' |
+  'client___logo___fixed___base64' |
+  'client___logo___fixed___tracedSVG' |
+  'client___logo___fixed___aspectRatio' |
+  'client___logo___fixed___width' |
+  'client___logo___fixed___height' |
+  'client___logo___fixed___src' |
+  'client___logo___fixed___srcSet' |
+  'client___logo___fixed___srcWebp' |
+  'client___logo___fixed___srcSetWebp' |
+  'client___logo___resolutions___base64' |
+  'client___logo___resolutions___tracedSVG' |
+  'client___logo___resolutions___aspectRatio' |
+  'client___logo___resolutions___width' |
+  'client___logo___resolutions___height' |
+  'client___logo___resolutions___src' |
+  'client___logo___resolutions___srcSet' |
+  'client___logo___resolutions___srcWebp' |
+  'client___logo___resolutions___srcSetWebp' |
+  'client___logo___fluid___base64' |
+  'client___logo___fluid___tracedSVG' |
+  'client___logo___fluid___aspectRatio' |
+  'client___logo___fluid___src' |
+  'client___logo___fluid___srcSet' |
+  'client___logo___fluid___srcWebp' |
+  'client___logo___fluid___srcSetWebp' |
+  'client___logo___fluid___sizes' |
+  'client___logo___sizes___base64' |
+  'client___logo___sizes___tracedSVG' |
+  'client___logo___sizes___aspectRatio' |
+  'client___logo___sizes___src' |
+  'client___logo___sizes___srcSet' |
+  'client___logo___sizes___srcWebp' |
+  'client___logo___sizes___srcSetWebp' |
+  'client___logo___sizes___sizes' |
+  'client___logo___resize___base64' |
+  'client___logo___resize___tracedSVG' |
+  'client___logo___resize___src' |
+  'client___logo___resize___width' |
+  'client___logo___resize___height' |
+  'client___logo___resize___aspectRatio' |
+  'client___spaceId' |
+  'client___contentful_id' |
+  'client___createdAt' |
+  'client___updatedAt' |
+  'client___sys___revision' |
+  'client___node_locale' |
+  'client___layout___set_of_four' |
+  'client___layout___set_of_four___id' |
+  'client___layout___set_of_four___parent___id' |
+  'client___layout___set_of_four___parent___children' |
+  'client___layout___set_of_four___children' |
+  'client___layout___set_of_four___children___id' |
+  'client___layout___set_of_four___children___children' |
+  'client___layout___set_of_four___internal___content' |
+  'client___layout___set_of_four___internal___contentDigest' |
+  'client___layout___set_of_four___internal___description' |
+  'client___layout___set_of_four___internal___fieldOwners' |
+  'client___layout___set_of_four___internal___ignoreType' |
+  'client___layout___set_of_four___internal___mediaType' |
+  'client___layout___set_of_four___internal___owner' |
+  'client___layout___set_of_four___internal___type' |
+  'client___layout___set_of_four___title' |
+  'client___layout___set_of_four___setItems' |
+  'client___layout___set_of_four___setItems___id' |
+  'client___layout___set_of_four___setItems___children' |
+  'client___layout___set_of_four___setItems___title' |
+  'client___layout___set_of_four___setItems___link' |
+  'client___layout___set_of_four___setItems___spaceId' |
+  'client___layout___set_of_four___setItems___contentful_id' |
+  'client___layout___set_of_four___setItems___createdAt' |
+  'client___layout___set_of_four___setItems___updatedAt' |
+  'client___layout___set_of_four___setItems___node_locale' |
+  'client___layout___set_of_four___setItems___layout___set_of_four' |
+  'client___layout___set_of_four___setItems___casestudy' |
+  'client___layout___set_of_four___layout' |
+  'client___layout___set_of_four___layout___id' |
+  'client___layout___set_of_four___layout___children' |
+  'client___layout___set_of_four___layout___title' |
+  'client___layout___set_of_four___layout___slug' |
+  'client___layout___set_of_four___layout___spaceId' |
+  'client___layout___set_of_four___layout___contentful_id' |
+  'client___layout___set_of_four___layout___createdAt' |
+  'client___layout___set_of_four___layout___updatedAt' |
+  'client___layout___set_of_four___layout___node_locale' |
+  'client___layout___set_of_four___spaceId' |
+  'client___layout___set_of_four___contentful_id' |
+  'client___layout___set_of_four___createdAt' |
+  'client___layout___set_of_four___updatedAt' |
+  'client___layout___set_of_four___node_locale' |
+  'client___casestudy' |
+  'client___casestudy___id' |
+  'client___casestudy___parent___id' |
+  'client___casestudy___parent___children' |
+  'client___casestudy___children' |
+  'client___casestudy___children___id' |
+  'client___casestudy___children___children' |
+  'client___casestudy___internal___content' |
+  'client___casestudy___internal___contentDigest' |
+  'client___casestudy___internal___description' |
+  'client___casestudy___internal___fieldOwners' |
+  'client___casestudy___internal___ignoreType' |
+  'client___casestudy___internal___mediaType' |
+  'client___casestudy___internal___owner' |
+  'client___casestudy___internal___type' |
+  'client___casestudy___title' |
+  'client___casestudy___slug' |
+  'client___casestudy___shortDescription' |
+  'client___casestudy___imageOrVideo___id' |
+  'client___casestudy___imageOrVideo___children' |
+  'client___casestudy___imageOrVideo___contentful_id' |
+  'client___casestudy___imageOrVideo___title' |
+  'client___casestudy___imageOrVideo___description' |
+  'client___casestudy___imageOrVideo___node_locale' |
+  'client___casestudy___client___id' |
+  'client___casestudy___client___children' |
+  'client___casestudy___client___title' |
+  'client___casestudy___client___link' |
+  'client___casestudy___client___spaceId' |
+  'client___casestudy___client___contentful_id' |
+  'client___casestudy___client___createdAt' |
+  'client___casestudy___client___updatedAt' |
+  'client___casestudy___client___node_locale' |
+  'client___casestudy___client___layout___set_of_four' |
+  'client___casestudy___client___casestudy' |
+  'client___casestudy___technologies' |
+  'client___casestudy___technologies___id' |
+  'client___casestudy___technologies___children' |
+  'client___casestudy___technologies___technology' |
+  'client___casestudy___technologies___slug' |
+  'client___casestudy___technologies___url' |
+  'client___casestudy___technologies___spaceId' |
+  'client___casestudy___technologies___contentful_id' |
+  'client___casestudy___technologies___createdAt' |
+  'client___casestudy___technologies___updatedAt' |
+  'client___casestudy___technologies___node_locale' |
+  'client___casestudy___spaceId' |
+  'client___casestudy___contentful_id' |
+  'client___casestudy___createdAt' |
+  'client___casestudy___updatedAt' |
+  'client___casestudy___node_locale' |
+  'technologies' |
+  'technologies___id' |
+  'technologies___parent___id' |
+  'technologies___parent___parent___id' |
+  'technologies___parent___parent___children' |
+  'technologies___parent___children' |
+  'technologies___parent___children___id' |
+  'technologies___parent___children___children' |
+  'technologies___parent___internal___content' |
+  'technologies___parent___internal___contentDigest' |
+  'technologies___parent___internal___description' |
+  'technologies___parent___internal___fieldOwners' |
+  'technologies___parent___internal___ignoreType' |
+  'technologies___parent___internal___mediaType' |
+  'technologies___parent___internal___owner' |
+  'technologies___parent___internal___type' |
+  'technologies___children' |
+  'technologies___children___id' |
+  'technologies___children___parent___id' |
+  'technologies___children___parent___children' |
+  'technologies___children___children' |
+  'technologies___children___children___id' |
+  'technologies___children___children___children' |
+  'technologies___children___internal___content' |
+  'technologies___children___internal___contentDigest' |
+  'technologies___children___internal___description' |
+  'technologies___children___internal___fieldOwners' |
+  'technologies___children___internal___ignoreType' |
+  'technologies___children___internal___mediaType' |
+  'technologies___children___internal___owner' |
+  'technologies___children___internal___type' |
+  'technologies___internal___content' |
+  'technologies___internal___contentDigest' |
+  'technologies___internal___description' |
+  'technologies___internal___fieldOwners' |
+  'technologies___internal___ignoreType' |
+  'technologies___internal___mediaType' |
+  'technologies___internal___owner' |
+  'technologies___internal___type' |
+  'technologies___technology' |
+  'technologies___slug' |
+  'technologies___url' |
+  'technologies___spaceId' |
+  'technologies___contentful_id' |
+  'technologies___createdAt' |
+  'technologies___updatedAt' |
+  'technologies___sys___revision' |
+  'technologies___node_locale' |
+  'spaceId' |
+  'contentful_id' |
+  'createdAt' |
+  'updatedAt' |
+  'sys___contentType___sys___type' |
+  'sys___contentType___sys___linkType' |
+  'sys___contentType___sys___id' |
+  'sys___contentType___sys___contentful_id' |
+  'node_locale';
+
+export type ContentfulCaseStudyFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  title?: Maybe<StringQueryOperatorInput>,
+  slug?: Maybe<StringQueryOperatorInput>,
+  shortDescription?: Maybe<StringQueryOperatorInput>,
+  imageOrVideo?: Maybe<ContentfulAssetFilterInput>,
+  client?: Maybe<ContentfulClientFilterInput>,
+  technologies?: Maybe<ContentfulTechnologyFilterListInput>,
+  spaceId?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+  createdAt?: Maybe<DateQueryOperatorInput>,
+  updatedAt?: Maybe<DateQueryOperatorInput>,
+  sys?: Maybe<ContentfulCaseStudySysFilterInput>,
+  node_locale?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulCaseStudyFilterListInput = {
+  elemMatch?: Maybe<ContentfulCaseStudyFilterInput>,
+};
+
+export type ContentfulCaseStudyGroupConnection = {
+  totalCount: Scalars['Int'],
+  edges: Array<ContentfulCaseStudyEdge>,
+  nodes: Array<ContentfulCaseStudy>,
+  pageInfo: PageInfo,
+  field: Scalars['String'],
+  fieldValue?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulCaseStudySortInput = {
+  fields?: Maybe<Array<Maybe<ContentfulCaseStudyFieldsEnum>>>,
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>,
+};
+
+export type ContentfulCaseStudySys = {
+  contentType?: Maybe<ContentfulCaseStudySysContentType>,
+};
+
+export type ContentfulCaseStudySysContentType = {
+  sys?: Maybe<ContentfulCaseStudySysContentTypeSys>,
+};
+
+export type ContentfulCaseStudySysContentTypeFilterInput = {
+  sys?: Maybe<ContentfulCaseStudySysContentTypeSysFilterInput>,
+};
+
+export type ContentfulCaseStudySysContentTypeSys = {
+  type?: Maybe<Scalars['String']>,
+  linkType?: Maybe<Scalars['String']>,
+  id?: Maybe<Scalars['String']>,
+  contentful_id?: Maybe<Scalars['String']>,
+};
+
+export type ContentfulCaseStudySysContentTypeSysFilterInput = {
+  type?: Maybe<StringQueryOperatorInput>,
+  linkType?: Maybe<StringQueryOperatorInput>,
+  id?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulCaseStudySysFilterInput = {
+  contentType?: Maybe<ContentfulCaseStudySysContentTypeFilterInput>,
+};
+
 export type ContentfulClient = Node & {
   id: Scalars['ID'],
   parent?: Maybe<Node>,
@@ -1001,6 +1565,7 @@ export type ContentfulClient = Node & {
   sys?: Maybe<ContentfulClientSys>,
   node_locale?: Maybe<Scalars['String']>,
   layout___set_of_four?: Maybe<Array<Maybe<ContentfulLayoutSetOfFour>>>,
+  casestudy?: Maybe<Array<Maybe<ContentfulCaseStudy>>>,
 };
 
 
@@ -1311,6 +1876,18 @@ export type ContentfulClientFieldsEnum =
   'layout___set_of_four___setItems___layout___set_of_four___createdAt' |
   'layout___set_of_four___setItems___layout___set_of_four___updatedAt' |
   'layout___set_of_four___setItems___layout___set_of_four___node_locale' |
+  'layout___set_of_four___setItems___casestudy' |
+  'layout___set_of_four___setItems___casestudy___id' |
+  'layout___set_of_four___setItems___casestudy___children' |
+  'layout___set_of_four___setItems___casestudy___title' |
+  'layout___set_of_four___setItems___casestudy___slug' |
+  'layout___set_of_four___setItems___casestudy___shortDescription' |
+  'layout___set_of_four___setItems___casestudy___technologies' |
+  'layout___set_of_four___setItems___casestudy___spaceId' |
+  'layout___set_of_four___setItems___casestudy___contentful_id' |
+  'layout___set_of_four___setItems___casestudy___createdAt' |
+  'layout___set_of_four___setItems___casestudy___updatedAt' |
+  'layout___set_of_four___setItems___casestudy___node_locale' |
   'layout___set_of_four___layout' |
   'layout___set_of_four___layout___id' |
   'layout___set_of_four___layout___parent___id' |
@@ -1338,7 +1915,190 @@ export type ContentfulClientFieldsEnum =
   'layout___set_of_four___contentful_id' |
   'layout___set_of_four___createdAt' |
   'layout___set_of_four___updatedAt' |
-  'layout___set_of_four___node_locale';
+  'layout___set_of_four___node_locale' |
+  'casestudy' |
+  'casestudy___id' |
+  'casestudy___parent___id' |
+  'casestudy___parent___parent___id' |
+  'casestudy___parent___parent___children' |
+  'casestudy___parent___children' |
+  'casestudy___parent___children___id' |
+  'casestudy___parent___children___children' |
+  'casestudy___parent___internal___content' |
+  'casestudy___parent___internal___contentDigest' |
+  'casestudy___parent___internal___description' |
+  'casestudy___parent___internal___fieldOwners' |
+  'casestudy___parent___internal___ignoreType' |
+  'casestudy___parent___internal___mediaType' |
+  'casestudy___parent___internal___owner' |
+  'casestudy___parent___internal___type' |
+  'casestudy___children' |
+  'casestudy___children___id' |
+  'casestudy___children___parent___id' |
+  'casestudy___children___parent___children' |
+  'casestudy___children___children' |
+  'casestudy___children___children___id' |
+  'casestudy___children___children___children' |
+  'casestudy___children___internal___content' |
+  'casestudy___children___internal___contentDigest' |
+  'casestudy___children___internal___description' |
+  'casestudy___children___internal___fieldOwners' |
+  'casestudy___children___internal___ignoreType' |
+  'casestudy___children___internal___mediaType' |
+  'casestudy___children___internal___owner' |
+  'casestudy___children___internal___type' |
+  'casestudy___internal___content' |
+  'casestudy___internal___contentDigest' |
+  'casestudy___internal___description' |
+  'casestudy___internal___fieldOwners' |
+  'casestudy___internal___ignoreType' |
+  'casestudy___internal___mediaType' |
+  'casestudy___internal___owner' |
+  'casestudy___internal___type' |
+  'casestudy___title' |
+  'casestudy___slug' |
+  'casestudy___shortDescription' |
+  'casestudy___imageOrVideo___id' |
+  'casestudy___imageOrVideo___parent___id' |
+  'casestudy___imageOrVideo___parent___children' |
+  'casestudy___imageOrVideo___children' |
+  'casestudy___imageOrVideo___children___id' |
+  'casestudy___imageOrVideo___children___children' |
+  'casestudy___imageOrVideo___internal___content' |
+  'casestudy___imageOrVideo___internal___contentDigest' |
+  'casestudy___imageOrVideo___internal___description' |
+  'casestudy___imageOrVideo___internal___fieldOwners' |
+  'casestudy___imageOrVideo___internal___ignoreType' |
+  'casestudy___imageOrVideo___internal___mediaType' |
+  'casestudy___imageOrVideo___internal___owner' |
+  'casestudy___imageOrVideo___internal___type' |
+  'casestudy___imageOrVideo___contentful_id' |
+  'casestudy___imageOrVideo___file___url' |
+  'casestudy___imageOrVideo___file___fileName' |
+  'casestudy___imageOrVideo___file___contentType' |
+  'casestudy___imageOrVideo___title' |
+  'casestudy___imageOrVideo___description' |
+  'casestudy___imageOrVideo___node_locale' |
+  'casestudy___imageOrVideo___fixed___base64' |
+  'casestudy___imageOrVideo___fixed___tracedSVG' |
+  'casestudy___imageOrVideo___fixed___aspectRatio' |
+  'casestudy___imageOrVideo___fixed___width' |
+  'casestudy___imageOrVideo___fixed___height' |
+  'casestudy___imageOrVideo___fixed___src' |
+  'casestudy___imageOrVideo___fixed___srcSet' |
+  'casestudy___imageOrVideo___fixed___srcWebp' |
+  'casestudy___imageOrVideo___fixed___srcSetWebp' |
+  'casestudy___imageOrVideo___resolutions___base64' |
+  'casestudy___imageOrVideo___resolutions___tracedSVG' |
+  'casestudy___imageOrVideo___resolutions___aspectRatio' |
+  'casestudy___imageOrVideo___resolutions___width' |
+  'casestudy___imageOrVideo___resolutions___height' |
+  'casestudy___imageOrVideo___resolutions___src' |
+  'casestudy___imageOrVideo___resolutions___srcSet' |
+  'casestudy___imageOrVideo___resolutions___srcWebp' |
+  'casestudy___imageOrVideo___resolutions___srcSetWebp' |
+  'casestudy___imageOrVideo___fluid___base64' |
+  'casestudy___imageOrVideo___fluid___tracedSVG' |
+  'casestudy___imageOrVideo___fluid___aspectRatio' |
+  'casestudy___imageOrVideo___fluid___src' |
+  'casestudy___imageOrVideo___fluid___srcSet' |
+  'casestudy___imageOrVideo___fluid___srcWebp' |
+  'casestudy___imageOrVideo___fluid___srcSetWebp' |
+  'casestudy___imageOrVideo___fluid___sizes' |
+  'casestudy___imageOrVideo___sizes___base64' |
+  'casestudy___imageOrVideo___sizes___tracedSVG' |
+  'casestudy___imageOrVideo___sizes___aspectRatio' |
+  'casestudy___imageOrVideo___sizes___src' |
+  'casestudy___imageOrVideo___sizes___srcSet' |
+  'casestudy___imageOrVideo___sizes___srcWebp' |
+  'casestudy___imageOrVideo___sizes___srcSetWebp' |
+  'casestudy___imageOrVideo___sizes___sizes' |
+  'casestudy___imageOrVideo___resize___base64' |
+  'casestudy___imageOrVideo___resize___tracedSVG' |
+  'casestudy___imageOrVideo___resize___src' |
+  'casestudy___imageOrVideo___resize___width' |
+  'casestudy___imageOrVideo___resize___height' |
+  'casestudy___imageOrVideo___resize___aspectRatio' |
+  'casestudy___client___id' |
+  'casestudy___client___parent___id' |
+  'casestudy___client___parent___children' |
+  'casestudy___client___children' |
+  'casestudy___client___children___id' |
+  'casestudy___client___children___children' |
+  'casestudy___client___internal___content' |
+  'casestudy___client___internal___contentDigest' |
+  'casestudy___client___internal___description' |
+  'casestudy___client___internal___fieldOwners' |
+  'casestudy___client___internal___ignoreType' |
+  'casestudy___client___internal___mediaType' |
+  'casestudy___client___internal___owner' |
+  'casestudy___client___internal___type' |
+  'casestudy___client___title' |
+  'casestudy___client___link' |
+  'casestudy___client___logo___id' |
+  'casestudy___client___logo___children' |
+  'casestudy___client___logo___contentful_id' |
+  'casestudy___client___logo___title' |
+  'casestudy___client___logo___description' |
+  'casestudy___client___logo___node_locale' |
+  'casestudy___client___spaceId' |
+  'casestudy___client___contentful_id' |
+  'casestudy___client___createdAt' |
+  'casestudy___client___updatedAt' |
+  'casestudy___client___sys___revision' |
+  'casestudy___client___node_locale' |
+  'casestudy___client___layout___set_of_four' |
+  'casestudy___client___layout___set_of_four___id' |
+  'casestudy___client___layout___set_of_four___children' |
+  'casestudy___client___layout___set_of_four___title' |
+  'casestudy___client___layout___set_of_four___setItems' |
+  'casestudy___client___layout___set_of_four___layout' |
+  'casestudy___client___layout___set_of_four___spaceId' |
+  'casestudy___client___layout___set_of_four___contentful_id' |
+  'casestudy___client___layout___set_of_four___createdAt' |
+  'casestudy___client___layout___set_of_four___updatedAt' |
+  'casestudy___client___layout___set_of_four___node_locale' |
+  'casestudy___client___casestudy' |
+  'casestudy___client___casestudy___id' |
+  'casestudy___client___casestudy___children' |
+  'casestudy___client___casestudy___title' |
+  'casestudy___client___casestudy___slug' |
+  'casestudy___client___casestudy___shortDescription' |
+  'casestudy___client___casestudy___technologies' |
+  'casestudy___client___casestudy___spaceId' |
+  'casestudy___client___casestudy___contentful_id' |
+  'casestudy___client___casestudy___createdAt' |
+  'casestudy___client___casestudy___updatedAt' |
+  'casestudy___client___casestudy___node_locale' |
+  'casestudy___technologies' |
+  'casestudy___technologies___id' |
+  'casestudy___technologies___parent___id' |
+  'casestudy___technologies___parent___children' |
+  'casestudy___technologies___children' |
+  'casestudy___technologies___children___id' |
+  'casestudy___technologies___children___children' |
+  'casestudy___technologies___internal___content' |
+  'casestudy___technologies___internal___contentDigest' |
+  'casestudy___technologies___internal___description' |
+  'casestudy___technologies___internal___fieldOwners' |
+  'casestudy___technologies___internal___ignoreType' |
+  'casestudy___technologies___internal___mediaType' |
+  'casestudy___technologies___internal___owner' |
+  'casestudy___technologies___internal___type' |
+  'casestudy___technologies___technology' |
+  'casestudy___technologies___slug' |
+  'casestudy___technologies___url' |
+  'casestudy___technologies___spaceId' |
+  'casestudy___technologies___contentful_id' |
+  'casestudy___technologies___createdAt' |
+  'casestudy___technologies___updatedAt' |
+  'casestudy___technologies___sys___revision' |
+  'casestudy___technologies___node_locale' |
+  'casestudy___spaceId' |
+  'casestudy___contentful_id' |
+  'casestudy___createdAt' |
+  'casestudy___updatedAt' |
+  'casestudy___node_locale';
 
 export type ContentfulClientFilterInput = {
   id?: Maybe<StringQueryOperatorInput>,
@@ -1355,6 +2115,7 @@ export type ContentfulClientFilterInput = {
   sys?: Maybe<ContentfulClientSysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
   layout___set_of_four?: Maybe<ContentfulLayoutSetOfFourFilterListInput>,
+  casestudy?: Maybe<ContentfulCaseStudyFilterListInput>,
 };
 
 export type ContentfulClientFilterListInput = {
@@ -1960,6 +2721,7 @@ export type ContentfulLayoutCopy = Node & {
   internal: Internal,
   title?: Maybe<Scalars['String']>,
   headline?: Maybe<Scalars['String']>,
+  appearance?: Maybe<Scalars['String']>,
   layout?: Maybe<Array<Maybe<ContentfulLayout>>>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNode>,
   spaceId?: Maybe<Scalars['String']>,
@@ -1968,7 +2730,6 @@ export type ContentfulLayoutCopy = Node & {
   updatedAt?: Maybe<Scalars['Date']>,
   sys?: Maybe<ContentfulLayoutCopySys>,
   node_locale?: Maybe<Scalars['String']>,
-  appearance?: Maybe<Scalars['String']>,
   ctaTitle?: Maybe<Scalars['String']>,
   ctaLink?: Maybe<Scalars['String']>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNode>,
@@ -2252,6 +3013,7 @@ export type ContentfulLayoutCopyFieldsEnum =
   'internal___type' |
   'title' |
   'headline' |
+  'appearance' |
   'layout' |
   'layout___id' |
   'layout___parent___id' |
@@ -2348,7 +3110,6 @@ export type ContentfulLayoutCopyFieldsEnum =
   'sys___contentType___sys___id' |
   'sys___contentType___sys___contentful_id' |
   'node_locale' |
-  'appearance' |
   'ctaTitle' |
   'ctaLink' |
   'childContentfulLayoutCopyCopyTextNode___id' |
@@ -2398,6 +3159,7 @@ export type ContentfulLayoutCopyFilterInput = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   headline?: Maybe<StringQueryOperatorInput>,
+  appearance?: Maybe<StringQueryOperatorInput>,
   layout?: Maybe<ContentfulLayoutFilterListInput>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
@@ -2406,7 +3168,6 @@ export type ContentfulLayoutCopyFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCopySysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
-  appearance?: Maybe<StringQueryOperatorInput>,
   ctaTitle?: Maybe<StringQueryOperatorInput>,
   ctaLink?: Maybe<StringQueryOperatorInput>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
@@ -3230,6 +3991,7 @@ export type ContentfulLayoutSetOfFourFieldsEnum =
   'setItems___layout___set_of_four___setItems___updatedAt' |
   'setItems___layout___set_of_four___setItems___node_locale' |
   'setItems___layout___set_of_four___setItems___layout___set_of_four' |
+  'setItems___layout___set_of_four___setItems___casestudy' |
   'setItems___layout___set_of_four___layout' |
   'setItems___layout___set_of_four___layout___id' |
   'setItems___layout___set_of_four___layout___children' |
@@ -3245,6 +4007,57 @@ export type ContentfulLayoutSetOfFourFieldsEnum =
   'setItems___layout___set_of_four___createdAt' |
   'setItems___layout___set_of_four___updatedAt' |
   'setItems___layout___set_of_four___node_locale' |
+  'setItems___casestudy' |
+  'setItems___casestudy___id' |
+  'setItems___casestudy___parent___id' |
+  'setItems___casestudy___parent___children' |
+  'setItems___casestudy___children' |
+  'setItems___casestudy___children___id' |
+  'setItems___casestudy___children___children' |
+  'setItems___casestudy___internal___content' |
+  'setItems___casestudy___internal___contentDigest' |
+  'setItems___casestudy___internal___description' |
+  'setItems___casestudy___internal___fieldOwners' |
+  'setItems___casestudy___internal___ignoreType' |
+  'setItems___casestudy___internal___mediaType' |
+  'setItems___casestudy___internal___owner' |
+  'setItems___casestudy___internal___type' |
+  'setItems___casestudy___title' |
+  'setItems___casestudy___slug' |
+  'setItems___casestudy___shortDescription' |
+  'setItems___casestudy___imageOrVideo___id' |
+  'setItems___casestudy___imageOrVideo___children' |
+  'setItems___casestudy___imageOrVideo___contentful_id' |
+  'setItems___casestudy___imageOrVideo___title' |
+  'setItems___casestudy___imageOrVideo___description' |
+  'setItems___casestudy___imageOrVideo___node_locale' |
+  'setItems___casestudy___client___id' |
+  'setItems___casestudy___client___children' |
+  'setItems___casestudy___client___title' |
+  'setItems___casestudy___client___link' |
+  'setItems___casestudy___client___spaceId' |
+  'setItems___casestudy___client___contentful_id' |
+  'setItems___casestudy___client___createdAt' |
+  'setItems___casestudy___client___updatedAt' |
+  'setItems___casestudy___client___node_locale' |
+  'setItems___casestudy___client___layout___set_of_four' |
+  'setItems___casestudy___client___casestudy' |
+  'setItems___casestudy___technologies' |
+  'setItems___casestudy___technologies___id' |
+  'setItems___casestudy___technologies___children' |
+  'setItems___casestudy___technologies___technology' |
+  'setItems___casestudy___technologies___slug' |
+  'setItems___casestudy___technologies___url' |
+  'setItems___casestudy___technologies___spaceId' |
+  'setItems___casestudy___technologies___contentful_id' |
+  'setItems___casestudy___technologies___createdAt' |
+  'setItems___casestudy___technologies___updatedAt' |
+  'setItems___casestudy___technologies___node_locale' |
+  'setItems___casestudy___spaceId' |
+  'setItems___casestudy___contentful_id' |
+  'setItems___casestudy___createdAt' |
+  'setItems___casestudy___updatedAt' |
+  'setItems___casestudy___node_locale' |
   'layout' |
   'layout___id' |
   'layout___parent___id' |
@@ -4513,6 +5326,10 @@ export type ContentfulTechnologyFilterInput = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulTechnologySysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
+};
+
+export type ContentfulTechnologyFilterListInput = {
+  elemMatch?: Maybe<ContentfulTechnologyFilterInput>,
 };
 
 export type ContentfulTechnologyGroupConnection = {
@@ -5896,6 +6713,8 @@ export type Query = {
   allSite: SiteConnection,
   imageSharp?: Maybe<ImageSharp>,
   allImageSharp: ImageSharpConnection,
+  contentfulCaseStudy?: Maybe<ContentfulCaseStudy>,
+  allContentfulCaseStudy: ContentfulCaseStudyConnection,
   contentfulAsset?: Maybe<ContentfulAsset>,
   allContentfulAsset: ContentfulAssetConnection,
   contentfulServiceDescriptionTextNode?: Maybe<ContentfulServiceDescriptionTextNode>,
@@ -6101,6 +6920,34 @@ export type QueryAllImageSharpArgs = {
 };
 
 
+export type QueryContentfulCaseStudyArgs = {
+  id?: Maybe<StringQueryOperatorInput>,
+  parent?: Maybe<NodeFilterInput>,
+  children?: Maybe<NodeFilterListInput>,
+  internal?: Maybe<InternalFilterInput>,
+  title?: Maybe<StringQueryOperatorInput>,
+  slug?: Maybe<StringQueryOperatorInput>,
+  shortDescription?: Maybe<StringQueryOperatorInput>,
+  imageOrVideo?: Maybe<ContentfulAssetFilterInput>,
+  client?: Maybe<ContentfulClientFilterInput>,
+  technologies?: Maybe<ContentfulTechnologyFilterListInput>,
+  spaceId?: Maybe<StringQueryOperatorInput>,
+  contentful_id?: Maybe<StringQueryOperatorInput>,
+  createdAt?: Maybe<DateQueryOperatorInput>,
+  updatedAt?: Maybe<DateQueryOperatorInput>,
+  sys?: Maybe<ContentfulCaseStudySysFilterInput>,
+  node_locale?: Maybe<StringQueryOperatorInput>
+};
+
+
+export type QueryAllContentfulCaseStudyArgs = {
+  filter?: Maybe<ContentfulCaseStudyFilterInput>,
+  sort?: Maybe<ContentfulCaseStudySortInput>,
+  skip?: Maybe<Scalars['Int']>,
+  limit?: Maybe<Scalars['Int']>
+};
+
+
 export type QueryContentfulAssetArgs = {
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
@@ -6214,7 +7061,8 @@ export type QueryContentfulClientArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulClientSysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
-  layout___set_of_four?: Maybe<ContentfulLayoutSetOfFourFilterListInput>
+  layout___set_of_four?: Maybe<ContentfulLayoutSetOfFourFilterListInput>,
+  casestudy?: Maybe<ContentfulCaseStudyFilterListInput>
 };
 
 
@@ -6250,6 +7098,7 @@ export type QueryContentfulLayoutCopyArgs = {
   internal?: Maybe<InternalFilterInput>,
   title?: Maybe<StringQueryOperatorInput>,
   headline?: Maybe<StringQueryOperatorInput>,
+  appearance?: Maybe<StringQueryOperatorInput>,
   layout?: Maybe<ContentfulLayoutFilterListInput>,
   copy?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>,
   spaceId?: Maybe<StringQueryOperatorInput>,
@@ -6258,7 +7107,6 @@ export type QueryContentfulLayoutCopyArgs = {
   updatedAt?: Maybe<DateQueryOperatorInput>,
   sys?: Maybe<ContentfulLayoutCopySysFilterInput>,
   node_locale?: Maybe<StringQueryOperatorInput>,
-  appearance?: Maybe<StringQueryOperatorInput>,
   ctaTitle?: Maybe<StringQueryOperatorInput>,
   ctaLink?: Maybe<StringQueryOperatorInput>,
   childContentfulLayoutCopyCopyTextNode?: Maybe<ContentfulLayoutCopyCopyTextNodeFilterInput>
@@ -7469,6 +8317,11 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>,
 };
 
+export type ContentfulCaseStudyPreviewFragmentFragment = (
+  Pick<ContentfulCaseStudy, 'id' | 'title' | 'shortDescription' | 'slug'>
+  & { client: Maybe<Pick<ContentfulClient, 'title'>>, technologies: Maybe<Array<Maybe<Pick<ContentfulTechnology, 'technology'>>>>, imageOrVideo: Maybe<{ fluid: Maybe<Pick<ContentfulFluid, 'src'>> }> }
+);
+
 export type Unnamed_1_QueryVariables = {};
 
 
@@ -7507,13 +8360,15 @@ export type BlogPagesQueryQuery = { allContentfulBlogPost: { edges: Array<{ node
         & { body: Maybe<Pick<ContentfulBlogPostBodyRichTextNode, 'json'>> }
       ) }> } };
 
-export type CasesPageQueryVariables = {};
+export type CasesPageQueryVariables = {
+  lang?: Maybe<Scalars['String']>
+};
 
 
 export type CasesPageQuery = { contentfulLayout: Maybe<(
     Pick<ContentfulLayout, 'slug' | 'title'>
     & { contentModules: Maybe<Array<Maybe<ContentfulLayoutCopyFragmentFragment>>> }
-  )> };
+  )>, allContentfulCaseStudy: { edges: Array<{ node: ContentfulCaseStudyPreviewFragmentFragment }> } };
 
 export type ContactPageQueryVariables = {};
 
@@ -7558,6 +8413,19 @@ export type TrainingPageQueryVariables = {};
 
 
 export type TrainingPageQuery = { contentfulLayout: Maybe<Pick<ContentfulLayout, 'slug' | 'title'>> };
+
+export type CaseStudyQueryVariables = {
+  id: Scalars['String']
+};
+
+
+export type CaseStudyQuery = { contentfulCaseStudy: Maybe<{ client: Maybe<(
+      Pick<ContentfulClient, 'title'>
+      & { logo: Maybe<(
+        Pick<ContentfulAsset, 'title'>
+        & { fluid: Maybe<Pick<ContentfulFluid, 'src'>> }
+      )> }
+    )> }> };
 
 export type ServiceDetailQueryVariables = {
   id: Scalars['String']

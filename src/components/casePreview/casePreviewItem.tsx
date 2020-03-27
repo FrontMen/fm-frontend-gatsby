@@ -2,19 +2,21 @@ import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 import * as React from 'react';
 
+import { Maybe } from '../../../types/graphql-types';
 import { MediaQuerySize, mqMin } from '../../utils/breakpoints';
 import styled from '../../utils/styled';
 import { Button } from '../../utils/styles/buttons';
 import { rhythm } from '../../utils/typography';
 
-type Case = {
-  id: number;
-  title: string;
-  client: string;
+export type CasePreview = {
+  id: string;
+  title?: Maybe<string>;
+  client?: Maybe<string>;
+  slug?: Maybe<string>;
+  backgroundImageUrl?: Maybe<string>;
 };
-
 interface CasePreviewItemProps {
-  caseStudy: Case;
+  caseStudy: CasePreview;
 }
 
 const spacing = rhythm(0.5);
@@ -95,12 +97,15 @@ const CaseContent = styled.div`
 export const CasePreviewItem: React.FC<CasePreviewItemProps> = ({
   caseStudy,
 }: CasePreviewItemProps) => {
-  const background = `https://picsum.photos/id/${`101${caseStudy.id}`}/640/360`;
+  const background =
+    caseStudy.backgroundImageUrl ||
+    `https://picsum.photos/id/101${Math.floor(Math.random() * 5 + 1)}/640/360`;
+
   return (
     <article
       css={css`${styles.casePreviewItem}; background-image: url(${background})}`}
     >
-      <CaseLink to="/">
+      <CaseLink to={caseStudy.slug || '/cases'}>
         <CaseContent>
           <ClientLabel>{caseStudy.client}</ClientLabel>
           <h3>{caseStudy.title}</h3>
